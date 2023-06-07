@@ -9,4 +9,12 @@
     <string name="hint_cadastrar">CADASTRAR</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_nome_evento">Nome Evento:</string>
+    <string name="hint_descricao_evento">Descrição:</string>
+    <string name="hint_preco_inscricao">Preço inscrição:</string>
+    <string name="hint_data_evento">Data evento:</string>
+    <string name="hint_horario_inicial_evento">Horário Evento:</string>
+    <string name="hint_horario_final_evento">Horário Final</string>
+    <string name="hint_capacidade_maxima">Capacidade máxima:</string>
+    <string name="hint_capacidade_minima">Capacidade mínima:</string>
 </resources>

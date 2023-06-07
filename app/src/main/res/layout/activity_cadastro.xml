@@ -19,78 +19,130 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/imageView"
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:layout_height="29dp" />
+
+            <ImageView
+                android:id="@+id/imvLogo"
+                android:layout_width="match_parent"
+                android:layout_height="94dp"
+                app:srcCompat="@drawable/__removebg_preview__1_" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="26dp" />
 
-            <TextView
-                android:id="@+id/textView"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/titulo_cadastro"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="38dp" />
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/titulo_cadastro"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="34sp"
+                        android:textStyle="bold" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="38dp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/et_nome_evento"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:ems="10"
                 android:hint="@string/hint_nome"
                 android:inputType="textPersonName" />
+                    <EditText
+                        android:id="@+id/etNome"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:ems="10"
+                        android:hint="@string/hint_nome"
+                        android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/editTextDate"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:hint="@string/hint_data"
-                android:inputType="date" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
 
-            <EditText
-                android:id="@+id/editTextTextEmailAddress"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:hint="@string/hint_email"
-                android:inputType="textEmailAddress" />
+                    <EditText
+                        android:id="@+id/etData"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:ems="10"
+                        android:hint="@string/hint_data"
+                        android:inputType="date" />
 
-            <EditText
-                android:id="@+id/editTextTextPassword"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:hint="@string/hint_senha"
-                android:inputType="textPassword" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
 
-            <EditText
-                android:id="@+id/editTextTextPassword2"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:hint="@string/hint_confirmar_senha"
-                android:inputType="textPassword" />
+                    <EditText
+                        android:id="@+id/etEmailCadastro"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:ems="10"
+                        android:hint="@string/hint_email"
+                        android:inputType="textEmailAddress" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="74dp" />
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hint_cadastrar" />
+                    <EditText
+                        android:id="@+id/etSenhaCadastro"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:ems="10"
+                        android:hint="@string/hint_senha"
+                        android:inputType="textPassword" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp" />
+
+                    <EditText
+                        android:id="@+id/etConfirmarSenhaCadastro"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:ems="10"
+                        android:hint="@string/hint_confirmar_senha"
+                        android:inputType="textPassword" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="53dp" />
+
+                    <Button
+                        android:id="@+id/btnCadastrar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hint_cadastrar" />
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

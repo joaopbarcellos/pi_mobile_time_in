@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--Nossas cores -->
+    <color name="verde_mar">#32afb5</color>
+    <color name="verde_escuro">#145374</color>
+    <color name="azul">#057dc2</color>
+    <color name="lilás">#4267b3</color>
+    <color name="ciano">#83e3cd</color>
+    <color name="roxo">#7f37c9</color>
+    <color name="azul_escuro">#284174</color>
+
 </resources>

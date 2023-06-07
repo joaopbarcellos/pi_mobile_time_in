@@ -2,17 +2,15 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/miHome"
-        android:icon="@drawable/ic_launcher_foreground"
-        android:title="Home"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/miMeusEventos"
         android:icon="?android:attr/actionModeFindDrawable"
-        android:title="Meus eventos"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/miHome"
+        android:icon="@drawable/icone_logo_removebg_preview"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/miPerfil"
-        android:title="Perfil"
+        android:icon="@drawable/ic_launcher_foreground"
         app:showAsAction="always" />
 </menu>

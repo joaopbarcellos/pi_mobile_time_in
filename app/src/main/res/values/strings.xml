@@ -7,4 +7,12 @@
     <string name="hint_senha">Senha:</string>
     <string name="hint_confirmar_senha">Confirmar senha:</string>
     <string name="hint_cadastrar">CADASTRAR</string>
+    <string name="hint_nome_evento">Nome Evento:</string>
+    <string name="hint_descricao_evento">Descrição:</string>
+    <string name="hint_preco_inscricao">Preço inscrição:</string>
+    <string name="hint_data_evento">Data evento:</string>
+    <string name="hint_horario_inicial_evento">Horário Evento:</string>
+    <string name="hint_horario_final_evento">Horário Final</string>
+    <string name="hint_capacidade_maxima">Capacidade máxima:</string>
+    <string name="hint_capacidade_minima">Capacidade mínima:</string>
 </resources>

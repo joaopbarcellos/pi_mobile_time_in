@@ -43,7 +43,7 @@
                 android:layout_height="38dp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/et_nome_evento"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:ems="10"

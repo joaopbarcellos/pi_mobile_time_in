@@ -29,6 +29,7 @@
                     android:id="@+id/et_nome_evento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:ems="10"
                     android:hint="@string/hint_nome_evento"
                     android:inputType="textPersonName"
@@ -40,6 +41,8 @@
                     android:id="@+id/cb_evento_pago"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:text="Evento é pago?"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -49,138 +52,191 @@
                     android:id="@+id/et_preco_evento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="@string/hint_preco_inscricao"
                     android:inputType="numberDecimal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cb_evento_pago" />
 
                 <EditText
                     android:id="@+id/et_data_evento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="@string/hint_data_evento"
                     android:inputType="date"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_preco_evento" />
 
                 <EditText
                     android:id="@+id/et_horario_evento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="@string/hint_horario_inicial_evento"
                     android:inputType="time"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cb_horario_final" />
 
                 <CheckBox
                     android:id="@+id/cb_horario_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:text="Deseja marcar o horário final?"
-                    app:layout_constraintTop_toBottomOf="@+id/et_data_evento"
-                    tools:layout_editor_absoluteX="411dp" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_data_evento" />
 
                 <EditText
                     android:id="@+id/et_horario_final"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="@string/hint_horario_final_evento"
                     android:inputType="time"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_horario_evento" />
 
                 <EditText
                     android:id="@+id/et_capacidade_maxima"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="@string/hint_capacidade_maxima"
                     android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_horario_final" />
 
                 <EditText
                     android:id="@+id/et_capacidade_minima"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="@string/hint_capacidade_minima"
                     android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_capacidade_maxima" />
 
-                <EditText
-                    android:id="@+id/et_descricao"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:ems="10"
-                    android:gravity="start"
-                    android:hint="@string/hint_descricao_evento"
-                    android:inputType="textPersonName"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="50dp"
+                    android:text="Evento recorrente:"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="444dp" />
+                    app:layout_constraintTop_toBottomOf="@+id/et_capacidade_minima" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    tools:layout_editor_absoluteY="571dp">
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_capacidade_minima" />
 
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_weight="1"
-                        android:text="Idade público alvo:" />
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="42dp"
+                    android:text="Intuito do Evento:"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-                    <Spinner
-                        android:id="@+id/spinner3"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_weight="1" />
-                </LinearLayout>
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    tools:layout_editor_absoluteY="601dp">
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="Idade público alvo:"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/spinner3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_weight="1"
-                        android:text="Evento Recorrente: " />
+                <Spinner
+                    android:id="@+id/spinner3"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/spinner2"
+                    tools:layout_editor_absoluteX="173dp" />
 
-                    <Spinner
-                        android:id="@+id/spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="28dp"
+                    android:gravity="center_vertical"
+                    android:text="Visibilidade das Informações"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-                </LinearLayout>
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Nome dos inscritos"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    tools:layout_editor_absoluteY="571dp">
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="110dp"
+                    android:text="Cadastrar evento"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_weight="1"
-                        android:text="Intuito do evento:" />
-
-                    <Spinner
-                        android:id="@+id/spinner2"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_weight="1" />
-
-                </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

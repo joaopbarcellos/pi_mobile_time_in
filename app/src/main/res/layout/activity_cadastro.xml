@@ -48,23 +48,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/titulo_cadastro"
-                        android:textAlignment="center"
-                        android:textColor="#000000"
-                        android:textSize="34sp"
-                        android:textStyle="bold" />
-
                     <Space
                         android:layout_width="match_parent"
                         android:layout_height="38dp" />
 
                     <EditText
                         android:id="@+id/etNome"
-                        android:layout_width="match_parent"
+                        android:layout_width="270dp"
                         android:layout_height="48dp"
                         android:ems="10"
                         android:hint="@string/hint_nome"
@@ -127,7 +117,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/verde_mar"
-                        android:text="@string/hint_cadastrar" />
+                        android:text="@string/btn_cadastrar" />
 
                 </LinearLayout>
 

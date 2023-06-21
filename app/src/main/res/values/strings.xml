@@ -17,9 +17,13 @@
     <string name="hint_horario_final_evento">Horário Final</string>
     <string name="hint_capacidade_maxima">Capacidade máxima:</string>
     <string name="hint_capacidade_minima">Capacidade mínima:</string>
+    <string name="hint_senha_antiga">Senha antiga:</string>
+    <string name="hint_nova_senha">Nova senha:</string>
+    <string name="hint_confirmar_senha_nova">Confimar nova senha:</string>
     <string name="btn_editar_informacoes">Editar informações</string>
     <string name="btn_voltar">Voltar</string>
     <string name="btn_inscrever">Inscrever</string>
     <string name="btn_ver_incritos">Ver Inscritos</string>
     <string name="txt_alterar_senha">Alterar Senha</string>
+    <string name="txt_alterar">Alterar</string>
 </resources>

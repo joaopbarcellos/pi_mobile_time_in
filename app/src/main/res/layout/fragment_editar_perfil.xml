@@ -8,7 +8,7 @@
     tools:context=".fragments.EditarPerfilFragment" >
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imgbtnFotoPerfil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -29,7 +29,7 @@
         android:inputType="textPersonName"
         android:text="@string/hint_nome"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintStart_toEndOf="@+id/imgbtnFotoPerfil"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -43,7 +43,7 @@
         android:inputType="textPersonName"
         android:text="@string/hint_email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
+        app:layout_constraintStart_toEndOf="@+id/imgbtnFotoPerfil"
         app:layout_constraintTop_toBottomOf="@+id/etNomeEditarPerfil" />
 
     <EditText
@@ -74,8 +74,8 @@
         app:layout_constraintTop_toBottomOf="@+id/etDataEditarPerfil">
 
         <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
             android:layout_weight="1" />
 
         <LinearLayout
@@ -88,14 +88,61 @@
                 android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="@string/txt_alterar_senha"
                 android:textSize="20sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <EditText
+                android:id="@+id/etSenhaAntiga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="@string/hint_senha_antiga" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <EditText
+                android:id="@+id/etSenhaNova"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="@string/hint_nova_senha" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <EditText
+                android:id="@+id/etConfimarSenha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="@string/hint_confirmar_senha_nova" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <Button
+                android:id="@+id/btnAlterarPerfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_alterar" />
 
         </LinearLayout>
 
         <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
             android:layout_weight="1" />
 
     </LinearLayout>

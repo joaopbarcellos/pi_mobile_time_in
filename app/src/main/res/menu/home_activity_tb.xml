@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/miMeusEventos"
-        android:icon="?android:attr/actionModeFindDrawable"
+        android:icon="@drawable/calendar_days_solid"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/miHome"
@@ -11,6 +11,6 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/miPerfil"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/user_solid"
         app:showAsAction="always" />
 </menu>

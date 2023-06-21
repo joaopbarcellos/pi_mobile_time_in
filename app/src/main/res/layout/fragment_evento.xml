@@ -69,13 +69,16 @@
 
     <ImageView
         android:id="@+id/ivLocalizacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="26dp"
         android:src="@android:drawable/ic_menu_mylocation"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toStartOf="@+id/tvLocalizacao"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescricao" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDescricao"
+        app:srcCompat="@drawable/location_dot_solid" />
 
     <TextView
         android:id="@+id/textView5"
@@ -128,16 +131,17 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="34dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="32dp"
         android:src="@android:drawable/ic_menu_my_calendar"
         app:layout_constraintBottom_toTopOf="@+id/btnVerInscritos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.005"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.134"
+        app:srcCompat="@drawable/calendar_days_solid" />
 
     <TextView
         android:id="@+id/tvData"
@@ -148,7 +152,7 @@
         android:textAlignment="viewStart"
         app:layout_constraintBottom_toTopOf="@+id/tvHorario"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/tvPreco"
         app:layout_constraintVertical_bias="0.0" />
@@ -157,12 +161,11 @@
         android:id="@+id/tvHorario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="307dp"
         android:layout_marginBottom="148dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/btnVerInscritos"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/tvData" />
 

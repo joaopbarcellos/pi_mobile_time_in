@@ -54,7 +54,8 @@
     <string name="btn_mes">Este mês</string>
     <string name="hint_de">De:</string>
     <string name="hint_ate">Até:</string>
-    <string name="txt_confirma_inscricao">Confirma Inscrição</string>
+    <string name="txt_cancela_inscricao">Quer realmente cancelar a inscrição?</string>
+    <string name="txt_excluir_evento">Quer realmente excluir o evento?</string>
     <string name="btn_confirma_inscricao">Confirmar Inscrição</string>
     <string name="txt_escolha_intuito">Escolha seu intuito:</string>
 </resources>

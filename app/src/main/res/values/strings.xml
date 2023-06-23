@@ -54,4 +54,7 @@
     <string name="btn_mes">Este mês</string>
     <string name="hint_de">De:</string>
     <string name="hint_ate">Até:</string>
+    <string name="txt_confirma_inscricao">Confirma Inscrição</string>
+    <string name="txt_preco">R$:</string>
+    <string name="btn_confirma_inscricao">Confirmar Inscrição</string>
 </resources>

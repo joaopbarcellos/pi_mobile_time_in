@@ -110,7 +110,39 @@
 
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="53dp" />
+                        android:layout_height="18dp" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tvEscolhaIntuito"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/txt_escolha_intuito"
+                            android:textColor="#000000"
+                            android:textSize="18sp" />
+
+                        <RadioButton
+                            android:id="@+id/rbFamilia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btn_familia" />
+
+                        <RadioButton
+                            android:id="@+id/rbAmador"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btn_amador" />
+
+                        <RadioButton
+                            android:id="@+id/rbProfissional"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btn_profissional" />
+
+                    </RadioGroup>
 
                     <Button
                         android:id="@+id/btnCadastrar"

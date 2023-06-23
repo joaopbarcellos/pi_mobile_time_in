@@ -176,6 +176,7 @@
         android:backgroundTint="@color/verde_mar"
         android:text="@string/btn_inscrever"
         android:textColorHighlight="@color/black"
+        app:cornerRadius="8dp"
         app:iconTint="@color/ciano"
         app:layout_constraintBottom_toTopOf="@+id/btnVerInscritos"
         app:layout_constraintEnd_toEndOf="parent"
@@ -191,6 +192,7 @@
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/black"
         android:text="@string/btn_ver_incritos"
+        app:cornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

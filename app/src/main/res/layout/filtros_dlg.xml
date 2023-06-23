@@ -19,64 +19,58 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="110dp"
-                    android:text="Classificar e Filtrar"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="281dp"
-                    android:text="Ordernar Por"
+                    android:text="@string/txt_ordenar"
+                    android:textColor="@color/black"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    tools:layout_editor_absoluteY="27dp" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/btnPadrao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="317dp"
-                    android:text="Padrão"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_padrao"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/btnPrecoMenor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="301dp"
-                    android:text="Preço: do menor para o maior"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_preco_menor"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnPadrao" />
 
                 <Button
-                    android:id="@+id/button5"
+                    android:id="@+id/btnPrecoMaior"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Preço: do marior para o menor"
-                    app:layout_constraintTop_toBottomOf="@+id/button4"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_preco_maior"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/btnPrecoMenor"
                     tools:layout_editor_absoluteX="16dp" />
 
                 <TextView
@@ -86,12 +80,13 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginEnd="337dp"
-                    android:text="Preço"
+                    android:text="@string/txt_preco"
+                    android:textColor="@color/black"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button5" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnPrecoMaior" />
 
                 <TextView
                     android:id="@+id/textView12"
@@ -100,7 +95,8 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="337dp"
-                    android:text="Em R$:"
+                    android:text="@string/txt_em_cifrao"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -108,7 +104,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
                 <SeekBar
-                    android:id="@+id/seekBar"
+                    android:id="@+id/sebPreco"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_marginStart="16dp"
@@ -125,57 +121,66 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginEnd="337dp"
-                    android:text="Idade"
+                    android:text="@string/txt_idade"
+                    android:textColor="@color/black"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+                    app:layout_constraintTop_toBottomOf="@+id/sebPreco" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/btnAteDoze"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Até 12 anos"
-                    app:layout_constraintEnd_toStartOf="@+id/button7"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_ate_12"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/btnTrezeDezessete"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
                 <Button
-                    android:id="@+id/button7"
+                    android:id="@+id/btnTrezeDezessete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="13 - 17 anos"
-                    app:layout_constraintEnd_toStartOf="@+id/button8"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_13_17"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/btnDezoitoMais"
                     app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
                 <Button
-                    android:id="@+id/button8"
+                    android:id="@+id/btnDezoitoMais"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="25dp"
-                    android:text="18+"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_mais_18"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
                 <Button
-                    android:id="@+id/button9"
+                    android:id="@+id/btnTrintaMais"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="30+"
-                    app:layout_constraintTop_toBottomOf="@+id/button6"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_mais_30"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toBottomOf="@+id/btnAteDoze"
                     tools:layout_editor_absoluteX="16dp" />
 
                 <SeekBar
-                    android:id="@+id/seekBar2"
+                    android:id="@+id/sebIdade"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_marginStart="16dp"
@@ -184,7 +189,7 @@
                     android:indeterminate="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button9" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnTrintaMais" />
 
                 <TextView
                     android:id="@+id/textView15"
@@ -193,42 +198,50 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="338dp"
-                    android:text="Intuito"
-                    android:textSize="20sp"
+                    android:text="@string/txt_horario"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnFamilia" />
 
                 <Button
-                    android:id="@+id/button10"
+                    android:id="@+id/btnManha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="50dp"
-                    android:text="Manhã"
-                    app:layout_constraintEnd_toStartOf="@+id/button11"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_manha"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/btnTarde"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
                 <Button
-                    android:id="@+id/button11"
+                    android:id="@+id/btnTarde"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="60dp"
-                    android:text="Tarde"
-                    app:layout_constraintEnd_toStartOf="@+id/button12"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_tarde"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/btnNoite"
                     app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
                 <Button
-                    android:id="@+id/button12"
+                    android:id="@+id/btnNoite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:text="Noite"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_noite"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
@@ -239,12 +252,13 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="287dp"
-                    android:text="Localização"
+                    android:text="@string/txt_localizacao"
+                    android:textColor="@color/black"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button10" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnManha" />
 
                 <TextView
                     android:id="@+id/textView18"
@@ -253,7 +267,8 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="311dp"
-                    android:text="Raio de (Km):"
+                    android:text="@string/txt_raio"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -261,7 +276,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
                 <SeekBar
-                    android:id="@+id/seekBar4"
+                    android:id="@+id/sebLocalizacao"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_marginStart="16dp"
@@ -278,44 +293,51 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="28dp"
                     android:layout_marginEnd="332dp"
-                    android:text="Data"
-                    android:textSize="20sp"
+                    android:text="@string/txt_data"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/seekBar4" />
+                    app:layout_constraintTop_toBottomOf="@+id/sebLocalizacao" />
 
                 <Button
-                    android:id="@+id/button13"
+                    android:id="@+id/btnHoje"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="Hoje"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_hoje"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
                 <Button
-                    android:id="@+id/button14"
+                    android:id="@+id/btnSemana"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="Esta semana"
-                    app:layout_constraintStart_toEndOf="@+id/button13"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_semana"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toEndOf="@+id/btnHoje"
                     app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
                 <Button
-                    android:id="@+id/button15"
+                    android:id="@+id/btnMes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="19dp"
-                    android:text="Este mês"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_mes"
+                    android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/button14"
+                    app:layout_constraintStart_toEndOf="@+id/btnSemana"
                     app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
                 <EditText
@@ -326,11 +348,11 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="185dp"
                     android:ems="10"
-                    android:hint="De:"
+                    android:hint="@string/hint_de"
                     android:inputType="date"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button13" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnHoje" />
 
                 <EditText
                     android:id="@+id/editTextDate2"
@@ -340,11 +362,65 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="185dp"
                     android:ems="10"
-                    android:hint="Ate:"
+                    android:hint="@string/hint_ate"
                     android:inputType="date"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="337dp"
+                    android:text="@string/txt_intuito"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sebIdade" />
+
+                <Button
+                    android:id="@+id/btnAmador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_amador"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/btnProfissional"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+                <Button
+                    android:id="@+id/btnFamilia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_familia"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAmador"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+                <Button
+                    android:id="@+id/btnProfissional"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/white"
+                    android:text="@string/btn_profissional"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

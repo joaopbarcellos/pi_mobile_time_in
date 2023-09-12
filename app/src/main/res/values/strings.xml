@@ -58,4 +58,6 @@
     <string name="txt_excluir_evento">Quer realmente excluir o evento?</string>
     <string name="btn_confirma_inscricao">Confirmar Inscrição</string>
     <string name="txt_escolha_intuito">Escolha seu intuito:</string>
+    <string name="btn_criar_evento">Criar Evento</string>
+    <string name="btn_editar_evento">Editar evento</string>
 </resources>

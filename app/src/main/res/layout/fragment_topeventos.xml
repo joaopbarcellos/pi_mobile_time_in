@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="@string/txt_filtrar"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/imgbtnFiltrar"
@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="246dp"
         android:text="Top Eventos"
         android:textSize="28sp"
@@ -77,15 +77,13 @@
         android:id="@+id/fabCadastrarEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:src="@android:drawable/ic_menu_add"
         app:backgroundTint="@color/verde_mar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.929"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.955" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <FrameLayout
         android:id="@+id/frameLayout4"
@@ -101,7 +99,7 @@
         <org.imaginativeworld.whynotimagecarousel.ImageCarousel
             android:id="@+id/carTopEventos"
             android:layout_width="match_parent"
-            android:layout_height="110dp" />
+            android:layout_height="wrap_content" />
 
     </FrameLayout>
 
@@ -111,13 +109,10 @@
         android:layout_height="31dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@color/white"
         android:src="@drawable/filter_solid__1_"
-        app:layout_constraintBottom_toTopOf="@+id/rvEventos"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout4"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout4" />
 
     <ImageView
         android:id="@+id/imageView"

@@ -54,8 +54,8 @@
 
                     <EditText
                         android:id="@+id/etNome"
-                        android:layout_width="270dp"
-                        android:layout_height="48dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="@string/hint_nome"
                         android:inputType="textPersonName" />
@@ -67,7 +67,7 @@
                     <EditText
                         android:id="@+id/etData"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="@string/hint_data"
                         android:inputType="date" />
@@ -79,7 +79,7 @@
                     <EditText
                         android:id="@+id/etEmailCadastro"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="@string/hint_email"
                         android:inputType="textEmailAddress" />

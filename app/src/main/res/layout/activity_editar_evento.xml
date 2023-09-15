@@ -110,12 +110,12 @@ tools:context=".Editar_EventoActivity">
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btnEditarEvento"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/verde_escuro"
-                    android:text="Editar evento" />
+                    android:text="@string/btn_editar_evento" />
 
                 <Space
                     android:layout_width="wrap_content"

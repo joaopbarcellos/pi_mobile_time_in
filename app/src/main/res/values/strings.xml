@@ -60,4 +60,11 @@
     <string name="txt_escolha_intuito">Escolha seu intuito:</string>
     <string name="btn_criar_evento">Criar Evento</string>
     <string name="btn_editar_evento">Editar evento</string>
+    <string name="btn_eventos_inscritos">Eventos inscritos</string>
+    <string name="btn_eventos_criados">Eventos criados</string>
+    <string name="btn_cadastrar_evento">Cadastrar Evento</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="btn_entrar_convidado">Entrar como convidado</string>
+    <string name="btn_criar_conta">Criar Conta</string>
+    <string name="txt_nao_possui_conta">Não possui uma conta?</string>
 </resources>

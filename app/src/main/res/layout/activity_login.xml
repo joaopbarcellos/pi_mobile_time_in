@@ -67,7 +67,7 @@
                         android:id="@+id/tvUser"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:text="Email:"
+                        android:text="@string/hint_email"
                         android:textSize="20sp" />
 
                     <EditText
@@ -85,7 +85,7 @@
                         android:id="@+id/tvSenha"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Senha:"
+                        android:text="@string/hint_senha"
                         android:textSize="20sp" />
 
                     <EditText
@@ -104,14 +104,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/verde_mar"
-                        android:text="Entrar" />
+                        android:text="@string/btn_entrar" />
 
                     <Button
                         android:id="@+id/btnEntrarConvidado"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/verde_mar"
-                        android:text="Entrar como convidado" />
+                        android:text="@string/btn_entrar_convidado" />
 
                 </LinearLayout>
 
@@ -146,7 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Não possui uma conta?" />
+                        android:text="@string/txt_nao_possui_conta" />
 
                     <Button
                         android:id="@+id/btnCriarConta"
@@ -154,7 +154,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/verde_escuro"
                         android:gravity="center_horizontal|center_vertical"
-                        android:text="Criar Conta" />
+                        android:text="@string/btn_criar_conta" />
 
                 </LinearLayout>
 

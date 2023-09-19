@@ -47,7 +47,9 @@ public class MeusEventosFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    public static MeusEventosFragment newInstance(){
+        return new MeusEventosFragment();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

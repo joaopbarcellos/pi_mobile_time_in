@@ -2,15 +2,15 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/miMeusEventos"
+        android:id="@+id/meusEventosOp"
         android:icon="@drawable/calendar_days_solid"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/miHome"
+        android:id="@+id/homeOp"
         android:icon="@drawable/icone_logo_removebg_preview"
         app:showAsAction="always" />
     <item
-        android:id="@+id/miPerfil"
+        android:id="@+id/perfilOp"
         android:icon="@drawable/user_solid"
         app:showAsAction="always" />
 </menu>

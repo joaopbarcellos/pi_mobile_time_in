@@ -47,7 +47,9 @@ public class TopEventosFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
+    public static TopEventosFragment newInstance(){
+        return new TopEventosFragment();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,11 +113,12 @@ public class TopEventosFragment extends Fragment {
             }
         }
 
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
-            return inflater.inflate(R.layout.fragment_forum, container, false);
+            return inflater.inflate(R.layout.fragment_topeventos, container, false);
         }
     }
 }

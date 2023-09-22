@@ -1,6 +1,8 @@
-package fellipy.gustavo.joao_pedro.pedro.time_in;
+package fellipy.gustavo.joao_pedro.pedro.time_in.Model;
 
 import androidx.lifecycle.ViewModel;
+
+import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 
 public class HomeViewModel extends ViewModel {
 

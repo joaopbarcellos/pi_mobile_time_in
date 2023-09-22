@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.MeusEventosFragment;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.PerfilFragment;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.TopEventosFragment;

@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Cadastro_EventoActivity"
+            android:name=".CadastroEventoActivity"
             android:exported="false" />
         <activity
             android:name=".CadastroActivity"

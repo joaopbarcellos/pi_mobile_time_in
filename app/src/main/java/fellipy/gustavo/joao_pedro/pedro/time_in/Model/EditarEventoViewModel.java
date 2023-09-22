@@ -1,7 +1,13 @@
 package fellipy.gustavo.joao_pedro.pedro.time_in.Model;
 
-import androidx.lifecycle.ViewModel;
+import android.app.Application;
 
-public class EditarEventoViewModel extends ViewModel {
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 
+public class EditarEventoViewModel extends AndroidViewModel {
+
+    public EditarEventoViewModel(@NonNull Application application) {
+        super(application);
+    }
 }

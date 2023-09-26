@@ -36,6 +36,10 @@ public class HomeViewModel extends AndroidViewModel {
         eventosLista.add(e5);
         eventosLista.add(e6);
     }
+
+    public ArrayList<Evento> getEventosLista(){
+        return eventosLista;
+    }
     public void setNavigationOpSelected(int navigationOpSelected){
         this.navigationOpSelected = navigationOpSelected;
     }

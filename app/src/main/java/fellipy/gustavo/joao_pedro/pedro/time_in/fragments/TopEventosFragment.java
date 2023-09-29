@@ -2,12 +2,17 @@ package fellipy.gustavo.joao_pedro.pedro.time_in.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.MainActivity;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 
 /**
@@ -22,6 +27,7 @@ public class TopEventosFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private HomeViewModel hViewModel;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -119,6 +125,12 @@ public class TopEventosFragment extends Fragment {
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
             return inflater.inflate(R.layout.fragment_topeventos, container, false);
+        }
+
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+            hViewModel = new ViewModelProvider(getActivity()).get(MainActivity.class);
         }
     }
 }

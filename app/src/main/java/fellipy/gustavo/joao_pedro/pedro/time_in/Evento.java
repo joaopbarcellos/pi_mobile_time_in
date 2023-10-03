@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import java.util.Date;
 
 public class Evento {
+    public int id;
     public String nome;
     public double preco;
     public Date dataHorario;
@@ -12,7 +13,7 @@ public class Evento {
 
 
 
-    public Evento(String n, double p, Date d, int img){
+    public Evento(int id, String n, double p, Date d, int img){
         this.nome = n;
         this.preco = p;
         this.dataHorario = d;

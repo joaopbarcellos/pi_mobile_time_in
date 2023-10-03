@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
 import fellipy.gustavo.joao_pedro.pedro.time_in.MyViewHolder;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
-
 import androidx.paging.PagingDataAdapter;
+
 import androidx.recyclerview.widget.DiffUtil;
 
 

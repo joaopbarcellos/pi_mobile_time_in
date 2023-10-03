@@ -37,13 +37,19 @@ public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
 
         // Titulo do Evento
         TextView tvTituloItemEvento = holder.itemView.findViewById(R.id.tvTituloItemEvento);
-        tvTituloItemEvento.setText(Evento.nome);
+        tvTituloItemEvento.setText(evento.nome);
 
         // Data do Evento
         TextView tvDataItemEvento = holder.itemView.findViewById(R.id.tvDataItemEvento);
-        tvDataItemEvento.setText("Data: " + new SimpleDateFormat("HH:mm dd/MM/yyyy").format(Evento.dataHorario));
+        tvDataItemEvento.setText("Data: " + new SimpleDateFormat("dd/MM/yyyy").format(evento.dataHorario));
 
+        // Horario do Evento
+        TextView tvHorarioItemEvento = holder.itemView.findViewById(R.id.tvHorarioItemEvento);
+        tvHorarioItemEvento.setText("Horário do Evento: " + new SimpleDateFormat("HH:mm").format(evento.dataHorario));
 
+        // Preco Evento
+        TextView tvPrecoItemEvento = holder.itemView.findViewById(R.id.tvPrecoItemEvento);
+        tvPrecoItemEvento.setText(Double.toString(evento.preco));
 
     }
 }

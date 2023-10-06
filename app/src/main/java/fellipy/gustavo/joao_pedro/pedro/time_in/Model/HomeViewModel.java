@@ -4,41 +4,59 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelKt;
+import androidx.paging.Pager;
+import androidx.paging.PagingConfig;
+import androidx.paging.PagingData;
+import androidx.paging.PagingLiveData;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
+import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
+import fellipy.gustavo.joao_pedro.pedro.time_in.EventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
+import kotlinx.coroutines.CoroutineScope;
 
 public class HomeViewModel extends AndroidViewModel {
 
     private ArrayList<Evento> eventosLista;
     private ArrayList<Evento> eventosCarrossel;
     int navigationOpSelected = R.id.homeOp;
-
+    LiveData<PagingData<Evento>> eventsLd;
 
     public HomeViewModel(@NonNull Application application){
         super(application);
 
-        Evento e1 = new Evento(1, "Role na Lama com Daniel", 0.0, new Date(), R.mipmap.evento);
-        Evento e3 = new Evento(2, "Futizn dos Cria com a Tropa do Flamengo", 122.0, new Date(), R.mipmap.sosias);
-        Evento e4 = new Evento(3, "Rolê Comigo (Ryan Gosling)", 10.0, new Date(), R.mipmap.ryan);
-        Evento e5 = new Evento(4, "Rolê de carro com o Ednaldo Pereira", 1000.0, new Date(), R.mipmap.ednaldo);
-        Evento e6 = new Evento(5, "Fut com o Zé Gatinha", 15.2, new Date(), R.mipmap.zegatinha);
-
-        eventosLista = new ArrayList<>();
-        eventosLista.add(e1);
-        eventosLista.add(e3);
-        eventosLista.add(e4);
-        eventosLista.add(e5);
-        eventosLista.add(e6);
+        EventosRepository eventosRepository = new EventosRepository(getApplication());
+        CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
+        Pager<Integer, Evento> pager = new Pager(new PagingConfig(10), () -> new EventsPagingSource(eventosRepository));
+        eventsLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
     }
 
-    public ArrayList<Evento> getEventosLista(){
-        return eventosLista;
-    }
     public void setNavigationOpSelected(int navigationOpSelected){
         this.navigationOpSelected = navigationOpSelected;
     }
+    public LiveData<Evento> getEventDetailsLD(String eid){
+        MutableLiveData<Evento> eventDetailLD = new MutableLiveData<>();
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                EventosRepository eventosRepository = new EventosRepository(getApplication());
+                Evento e = eventosRepository.loadEventDetail(eid);
+
+                eventDetailLD.postValue(e);
+            }
+        });
+        return eventDetailLD;
+    }
+
+    public LiveData<PagingData<Evento>> getEventsLd(){return eventsLd;}
 }

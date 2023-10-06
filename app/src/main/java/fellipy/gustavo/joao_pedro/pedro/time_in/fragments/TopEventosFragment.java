@@ -60,7 +60,7 @@ public class TopEventosFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         hViewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
         ListAdapter listAdapter = new ListAdapter(new ImageDataComparator());
-        LiveData<PagingData<Evento>> liveData = hViewModel.getPageLv();
+        LiveData<PagingData<Evento>> liveData = hViewModel.getEventsLd();
 
         liveData.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
             @Override

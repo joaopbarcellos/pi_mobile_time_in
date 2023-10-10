@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.CadastroViewModel;
 
@@ -35,6 +40,13 @@ public class CadastroActivity extends AppCompatActivity {
 
                 EditText etData = findViewById(R.id.etData);
                 final String data = etData.getText().toString();
+                SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = null;
+                try {
+                    date = parser.parse(data);
+                } catch (ParseException e) {
+                    Toast.makeText(CadastroActivity.this, "A data tem que ser dd/MM/yyyy", Toast.LENGTH_LONG).show();
+                }
 
                 EditText etEmailCadastro = findViewById(R.id.etEmailCadastro);
                 final String email = etEmailCadastro.getText().toString();
@@ -45,7 +57,7 @@ public class CadastroActivity extends AppCompatActivity {
                 EditText etConfirmarSenhaCadastro = findViewById(R.id.etConfirmarSenhaCadastro);
                 final String confirmar_senha = etConfirmarSenhaCadastro.getText().toString();
 
-                LiveData<Boolean> resultLD = cadastroViewModel.cadastro(nome, data, email, senha, confirmar_senha);
+                LiveData<Boolean> resultLD = cadastroViewModel.cadastro(nome, date, email, senha, 0);
 
             }
         });

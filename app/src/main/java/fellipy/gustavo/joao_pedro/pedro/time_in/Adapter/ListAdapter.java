@@ -4,6 +4,7 @@ import android.icu.text.SimpleDateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -50,6 +51,9 @@ public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
         // Preco Evento
         TextView tvPrecoItemEvento = holder.itemView.findViewById(R.id.tvPrecoItemEvento);
         tvPrecoItemEvento.setText(Double.toString(evento.preco));
+
+        ImageView imgImagemEvento = holder.itemView.findViewById(R.id.imgImagemEvento);
+        imgImagemEvento.set(evento.imagem);
 
     }
 }

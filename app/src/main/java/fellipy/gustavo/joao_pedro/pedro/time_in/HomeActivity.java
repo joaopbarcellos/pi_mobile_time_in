@@ -23,7 +23,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        TopEventosFragment topEventosFragment = TopEventosFragment.newInstance();
+        setFragment(topEventosFragment);
         bottomNavigationView = findViewById(R.id.btNav);
         final HomeViewModel vm = new ViewModelProvider(this).get(HomeViewModel.class);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

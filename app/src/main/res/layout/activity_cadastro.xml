@@ -132,16 +132,16 @@
                             android:text="@string/btn_familia" />
 
                         <RadioButton
-                            android:id="@+id/rbAmador"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/btn_amador" />
-
-                        <RadioButton
                             android:id="@+id/rbProfissional"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/btn_profissional" />
+
+                        <RadioButton
+                            android:id="@+id/rbAmador"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/btn_amador" />
 
                     </RadioGroup>
 

@@ -57,7 +57,7 @@ public class CadastroActivity extends AppCompatActivity {
                 EditText etConfirmarSenhaCadastro = findViewById(R.id.etConfirmarSenhaCadastro);
                 final String confirmar_senha = etConfirmarSenhaCadastro.getText().toString();
 
-                LiveData<Boolean> resultLD = cadastroViewModel.cadastro(nome, date, email, senha, 0);
+                LiveData<Boolean> resultLD = cadastroViewModel.cadastro(nome, date, email, senha, "1");
 
             }
         });

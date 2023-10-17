@@ -14,13 +14,15 @@ import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
+
 public class CadastroViewModel extends AndroidViewModel {
 
     public CadastroViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<Boolean> cadastro(String nome, Date data, String email, String senha, int codigo_intuito) {
+    public LiveData<Boolean> cadastro(String nome, Date data, String email, String senha, String codigo_intuito) {
         MutableLiveData<Boolean> result = new MutableLiveData<>();
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -29,8 +31,12 @@ public class CadastroViewModel extends AndroidViewModel {
             @Override
             public void run() {
 
+                EventosRepository eventosRepository = new EventosRepository(getApplication());
+
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 String s = df.format(data);
+
+                boolean b = eventosRepository.cadastro(nome, s, email, senha, codigo_intuito);
 
                 result.setValue(true);
             }

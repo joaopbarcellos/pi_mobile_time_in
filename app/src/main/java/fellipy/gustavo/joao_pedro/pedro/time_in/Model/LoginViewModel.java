@@ -10,13 +10,15 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
+
 public class LoginViewModel extends AndroidViewModel {
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<Boolean> login(String login, String password) {
+    public LiveData<Boolean> login(String email, String senha) {
 
 
         MutableLiveData<Boolean> result = new MutableLiveData<>();
@@ -26,7 +28,12 @@ public class LoginViewModel extends AndroidViewModel {
 
             @Override
             public void run() {
-                result.setValue(true);
+
+                EventosRepository eventosRepository = new EventosRepository(getApplication());
+
+                boolean b = eventosRepository.login(email, senha);
+
+                result.postValue(b);
             }
         });
 

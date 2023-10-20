@@ -31,7 +31,7 @@ public class EventosRepository {
 
     public boolean cadastro(String nome, String data, String email, String senha, String codigo_intuito){
         // Cria uma requisição HTTP a adiona o parâmetros que devem ser enviados ao servidor
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "registrar.php", "POST", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "cadastrar.php", "POST", "UTF-8");
         httpRequest.addParam("novo_login", nome);
         httpRequest.addParam("nova_data", data);
         httpRequest.addParam("novo_email", email);

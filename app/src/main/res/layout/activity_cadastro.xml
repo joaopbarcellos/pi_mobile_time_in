@@ -114,6 +114,7 @@
                         android:layout_height="18dp" />
 
                     <RadioGroup
+                        android:id="@+id/rgIntuito"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 

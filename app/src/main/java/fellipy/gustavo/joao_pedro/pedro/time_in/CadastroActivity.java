@@ -2,6 +2,7 @@ package fellipy.gustavo.joao_pedro.pedro.time_in;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -57,9 +59,31 @@ public class CadastroActivity extends AppCompatActivity {
                 EditText etConfirmarSenhaCadastro = findViewById(R.id.etConfirmarSenhaCadastro);
                 final String confirmar_senha = etConfirmarSenhaCadastro.getText().toString();
 
-                LiveData<Boolean> resultLD = cadastroViewModel.cadastro(nome, date, email, senha, "1");
+                RadioGroup radioButtonGroup = findViewById(R.id.rgIntuito);
+                int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
+                View radioButton = radioButtonGroup.findViewById(radioButtonID);
+                int idx = radioButtonGroup.indexOfChild(radioButton) + 1;
+
+                LiveData<Boolean> resultLD = cadastroViewModel.cadastro(nome, date, email, senha, Integer.toString(idx));
+
+                resultLD.observe(CadastroActivity.this, new Observer<Boolean>() {
+                    @Override
+                    public void onChanged(Boolean aBoolean) {
+                        if (aBoolean == true){
+                            Toast.makeText(CadastroActivity.this, "Usuário cadastrado com sucesso", Toast.LENGTH_LONG).show();
+                            setResult(RESULT_OK);
+
+                            finish();
+                        } else {
+                            v.setEnabled(true);
+                            Toast.makeText(CadastroActivity.this, "Ocorreu um erro ao se cadastrar", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
 
             }
+
         });
+
     }
 }

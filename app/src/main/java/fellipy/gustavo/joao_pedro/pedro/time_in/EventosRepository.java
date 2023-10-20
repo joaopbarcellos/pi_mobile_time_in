@@ -93,7 +93,7 @@ public class EventosRepository {
         //String login = Config.getLogin(context);
         //String password = Config.getPassword(context);
 
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "criar_produto.php", "POST", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "criar_evento.php", "POST", "UTF-8");
         // httpRequest.addParam("id", id);
         httpRequest.addParam("nome", nome);
         httpRequest.addParam("preco", preco);
@@ -113,7 +113,7 @@ public class EventosRepository {
             // Fecha a conexão com o servidor web.
             httpRequest.finish();
 
-            Log.i("HTTP ADD PRODUCT RESULT", result);
+            Log.i("HTTP ADD EVENT RESULT", result);
 
             // A classe JSONObject recebe como parâmetro do construtor uma String no formato JSON e
             // monta internamente uma estrutura de dados similar ao dicionário em python.
@@ -135,7 +135,7 @@ public class EventosRepository {
     public List<Evento> loadEvents(Integer limit, Integer offSet, String filtro){
         List<Evento> eventosLista = new ArrayList<>();
 
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL +"pegar_produtos.php", "GET", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL +"pegar_eventos.php", "GET", "UTF-8");
         httpRequest.addParam("limit", limit.toString());
         httpRequest.addParam("offset", offSet.toString());
         httpRequest.addParam("filtro", filtro.toString());
@@ -158,7 +158,7 @@ public class EventosRepository {
         //String login = Config.getLogin(context);
         //String password = Config.getPassword(context);
 
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "pegar_detalhes_produto.php", "GET", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "pegar_detalhes_evento.php", "GET", "UTF-8");
         httpRequest.addParam("id", id);
 
         //httpRequest.setBasicAuth(login, password);

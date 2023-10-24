@@ -53,7 +53,6 @@ public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
         tvPrecoItemEvento.setText(Double.toString(evento.preco));
 
         ImageView imgImagemEvento = holder.itemView.findViewById(R.id.imgImagemEvento);
-        imgImagemEvento.set(evento.imagem);
 
     }
 }

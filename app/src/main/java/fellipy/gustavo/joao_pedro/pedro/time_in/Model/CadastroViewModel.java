@@ -22,7 +22,7 @@ public class CadastroViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public LiveData<Boolean> cadastro(String nome, Date data, String email, String senha, String codigo_intuito) {
+    public LiveData<Boolean> cadastro(String nome, Date data, String email, String senha, String telefone, String codigo_intuito) {
         MutableLiveData<Boolean> result = new MutableLiveData<>();
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -36,7 +36,7 @@ public class CadastroViewModel extends AndroidViewModel {
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 String s = df.format(data);
 
-                boolean b = eventosRepository.cadastro(nome, s, email, senha, codigo_intuito);
+                boolean b = eventosRepository.cadastro(nome, s, email, senha, telefone, codigo_intuito);
 
                 result.setValue(true);
             }

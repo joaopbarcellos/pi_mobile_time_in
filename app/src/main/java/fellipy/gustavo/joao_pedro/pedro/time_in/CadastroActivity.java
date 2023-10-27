@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -53,6 +54,9 @@ public class CadastroActivity extends AppCompatActivity {
                 EditText etEmailCadastro = findViewById(R.id.etEmailCadastro);
                 final String email = etEmailCadastro.getText().toString();
 
+                EditText etTelefone = findViewById(R.id.etTelefone);
+                final String telefone = etTelefone.getText().toString();
+
                 EditText etSenhaCadastro = findViewById(R.id.etSenhaCadastro);
                 final String senha = etSenhaCadastro.getText().toString();
 
@@ -62,9 +66,9 @@ public class CadastroActivity extends AppCompatActivity {
                 RadioGroup radioButtonGroup = findViewById(R.id.rgIntuito);
                 int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
                 View radioButton = radioButtonGroup.findViewById(radioButtonID);
-                int idx = radioButtonGroup.indexOfChild(radioButton) + 1;
+                int idx = radioButtonGroup.indexOfChild(radioButton);
 
-                LiveData<Boolean> resultLD = cadastroViewModel.cadastro(nome, date, email, senha, Integer.toString(idx));
+                LiveData<Boolean> resultLD = cadastroViewModel.cadastro(nome, date, email, senha, telefone, Integer.toString(idx));
 
                 resultLD.observe(CadastroActivity.this, new Observer<Boolean>() {
                     @Override
@@ -72,7 +76,8 @@ public class CadastroActivity extends AppCompatActivity {
                         if (aBoolean == true){
                             Toast.makeText(CadastroActivity.this, "Usuário cadastrado com sucesso", Toast.LENGTH_LONG).show();
                             setResult(RESULT_OK);
-
+                            Intent loginActivity = new Intent(CadastroActivity.this, LoginActivity.class);
+                            startActivity(loginActivity);
                             finish();
                         } else {
                             v.setEnabled(true);

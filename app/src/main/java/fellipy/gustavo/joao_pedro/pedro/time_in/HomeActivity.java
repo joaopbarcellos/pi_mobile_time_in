@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -16,6 +17,7 @@ import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.MeusEventosFragment;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.PerfilFragment;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.TopEventosFragment;
+import fellipy.gustavo.joao_pedro.pedro.time_in.util.Config;
 
 public class HomeActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -41,8 +43,15 @@ public class HomeActivity extends AppCompatActivity {
                         setFragment(meusEventosFragment);
                         break;
                     case R.id.perfilOp:
-                        PerfilFragment perfilFragment = PerfilFragment.newInstance();
-                        setFragment(perfilFragment);
+                        if(Config.getLogin(HomeActivity.this).isEmpty()) {
+                            Intent i = new Intent(HomeActivity.this, LoginActivity.class);
+                            startActivity(i);
+                            finish();
+                        }
+                        else {
+                            PerfilFragment perfilFragment = PerfilFragment.newInstance();
+                            setFragment(perfilFragment);
+                        }
                         break;
                 }
                 return true;

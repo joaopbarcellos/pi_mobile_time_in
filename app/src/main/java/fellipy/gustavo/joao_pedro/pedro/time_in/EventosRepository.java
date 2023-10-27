@@ -29,14 +29,15 @@ public class EventosRepository {
         this.context = context;
     }
 
-    public boolean cadastro(String nome, String data, String email, String senha, String codigo_intuito){
+    public boolean cadastro(String nome, String data, String email, String senha, String telefone, String codigo_intuito){
         // Cria uma requisição HTTP a adiona o parâmetros que devem ser enviados ao servidor
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "cadastrar.php", "POST", "UTF-8");
-        httpRequest.addParam("novo_login", nome);
-        httpRequest.addParam("nova_data", data);
-        httpRequest.addParam("novo_email", email);
-        httpRequest.addParam("nova_senha", senha);
-        httpRequest.addParam("novo_intuito", codigo_intuito);
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL + "registrar.php", "POST", "UTF-8");
+        httpRequest.addParam("etNome", nome);
+        httpRequest.addParam("etData", data);
+        httpRequest.addParam("etEmailCadastro", email);
+        httpRequest.addParam("etSenhaCadastro", senha);
+        httpRequest.addParam("intuito", codigo_intuito);
+        httpRequest.addParam("etTelefone", telefone);
 
         String result = "";
         try{
@@ -64,7 +65,7 @@ public class EventosRepository {
 
     public boolean login(String email, String senha){
         // Cria uma requisição HTTP a adiona o parâmetros que devem ser enviados ao servidor
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "login.php", "POST", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL + "login.php", "POST", "UTF-8");
         httpRequest.setBasicAuth(email, senha);
 
         String result = "";
@@ -93,7 +94,7 @@ public class EventosRepository {
         //String login = Config.getLogin(context);
         //String password = Config.getPassword(context);
 
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "criar_evento.php", "POST", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL + "criar_evento.php", "POST", "UTF-8");
         // httpRequest.addParam("id", id);
         httpRequest.addParam("nome", nome);
         httpRequest.addParam("preco", preco);
@@ -135,10 +136,35 @@ public class EventosRepository {
     public List<Evento> loadEvents(Integer limit, Integer offSet, String filtro){
         List<Evento> eventosLista = new ArrayList<>();
 
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL +"pegar_eventos.php", "GET", "UTF-8");
-        httpRequest.addParam("limit", limit.toString());
-        httpRequest.addParam("offset", offSet.toString());
-        httpRequest.addParam("filtro", filtro.toString());
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +"pegar_eventos.php", "GET", "UTF-8");
+        httpRequest.addParam("limit", "10");
+        httpRequest.addParam("offset", "1");
+        // httpRequest.addParam("filtro", filtro.toString());
+
+        String result = "";
+        try{
+            InputStream is = httpRequest.execute();
+            result = Util.inputStream2String(is, "UTF-8");
+            httpRequest.finish();
+
+            Log.i("HTTP EVENTS RESULT", result);
+
+            JSONObject jsonObject = new JSONObject(result);
+
+            int sucess = jsonObject.getInt("sucesso");
+            if(sucess == 1){
+                JSONArray jsonArray = jsonObject.getJSONArray("eventos");
+
+                for(int i = 0; i < jsonArray.length(); i++){
+                    JSONObject jEvent = jsonArray.getJSONObject(i);
+
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
 
         Evento e1 = new Evento(1, "Role na Lama com Daniel", 0.0, new Date(), R.mipmap.evento);
         Evento e3 = new Evento(2, "Futizn dos Cria com a Tropa do Flamengo", 122.0, new Date(), R.mipmap.sosias);
@@ -158,7 +184,7 @@ public class EventosRepository {
         //String login = Config.getLogin(context);
         //String password = Config.getPassword(context);
 
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "pegar_detalhes_evento.php", "GET", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL + "pegar_detalhes_evento.php", "GET", "UTF-8");
         httpRequest.addParam("id", id);
 
         //httpRequest.setBasicAuth(login, password);

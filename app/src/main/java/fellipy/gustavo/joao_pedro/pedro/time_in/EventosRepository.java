@@ -2,6 +2,7 @@ package fellipy.gustavo.joao_pedro.pedro.time_in;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -157,26 +158,40 @@ public class EventosRepository {
 
                 for(int i = 0; i < jsonArray.length(); i++){
                     JSONObject jEvent = jsonArray.getJSONObject(i);
+                    String id = jEvent.getString("id");
+                    String nome = jEvent.getString("nome");
+                    String preco = jEvent.getString("preco");
+                    String foto = jEvent.getString("foto");
+                    String data = jEvent.getString("data");
+                    String horario_inicio = jEvent.getString("horario_inicio");
+                    String horario_fim = jEvent.getString("horario_fim");
 
+                    SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
+                    Date date = null;
+                    date = parser.parse(data);
+                    Evento e = new Evento(Integer.parseInt(id), nome, Double.parseDouble(preco), date, horario_inicio, horario_fim, foto);
+                    eventosLista.add(e);
                 }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (JSONException e) {
             throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
 
-        Evento e1 = new Evento(1, "Role na Lama com Daniel", 0.0, new Date(), R.mipmap.evento);
-        Evento e3 = new Evento(2, "Futizn dos Cria com a Tropa do Flamengo", 122.0, new Date(), R.mipmap.sosias);
-        Evento e4 = new Evento(3, "Rolê Comigo (Ryan Gosling)", 10.0, new Date(), R.mipmap.ryan);
-        Evento e5 = new Evento(4, "Rolê de carro com o Ednaldo Pereira", 1000.0, new Date(), R.mipmap.ednaldo);
-        Evento e6 = new Evento(5, "Fut com o Zé Gatinha", 15.2, new Date(), R.mipmap.zegatinha);
-
-        eventosLista.add(e1);
-        eventosLista.add(e3);
-        eventosLista.add(e4);
-        eventosLista.add(e5);
-        eventosLista.add(e6);
+//        Evento e1 = new Evento(1, "Role na Lama com Daniel", 0.0, new Date(), R.mipmap.evento);
+//        Evento e3 = new Evento(2, "Futizn dos Cria com a Tropa do Flamengo", 122.0, new Date(), R.mipmap.sosias);
+//        Evento e4 = new Evento(3, "Rolê Comigo (Ryan Gosling)", 10.0, new Date(), R.mipmap.ryan);
+//        Evento e5 = new Evento(4, "Rolê de carro com o Ednaldo Pereira", 1000.0, new Date(), R.mipmap.ednaldo);
+//        Evento e6 = new Evento(5, "Fut com o Zé Gatinha", 15.2, new Date(), R.mipmap.zegatinha);
+//
+//        eventosLista.add(e1);
+//        eventosLista.add(e3);
+//        eventosLista.add(e4);
+//        eventosLista.add(e5);
+//        eventosLista.add(e6);
         return eventosLista;
     }
 
@@ -211,23 +226,22 @@ public class EventosRepository {
 
                 String nome = jsonObject.getString("nome");
                 String preco = jsonObject.getString("preco");
-                String dataHorario = jsonObject.getString("dataHorario");
+                String data = jsonObject.getString("dataHorario");
                 String imagem = jsonObject.getString("imagem");
+                String horario_inicio = jsonObject.getString("horario_inicio");
+                String horario_fim = jsonObject.getString("horario_fim");
 
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date d = new Date();
                 try {
                     // Use o método parse para converter a string em um objeto Date
-                    Date data = df.parse(dataHorario);
-
-                    // Agora você tem a data em um objeto Date
-                    System.out.println("Data: " + data);
+                    d = df.parse(data);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                Date d = new Date(dataHorario);
 
                 // Cria um objeto Product e guarda os detalhes do produto dentro dele
-                Evento e = new Evento(Integer.parseInt(id), nome, Double.parseDouble(preco), d, Integer.parseInt(imagem));
+                Evento e = new Evento(Integer.parseInt(id), nome, Double.parseDouble(preco), d, horario_inicio, horario_fim, imagem);
 
 
                 return e;

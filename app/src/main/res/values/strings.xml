@@ -30,6 +30,10 @@
     <string name="txt_ordenar">Ordernar por</string>
     <string name="txt_preco">Preço:</string>
     <string name="txt_telefone">Telefone:</string>
+    <string name="txt_estado">Estado:</string>
+    <string name="txt_cidade">Cidade:</string>
+    <string name="txt_bairro">Bairro:</string>
+    <string name="txt_logradouro"></string>
     <string name="txt_em_cifrao">Em R$:</string>
     <string name="txt_idade">Idade</string>
     <string name="txt_intuito">Intuito</string>
@@ -69,4 +73,34 @@
     <string name="btn_entrar_convidado">Entrar como convidado</string>
     <string name="btn_criar_conta">Criar Conta</string>
     <string name="txt_nao_possui_conta">Não possui uma conta?</string>
+
+    <string-array name="array_estado">
+        <item>AC</item>
+        <item>AL</item>
+        <item>AM</item>
+        <item>AP</item>
+        <item>BA</item>
+        <item>CE</item>
+        <item>DF</item>
+        <item>ES</item>
+        <item>GO</item>
+        <item>MA</item>
+        <item>MG</item>
+        <item>MS</item>
+        <item>MT</item>
+        <item>PA</item>
+        <item>PB</item>
+        <item>PE</item>
+        <item>PI</item>
+        <item>PR</item>
+        <item>RJ</item>
+        <item>RN</item>
+        <item>RO</item>
+        <item>RR</item>
+        <item>RS</item>
+        <item>SC</item>
+        <item>SE</item>
+        <item>SP</item>
+        <item>TO</item>
+    </string-array>
 </resources>

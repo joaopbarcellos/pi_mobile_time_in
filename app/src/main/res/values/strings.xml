@@ -74,8 +74,10 @@
     <string name="btn_criar_conta">Criar Conta</string>
     <string name="txt_nao_possui_conta">Não possui uma conta?</string>
     <string name="topico_info_geral">Informações Gerais</string>
-    <string name="topico_endereco">Endereço</string>
+    <string name="topico_endereco">Localização</string>
     <string name="txt_endereco">Endereço:</string>
+    <string name="topico_info_final">Informações Finais</string>
+    <string name="txt_cep">CEP:</string>
 
     <string-array name="array_estados">
         <item>AC</item>
@@ -106,4 +108,28 @@
         <item>SP</item>
         <item>TO</item>
     </string-array>
+
+    <string-array name="sim_nao">
+        <item>Sim</item>
+        <item>Não</item>
+    </string-array>
+
+
+    <string-array name="intuito_event">
+        <item>Família</item>
+        <item>Amador</item>
+        <item>Profissional</item>
+    </string-array>
+
+
+    <string-array name="idade_public">
+        <item>De 3 a 7</item>
+        <item>De 8 a 13</item>
+        <item>De 17 a 20</item>
+        <item>Acima de 18</item>
+        <item>De 20 a 30</item>
+        <item>De 30 a 40</item>
+        <item>Acima de 40</item>
+    </string-array>
+
 </resources>

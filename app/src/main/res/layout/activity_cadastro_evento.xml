@@ -26,19 +26,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <TextView
+                    android:id="@+id/infoGeral"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/alata"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/topico_info_geral" />
+
                 <EditText
                     android:id="@+id/et_nome_evento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:ems="10"
                     android:hint="@string/hint_nome_evento"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/infoGeral" />
 
                 <CheckBox
                     android:id="@+id/cb_evento_pago"
@@ -89,7 +105,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_data_evento" />
-                    app:layout_constraintTop_toBottomOf="@+id/et_data_evento" />
+                app:layout_constraintTop_toBottomOf="@+id/et_data_evento" />
 
                 <EditText
                     android:id="@+id/et_horario_final"
@@ -103,6 +119,35 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_horario_evento" />
+
+                <EditText
+                    android:id="@+id/et_capacidade_minima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:ems="10"
+                    android:hint="@string/hint_capacidade_minima"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_capacidade_maxima" />
+
+                <TextView
+                    android:id="@+id/infoEndereco"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/alata"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_capacidade_minima"
+                    tools:text="@string/topico_endereco" />
 
                 <EditText
                     android:id="@+id/et_horario_final"
@@ -127,21 +172,48 @@
                     android:hint="@string/hint_capacidade_maxima"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_horario_final" />
 
                 <EditText
-                    android:id="@+id/et_capacidade_minima"
-                    android:layout_width="match_parent"
+                    android:id="@+id/etEndereco"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
                     android:ems="10"
-                    android:hint="@string/hint_capacidade_minima"
-                    android:inputType="textPersonName"
+                    android:hint="@string/txt_endereco"
+                    android:inputType="text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/et_capacidade_maxima" />
+                    app:layout_constraintTop_toBottomOf="@+id/etBairro" />
+
+                <EditText
+                    android:id="@+id/etCidade"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:ems="10"
+                    android:hint="@string/txt_cidade"
+                    android:inputType="text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spnEstados" />
+
+                <EditText
+                    android:id="@+id/etBairro"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:ems="10"
+                    android:hint="@string/txt_bairro"
+                    android:inputType="text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etCidade" />
 
                 <Button
                     android:id="@+id/btnAdicionarFoto"
@@ -149,7 +221,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
-                    android:text="Button"
+                    android:text="@string/btn_escolher_foto"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
@@ -158,23 +230,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:text="Evento recorrente:"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/spinner"
                     app:layout_constraintHorizontal_bias="0.666"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/et_capacidade_minima" />
+                    tools:layout_editor_absoluteY="683dp" />
 
                 <Spinner
                     android:id="@+id/spinner"
                     android:layout_width="230dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/et_capacidade_minima" />
+                    tools:layout_editor_absoluteY="683dp" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -256,6 +326,20 @@
                     app:layout_constraintTop_toBottomOf="@+id/switch1"
                     app:rippleColor="@color/verde_escuro"
                     tools:layout_editor_absoluteX="124dp" />
+
+                <Spinner
+                    android:id="@+id/spnEstados"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:dropDownWidth="wrap_content"
+                    android:entries="@array/array_estados"
+                    android:spinnerMode="dropdown"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/infoEndereco" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

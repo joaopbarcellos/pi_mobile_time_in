@@ -14,7 +14,7 @@
     <string name="hint_publico_alvo">Público-Alvo:</string>
     <string name="hint_data_evento">Data evento:</string>
     <string name="hint_horario_inicial_evento">Horário Evento:</string>
-    <string name="hint_horario_final_evento">Horário Final</string>
+    <string name="hint_horario_final_evento">Horário Final:</string>
     <string name="hint_capacidade_maxima">Capacidade máxima:</string>
     <string name="hint_capacidade_minima">Capacidade mínima:</string>
     <string name="hint_senha_antiga">Senha antiga:</string>
@@ -73,8 +73,11 @@
     <string name="btn_entrar_convidado">Entrar como convidado</string>
     <string name="btn_criar_conta">Criar Conta</string>
     <string name="txt_nao_possui_conta">Não possui uma conta?</string>
+    <string name="topico_info_geral">Informações Gerais</string>
+    <string name="topico_endereco">Endereço</string>
+    <string name="txt_endereco">Endereço:</string>
 
-    <string-array name="array_estado">
+    <string-array name="array_estados">
         <item>AC</item>
         <item>AL</item>
         <item>AM</item>

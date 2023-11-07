@@ -92,8 +92,8 @@ public class EventosRepository {
     }
 
     public boolean addEvent(String id, String nome, String preco, String dataHorario, String imagem){
-        //String login = Config.getLogin(context);
-        //String password = Config.getPassword(context);
+        String login = Config.getLogin(context);
+        String password = Config.getPassword(context);
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL + "criar_evento.php", "POST", "UTF-8");
         // httpRequest.addParam("id", id);
@@ -102,7 +102,7 @@ public class EventosRepository {
         httpRequest.addParam("dataHorario", dataHorario);
         httpRequest.addParam("imagem", imagem);
 
-        //httpRequest.setBasicAuth(login, password);
+        httpRequest.setBasicAuth(login, password);
 
         String result = "";
         try {

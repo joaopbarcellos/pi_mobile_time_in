@@ -91,16 +91,31 @@ public class EventosRepository {
         return false;
     }
 
-    public boolean addEvent(String id, String nome, String preco, String dataHorario, String imagem){
+    public boolean addEvent(ArrayList<String> list){
         String login = Config.getLogin(context);
         String password = Config.getPassword(context);
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL + "criar_evento.php", "POST", "UTF-8");
         // httpRequest.addParam("id", id);
-        httpRequest.addParam("nome", nome);
-        httpRequest.addParam("preco", preco);
-        httpRequest.addParam("dataHorario", dataHorario);
-        httpRequest.addParam("imagem", imagem);
+        // [descricao, nome, data, horario_inicio, horario_fim, min_pessoas, preco, foto, max_pessoas, intuito, estado, cidade, bairro, descricao_endereco, numero, cep, idade_publico, classificao]
+        httpRequest.addParam("descricao", list.get(0));
+        httpRequest.addParam("nome", list.get(1));
+        httpRequest.addParam("data", list.get(2));
+        httpRequest.addParam("horario_inicio", list.get(3));
+        httpRequest.addParam("horario_fim", list.get(4));
+        httpRequest.addParam("min_pessoas", list.get(5));
+        httpRequest.addParam("preco", list.get(6));
+        httpRequest.addParam("foto", list.get(7));
+        httpRequest.addParam("max_pessoas", list.get(8));
+        httpRequest.addParam("intuito", list.get(9));
+        httpRequest.addParam("estado", list.get(10));
+        httpRequest.addParam("cidade", list.get(11));
+        httpRequest.addParam("bairro", list.get(12));
+        httpRequest.addParam("descricao_endereco", list.get(13));
+        httpRequest.addParam("numero", list.get(14));
+        httpRequest.addParam("cep", list.get(15));
+        httpRequest.addParam("idade_publico", list.get(16));
+        httpRequest.addParam("classificacao", list.get(17));
 
         httpRequest.setBasicAuth(login, password);
 
@@ -224,14 +239,23 @@ public class EventosRepository {
             // do tipo Product é criado para guardar esses dados
             if(success == 1) {
 
+
+                String descricao = jsonObject.getString("descricao");
+                String min_pessoas = jsonObject.getString("min_pessoas");
+                String max_pessoas = jsonObject.getString("max_pessoas");
+                String intuito = jsonObject.getString("intuito");
+                String endereco = jsonObject.getString("endereco");
+                String idade_publico = jsonObject.getString("idade_publico");
+                String classificacao = jsonObject.getString("classificacao");
+                String usuario = jsonObject.getString("usuario");
                 String nome = jsonObject.getString("nome");
                 String preco = jsonObject.getString("preco");
-                String data = jsonObject.getString("dataHorario");
-                String imagem = jsonObject.getString("imagem");
+                String data = jsonObject.getString("data");
+                String foto = jsonObject.getString("foto");
                 String horario_inicio = jsonObject.getString("horario_inicio");
                 String horario_fim = jsonObject.getString("horario_fim");
 
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 Date d = new Date();
                 try {
                     // Use o método parse para converter a string em um objeto Date
@@ -241,8 +265,10 @@ public class EventosRepository {
                 }
 
                 // Cria um objeto Product e guarda os detalhes do produto dentro dele
-                Evento e = new Evento(Integer.parseInt(id), nome, Double.parseDouble(preco), d, horario_inicio, horario_fim, imagem);
-
+                Evento e = new Evento(Integer.parseInt(id), nome, Double.parseDouble(preco), d, horario_inicio,
+                        horario_fim, foto, descricao, Integer.parseInt(max_pessoas),
+                        Integer.parseInt(min_pessoas), intuito, usuario, idade_publico, endereco,
+                        classificacao);
 
                 return e;
             }

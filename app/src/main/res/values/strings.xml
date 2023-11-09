@@ -78,6 +78,7 @@
     <string name="txt_endereco">Endereço:</string>
     <string name="topico_info_final">Informações Finais</string>
     <string name="txt_cep">CEP:</string>
+    <string name="verifica_cep">Verifica</string>
 
     <string-array name="array_estados">
         <item>AC</item>

@@ -1,5 +1,6 @@
 package fellipy.gustavo.joao_pedro.pedro.time_in.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,11 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Adapter.ListAdapter;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
 import fellipy.gustavo.joao_pedro.pedro.time_in.ImageDataComparator;
-import fellipy.gustavo.joao_pedro.pedro.time_in.MainActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 
@@ -31,6 +33,7 @@ import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 public class TopEventosFragment extends Fragment {
 
 
+    Button btnCriarEventosTopEventos;
 
     private HomeViewModel hViewModel;
 
@@ -46,6 +49,7 @@ public class TopEventosFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -71,6 +75,15 @@ public class TopEventosFragment extends Fragment {
         RecyclerView rvEvento = (RecyclerView) view.findViewById(R.id.rvEventos);
         rvEvento.setAdapter(listAdapter);
         rvEvento.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        btnCriarEventosTopEventos = view.findViewById(R.id.btnCriarEventoTopEventos);
+        btnCriarEventosTopEventos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeActivity homeActivity = (HomeActivity) getActivity();
+                homeActivity.navegarTelas();
+            }
+        });
     }
 
 }

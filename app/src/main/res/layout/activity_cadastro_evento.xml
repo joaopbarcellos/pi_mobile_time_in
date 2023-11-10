@@ -5,7 +5,7 @@
     android:id="@+id/btn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroEventoActivity">
+    tools:context=".Activities.CadastroEventoActivity">
 
     <ScrollView
         android:layout_width="0dp"
@@ -171,7 +171,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/infoEndereco" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnVerificaCep"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -226,7 +226,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/etBairro" />
 
             <EditText
-                android:id="@+id/et_cidade_evento"
+                android:id="@+id/etCidade"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"

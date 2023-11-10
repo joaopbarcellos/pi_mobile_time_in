@@ -1,4 +1,4 @@
-package fellipy.gustavo.joao_pedro.pedro.time_in;
+package fellipy.gustavo.joao_pedro.pedro.time_in.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.LoginViewModel;
+import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 import fellipy.gustavo.joao_pedro.pedro.time_in.util.Config;
 
 public class LoginActivity extends AppCompatActivity {

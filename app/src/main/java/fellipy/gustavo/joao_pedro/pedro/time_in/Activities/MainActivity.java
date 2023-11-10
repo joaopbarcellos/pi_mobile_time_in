@@ -1,4 +1,4 @@
-package fellipy.gustavo.joao_pedro.pedro.time_in;
+package fellipy.gustavo.joao_pedro.pedro.time_in.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

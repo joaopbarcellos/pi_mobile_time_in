@@ -1,4 +1,4 @@
-package fellipy.gustavo.joao_pedro.pedro.time_in;
+package fellipy.gustavo.joao_pedro.pedro.time_in.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
+import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.MeusEventosFragment;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.PerfilFragment;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.TopEventosFragment;
@@ -66,5 +67,10 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragContainer, fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    public void navegarTelas(){
+        Intent i = new Intent(HomeActivity.this, CadastroEventoActivity.class);
+        startActivity(i);
     }
 }

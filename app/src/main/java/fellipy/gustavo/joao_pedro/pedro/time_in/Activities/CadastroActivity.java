@@ -1,4 +1,4 @@
-package fellipy.gustavo.joao_pedro.pedro.time_in;
+package fellipy.gustavo.joao_pedro.pedro.time_in.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -19,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.CadastroViewModel;
+import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 
 public class CadastroActivity extends AppCompatActivity {
 

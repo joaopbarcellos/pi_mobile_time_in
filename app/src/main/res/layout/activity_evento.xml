@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/verde_mar"
     android:theme="@style/Theme.Time_in"
-    tools:context=".EventoActivity">
+    tools:context=".Activities.EventoActivity">
 
     <ScrollView
         android:layout_width="match_parent"

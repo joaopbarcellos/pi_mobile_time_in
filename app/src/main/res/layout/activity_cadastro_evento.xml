@@ -141,6 +141,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_capacidade_maxima" />
 
+
+            <EditText
+                android:id="@+id/etNumero"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:ems="10"
+                android:hint="@string/txt_numero"
+                android:inputType="numberDecimal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etCidade" />
+
             <TextView
                 android:id="@+id/infoEndereco"
                 android:layout_width="0dp"
@@ -152,11 +167,10 @@
                 android:gravity="center"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_capacidade_minima"
                 tools:text="@string/topico_endereco" />
-
 
             <EditText
                 android:id="@+id/etCep"
@@ -178,6 +192,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="23dp"
                 android:text="@string/verifica_cep"
+                app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/etCep"
@@ -243,6 +258,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="24dp"
                 android:fontFamily="@font/alata"
                 android:gravity="center"
@@ -251,7 +267,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="760dp" />
+                app:layout_constraintTop_toBottomOf="@+id/etNumero" />
 
             <TextView
                 android:id="@+id/txt_eventoRecorrente"
@@ -333,6 +349,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/btn_escolher_foto"
+                app:cornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_idadePublico" />
 
@@ -345,6 +362,7 @@
                 android:layout_marginEnd="32dp"
                 android:backgroundTint="@color/verde_mar"
                 android:text="@string/btn_cadastrar_evento"
+                app:cornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

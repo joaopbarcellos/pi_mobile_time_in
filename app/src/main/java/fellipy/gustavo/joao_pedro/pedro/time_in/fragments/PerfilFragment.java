@@ -2,13 +2,22 @@ package fellipy.gustavo.joao_pedro.pedro.time_in.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
+import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Model.EventoViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Usuario;
+import fellipy.gustavo.joao_pedro.pedro.time_in.util.Config;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,5 +73,19 @@ public class PerfilFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_perfil, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        EventosRepository eventosRepository = new EventosRepository(PerfilFragment.this);
+        Usuario u = eventosRepository.loadUserDetail();
+
+        TextView tvNome = view.findViewById(R.id.tvNomeUsuario);
+        TextView tvEmail = view.findViewById(R.id.tvEmailUsuario);
+        TextView tvDataNasc = view.findViewById(R.id.tvDataNascimentoUsuario);
+        TextView tvTelefone = view.findViewById(R.id.tvTelefoneUsuario);
+        ImageView imgFoto = view.findViewById(R.id.imPerfil);
+        
     }
 }

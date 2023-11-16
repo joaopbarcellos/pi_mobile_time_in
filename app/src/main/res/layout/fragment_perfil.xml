@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.PerfilFragment" >
 
-    <ImageView
-        android:id="@+id/imPerfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
     <Button
         android:id="@+id/btnEditarInformacoesPerfil"
         android:layout_width="wrap_content"
@@ -54,18 +44,17 @@
         android:id="@+id/tvDataNascimentoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="12dp"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/tvHintDataNascimento"
-        app:layout_constraintTop_toBottomOf="@+id/imPerfil" />
+        tools:layout_editor_absoluteY="144dp" />
 
     <TextView
         android:id="@+id/tvHintDataNascimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         android:text="@string/hint_data"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +64,7 @@
         android:id="@+id/tvHintEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/hint_email"
         android:textSize="18sp"
@@ -86,11 +75,39 @@
         android:id="@+id/tvHintNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/hint_nome"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/imPerfil"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imPerfil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/txt_telefone"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHintDataNascimento" />
+
+    <TextView
+        android:id="@+id/tvTelefoneUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        tools:layout_editor_absoluteY="184dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
 public class Config {
 
     // endereço base do servidor web
-    public static String EVENTS_APP_URL = "https://timein-jpzbarcellos.b4a.run/ConexaoBDMobile/";
+    public static String EVENTS_APP_URL = "https://timein-4kr1g8lj.b4a.run/ConexaoBDMobile/";
 
     /**
      * Salva o login no espaço reservado da app

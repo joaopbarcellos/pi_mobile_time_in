@@ -1,6 +1,10 @@
 package fellipy.gustavo.joao_pedro.pedro.time_in.Adapter;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.icu.text.SimpleDateFormat;
+import android.net.Uri;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +20,15 @@ import androidx.paging.PagingDataAdapter;
 
 import androidx.recyclerview.widget.DiffUtil;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 
 public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
-
+    private Handler handler = new Handler();
 
     public ListAdapter(@NonNull DiffUtil.ItemCallback<Evento> diffCallback){
         super(diffCallback);
@@ -50,9 +60,32 @@ public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
 
         // Preco Evento
         TextView tvPrecoItemEvento = holder.itemView.findViewById(R.id.tvPrecoItemEvento);
-        tvPrecoItemEvento.setText(Double.toString(evento.preco));
+        tvPrecoItemEvento.setText(evento.preco);
 
-        ImageView imgImagemEvento = holder.itemView.findViewById(R.id.imgImagemEvento);
+        new Thread() {
+            public void run(){
+                Bitmap img = null;
+                ImageView imgImagemEvento = holder.itemView.findViewById(R.id.imgImagemEvento);
+                try {
+                    URL url = new URL(evento.imagem);
+                    HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+                    InputStream input = conexao.getInputStream();
+                    img = BitmapFactory.decodeStream(input);
+                } catch(MalformedURLException e) {
+                    throw new RuntimeException(e);
+                } catch(IOException e) {
+                    throw new RuntimeException(e);
+                }
 
+                final Bitmap imgAux = img;
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        imgImagemEvento.setImageBitmap(imgAux);
+                    }
+                });
+            }
+        }.start();
     }
 }

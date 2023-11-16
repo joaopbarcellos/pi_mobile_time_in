@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.util.Config;
 import fellipy.gustavo.joao_pedro.pedro.time_in.util.HttpRequest;
 import fellipy.gustavo.joao_pedro.pedro.time_in.util.Util;
@@ -154,7 +155,7 @@ public class EventosRepository {
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +"pegar_eventos.php", "GET", "UTF-8");
         httpRequest.addParam("limit", "10");
-        httpRequest.addParam("offset", "1");
+        httpRequest.addParam("offset", "0");
         // httpRequest.addParam("filtro", filtro.toString());
 
         String result = "";
@@ -181,10 +182,10 @@ public class EventosRepository {
                     String horario_inicio = jEvent.getString("horario_inicio");
                     String horario_fim = jEvent.getString("horario_fim");
 
-                    SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
+                    SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
                     Date date = null;
                     date = parser.parse(data);
-                    Evento e = new Evento(Integer.parseInt(id), nome, Double.parseDouble(preco), date, horario_inicio, horario_fim, foto);
+                    Evento e = new Evento(Integer.parseInt(id), nome, preco, date, horario_inicio, horario_fim, foto);
                     eventosLista.add(e);
                 }
             }
@@ -265,7 +266,7 @@ public class EventosRepository {
                 }
 
                 // Cria um objeto Product e guarda os detalhes do produto dentro dele
-                Evento e = new Evento(Integer.parseInt(id), nome, Double.parseDouble(preco), d, horario_inicio,
+                Evento e = new Evento(Integer.parseInt(id), nome, preco, d, horario_inicio,
                         horario_fim, foto, descricao, Integer.parseInt(max_pessoas),
                         Integer.parseInt(min_pessoas), intuito, usuario, idade_publico, endereco,
                         classificacao);
@@ -279,5 +280,52 @@ public class EventosRepository {
         }
         return null;
         // return loadEvents(1, 1, "1").get(Integer.parseInt(id) - 1);
+    }
+
+    public Usuario loadUserDetail(){
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL + "pegar_detalhes_usuario.php", "GET", "UTF-8");
+        httpRequest.addParam("email", Config.getLogin(context));
+        String result = "";
+        try{
+            InputStream is = httpRequest.execute();
+
+            result = Util.inputStream2String(is, "UTF-8");
+            httpRequest.finish();
+
+            Log.i("HTTP DETAILS RESULT", result);
+
+            // A classe JSONObject recebe como parâmetro do construtor uma String no formato JSON e
+            // monta internamente uma estrutura de dados similar ao dicionário em python.
+            JSONObject jsonObject = new JSONObject(result);
+
+            // obtem o valor da chave sucesso para verificar se a ação ocorreu da forma esperada ou não.
+            int success = jsonObject.getInt("sucesso");
+
+            // Se sucesso igual a 1, os detalhes do produto são obtidos da String JSON e um objeto
+            // do tipo Product é criado para guardar esses dados
+            if(success == 1) {
+
+                String nome = jsonObject.getString("nome");
+                String data = jsonObject.getString("data_nascimento");
+                String foto = jsonObject.getString("foto");
+                String id = jsonObject.getString("id");
+
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                Date d = new Date();
+                try {
+                    // Use o método parse para converter a string em um objeto Date
+                    d = df.parse(data);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Usuario u = new Usuario(Integer.parseInt(id), nome, Config.getLogin(context), foto, d);
+                return u;
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

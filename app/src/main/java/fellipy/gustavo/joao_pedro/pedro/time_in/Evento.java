@@ -6,12 +6,11 @@ import java.util.Date;
 
 public class Evento {
     public String nome, horario_inicio, horario_fim, imagem, descricao, intuito, usuario,
-            idade_publico, endereco, classificao;
+            idade_publico, endereco, classificao, preco;
     public Integer id, max_pessoas, min_pessoas;
-    public double preco;
     public Date data;
 
-    public Evento(Integer id, String n, double p, Date d, String hi, String hf, String img){
+    public Evento(Integer id, String n, String p, Date d, String hi, String hf, String img){
         // Construtor para resumo dos eventos
         this.nome = n;
         this.preco = p;
@@ -21,7 +20,7 @@ public class Evento {
         this.imagem = img;
     }
 
-    public Evento(Integer id, String n, double p, Date d, String hi, String hf, String img, String descricao,
+    public Evento(Integer id, String n, String p, Date d, String hi, String hf, String img, String descricao,
                   Integer max_pessoas, Integer min_pessoas, String intuito, String usuario,
                   String idade_publico, String endereco, String classificacao){
         // Construtor para detalhes dos eventos

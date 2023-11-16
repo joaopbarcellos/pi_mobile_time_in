@@ -40,8 +40,15 @@ public class HomeActivity extends AppCompatActivity {
                         setFragment(topEventosFragment);
                         break;
                     case R.id.meusEventosOp:
-                        MeusEventosFragment meusEventosFragment = MeusEventosFragment.newInstance();
-                        setFragment(meusEventosFragment);
+                        if(Config.getLogin(HomeActivity.this).isEmpty()) {
+                            Intent i = new Intent(HomeActivity.this, LoginActivity.class);
+                            startActivity(i);
+                            finish();
+                        }
+                        else {
+                            MeusEventosFragment meusEventosFragment = MeusEventosFragment.newInstance();
+                            setFragment(meusEventosFragment);
+                        }
                         break;
                     case R.id.perfilOp:
                         if(Config.getLogin(HomeActivity.this).isEmpty()) {

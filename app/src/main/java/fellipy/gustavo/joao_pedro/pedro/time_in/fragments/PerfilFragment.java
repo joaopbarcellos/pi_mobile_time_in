@@ -78,7 +78,7 @@ public class PerfilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        EventosRepository eventosRepository = new EventosRepository(PerfilFragment.this);
+        EventosRepository eventosRepository = new EventosRepository(getActivity());
         Usuario u = eventosRepository.loadUserDetail();
 
         TextView tvNome = view.findViewById(R.id.tvNomeUsuario);
@@ -86,6 +86,8 @@ public class PerfilFragment extends Fragment {
         TextView tvDataNasc = view.findViewById(R.id.tvDataNascimentoUsuario);
         TextView tvTelefone = view.findViewById(R.id.tvTelefoneUsuario);
         ImageView imgFoto = view.findViewById(R.id.imPerfil);
+
         
+
     }
 }

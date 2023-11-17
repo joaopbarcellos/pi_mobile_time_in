@@ -309,6 +309,7 @@ public class EventosRepository {
                 String data = jsonObject.getString("data_nascimento");
                 String foto = jsonObject.getString("foto");
                 String id = jsonObject.getString("id");
+                String telefone = jsonObject.getString("telefone");
 
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 Date d = new Date();
@@ -318,7 +319,7 @@ public class EventosRepository {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                Usuario u = new Usuario(Integer.parseInt(id), nome, Config.getLogin(context), foto, d);
+                Usuario u = new Usuario(Integer.parseInt(id), nome, Config.getLogin(context), telefone, foto, d);
                 return u;
             }
         } catch (JSONException e) {

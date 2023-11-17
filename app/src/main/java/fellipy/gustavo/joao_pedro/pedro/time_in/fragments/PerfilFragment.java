@@ -87,7 +87,10 @@ public class PerfilFragment extends Fragment {
         TextView tvTelefone = view.findViewById(R.id.tvTelefoneUsuario);
         ImageView imgFoto = view.findViewById(R.id.imPerfil);
 
-        
+        tvNome.setText(u.nome);
+        tvEmail.setText(u.email);
+        tvTelefone.setText(u.telefone);
+        tvDataNasc.setText(toString(u.dataNasc));
 
     }
 }

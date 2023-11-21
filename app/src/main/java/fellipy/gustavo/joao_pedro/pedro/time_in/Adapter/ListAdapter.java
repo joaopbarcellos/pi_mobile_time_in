@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
+import fellipy.gustavo.joao_pedro.pedro.time_in.ImageCache;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.MyViewHolder;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 import androidx.paging.PagingDataAdapter;
@@ -43,7 +45,7 @@ public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position){
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Evento evento = getItem(position);
 
         // Titulo do Evento
@@ -62,30 +64,7 @@ public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
         TextView tvPrecoItemEvento = holder.itemView.findViewById(R.id.tvPrecoItemEvento);
         tvPrecoItemEvento.setText(evento.preco);
 
-        new Thread() {
-            public void run(){
-                Bitmap img = null;
-                ImageView imgImagemEvento = holder.itemView.findViewById(R.id.imgImagemEvento);
-                try {
-                    URL url = new URL(evento.imagem);
-                    HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
-                    InputStream input = conexao.getInputStream();
-                    img = BitmapFactory.decodeStream(input);
-                } catch(MalformedURLException e) {
-                    throw new RuntimeException(e);
-                } catch(IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-                final Bitmap imgAux = img;
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        imgImagemEvento.setImageBitmap(imgAux);
-                    }
-                });
-            }
-        }.start();
+        ImageView imgImagemEvento = holder.itemView.findViewById(R.id.imgImagemEvento);
+        ImageCache.loadImageUrlToImageView(holder.itemView.getContext(), evento.imagem, imgImagemEvento, 100, 100);
     }
 }

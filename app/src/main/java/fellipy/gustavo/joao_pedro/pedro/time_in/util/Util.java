@@ -243,6 +243,14 @@ public class Util {
         return sb.toString();
     }
 
+    public static Bitmap inputStream2Bitmap(InputStream is) throws IOException {
+        try {
+            return BitmapFactory.decodeStream(is);
+        } finally {
+            is.close();
+        }
+    }
+
     /**
      * Converte um String em formato Base64 para Bitmap
      * @param myImageData string Base64

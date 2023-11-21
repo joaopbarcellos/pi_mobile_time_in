@@ -7,6 +7,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -23,7 +26,9 @@ import java.net.URL;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
+import fellipy.gustavo.joao_pedro.pedro.time_in.ImageCache;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.EventoViewModel;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Usuario;
 import fellipy.gustavo.joao_pedro.pedro.time_in.util.Config;
@@ -89,43 +94,27 @@ public class PerfilFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        EventosRepository eventosRepository = new EventosRepository(getActivity());
-        Usuario u = eventosRepository.loadUserDetail();
+        HomeViewModel homeViewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
+        LiveData<Usuario> usuarioLiveData = homeViewModel.loadUserDetailsLv();
+        usuarioLiveData.observe(getViewLifecycleOwner(), new Observer<Usuario>() {
+            @Override
+            public void onChanged(Usuario usuario) {
+                TextView tvNome = view.findViewById(R.id.tvNomeUsuario);
+                TextView tvEmail = view.findViewById(R.id.tvEmailUsuario);
+                TextView tvDataNasc = view.findViewById(R.id.tvDataNascimentoUsuario);
+                TextView tvTelefone = view.findViewById(R.id.tvTelefoneUsuario);
+                ImageView imgFoto = view.findViewById(R.id.imPerfil);
 
-        TextView tvNome = view.findViewById(R.id.tvNomeUsuario);
-        TextView tvEmail = view.findViewById(R.id.tvEmailUsuario);
-        TextView tvDataNasc = view.findViewById(R.id.tvDataNascimentoUsuario);
-        TextView tvTelefone = view.findViewById(R.id.tvTelefoneUsuario);
-        ImageView imgFoto = view.findViewById(R.id.imPerfil);
-
-        tvNome.setText(u.nome);
-        tvEmail.setText(u.email);
-        tvTelefone.setText(u.telefone);
-        tvDataNasc.setText(u.dataNasc.toString());
-        new Thread() {
-            public void run(){
-                Bitmap img = null;
-                try {
-                    URL url = new URL(u.foto);
-                    HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
-                    InputStream input = conexao.getInputStream();
-                    img = BitmapFactory.decodeStream(input);
-                } catch(MalformedURLException e) {
-                    throw new RuntimeException(e);
-                } catch(IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-                final Bitmap imgAux = img;
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        imgFoto.setImageBitmap(imgAux);
-                    }
-                });
+                tvNome.setText(usuario.nome);
+                tvEmail.setText(usuario.email);
+                tvTelefone.setText(usuario.telefone);
+                tvDataNasc.setText(usuario.dataNasc.toString());
+                ImageCache.loadImageUrlToImageView(getActivity(), usuario.foto, imgFoto,100, 100);
             }
-        }.start();
+        });
+
+
+
 
     }
 }

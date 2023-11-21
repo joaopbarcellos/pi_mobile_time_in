@@ -154,8 +154,8 @@ public class EventosRepository {
         List<Evento> eventosLista = new ArrayList<>();
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +"pegar_eventos.php", "GET", "UTF-8");
-        httpRequest.addParam("limit", "10");
-        httpRequest.addParam("offset", "0");
+        httpRequest.addParam("limit", limit.toString());
+        httpRequest.addParam("offset", offSet.toString());
         // httpRequest.addParam("filtro", filtro.toString());
 
         String result = "";

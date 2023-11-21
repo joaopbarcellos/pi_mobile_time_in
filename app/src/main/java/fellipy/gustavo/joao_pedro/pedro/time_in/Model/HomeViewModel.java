@@ -21,6 +21,7 @@ import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Usuario;
 import kotlinx.coroutines.CoroutineScope;
 
 public class HomeViewModel extends AndroidViewModel {
@@ -59,4 +60,21 @@ public class HomeViewModel extends AndroidViewModel {
     }
 
     public LiveData<PagingData<Evento>> getEventsLd(){return eventsLd;}
+
+    public LiveData<Usuario> loadUserDetailsLv(){
+
+        MutableLiveData<Usuario> userDetailLD = new MutableLiveData<>();
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                EventosRepository eventosRepository = new EventosRepository(getApplication());
+                Usuario e = eventosRepository.loadUserDetail();
+
+                userDetailLD.postValue(e);
+            }
+        });
+        return userDetailLD;
+    }
 }

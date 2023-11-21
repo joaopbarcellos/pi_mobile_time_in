@@ -1,16 +1,25 @@
 package fellipy.gustavo.joao_pedro.pedro.time_in.fragments;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
@@ -25,6 +34,8 @@ import fellipy.gustavo.joao_pedro.pedro.time_in.util.Config;
  * create an instance of this fragment.
  */
 public class PerfilFragment extends Fragment {
+
+    private Handler handler = new Handler();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -90,7 +101,31 @@ public class PerfilFragment extends Fragment {
         tvNome.setText(u.nome);
         tvEmail.setText(u.email);
         tvTelefone.setText(u.telefone);
-        tvDataNasc.setText(toString(u.dataNasc));
+        tvDataNasc.setText(u.dataNasc.toString());
+        new Thread() {
+            public void run(){
+                Bitmap img = null;
+                try {
+                    URL url = new URL(u.foto);
+                    HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
+                    InputStream input = conexao.getInputStream();
+                    img = BitmapFactory.decodeStream(input);
+                } catch(MalformedURLException e) {
+                    throw new RuntimeException(e);
+                } catch(IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                final Bitmap imgAux = img;
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        imgFoto.setImageBitmap(imgAux);
+                    }
+                });
+            }
+        }.start();
 
     }
 }

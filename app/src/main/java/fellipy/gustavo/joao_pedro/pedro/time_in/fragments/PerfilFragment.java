@@ -2,6 +2,7 @@ package fellipy.gustavo.joao_pedro.pedro.time_in.fragments;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -108,8 +109,8 @@ public class PerfilFragment extends Fragment {
                 tvNome.setText(usuario.nome);
                 tvEmail.setText(usuario.email);
                 tvTelefone.setText(usuario.telefone);
-                tvDataNasc.setText(usuario.dataNasc.toString());
-                ImageCache.loadImageUrlToImageView(getActivity(), usuario.foto, imgFoto,100, 100);
+                tvDataNasc.setText(new SimpleDateFormat("dd/MM/yyyy").format(usuario.dataNasc));
+                ImageCache.loadImageUrlToImageView(getActivity(), usuario.foto, imgFoto,200, 200);
             }
         });
 

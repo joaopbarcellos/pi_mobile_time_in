@@ -284,7 +284,7 @@ public class EventosRepository {
 
     public Usuario loadUserDetail(){
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL + "pegar_detalhes_usuario.php", "GET", "UTF-8");
-        httpRequest.addParam("email", Config.getLogin(context));
+        httpRequest.addParam("email", "'" + Config.getLogin(context) + "'");
         String result = "";
         try{
             InputStream is = httpRequest.execute();

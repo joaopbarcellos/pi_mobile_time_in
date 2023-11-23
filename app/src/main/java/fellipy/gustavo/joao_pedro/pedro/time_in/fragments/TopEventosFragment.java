@@ -17,7 +17,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.CadastroEventoActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Adapter.ListAdapter;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
@@ -81,9 +83,18 @@ public class TopEventosFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 HomeActivity homeActivity = (HomeActivity) getActivity();
-                homeActivity.navegarTelas();
+                homeActivity.navegarTelas(CadastroEventoActivity.class);
             }
         });
+
+        ImageButton imgFiltro = view.findViewById(R.id.imgbtnFiltrar);
+        imgFiltro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // DIALOG FILTROS
+            }
+        });
+
     }
 
 }

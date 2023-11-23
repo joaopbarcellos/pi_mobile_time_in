@@ -16,6 +16,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +26,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.CadastroEventoActivity;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.EditarPerfilActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
 import fellipy.gustavo.joao_pedro.pedro.time_in.ImageCache;
@@ -113,8 +116,16 @@ public class PerfilFragment extends Fragment {
                 ImageCache.loadImageUrlToImageView(getActivity(), usuario.foto, imgFoto,200, 200);
             }
         });
+        Button btnEditarInformacoes;
+        btnEditarInformacoes = view.findViewById(R.id.btnEditarInformacoesPerfil);
 
-
+        btnEditarInformacoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeActivity homeActivity = (HomeActivity) getActivity();
+                homeActivity.navegarTelas(EditarPerfilActivity.class);
+            }
+        });
 
 
     }

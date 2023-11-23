@@ -1,9 +1,6 @@
 package fellipy.gustavo.joao_pedro.pedro.time_in.Adapter;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.icu.text.SimpleDateFormat;
-import android.net.Uri;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,23 +10,20 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
 import fellipy.gustavo.joao_pedro.pedro.time_in.ImageCache;
-import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.MyViewHolder;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.paging.PagingDataAdapter;
 
 import androidx.recyclerview.widget.DiffUtil;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 
 public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
+    HomeActivity homeActivity;
     private Handler handler = new Handler();
 
     public ListAdapter(@NonNull DiffUtil.ItemCallback<Evento> diffCallback){
@@ -66,5 +60,15 @@ public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
 
         ImageView imgImagemEvento = holder.itemView.findViewById(R.id.imgImagemEvento);
         ImageCache.loadImageUrlToImageView(holder.itemView.getContext(), evento.imagem, imgImagemEvento, 100, 100);
+
+        ConstraintLayout constraintLayout = holder.itemView.findViewById(R.id.clItemEvento);
+
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TA DANDO ERRADO PERGUNTA PRO DANIEL
+                homeActivity.startEventDetailsActivity(evento.id);
+            }
+        });
     }
 }

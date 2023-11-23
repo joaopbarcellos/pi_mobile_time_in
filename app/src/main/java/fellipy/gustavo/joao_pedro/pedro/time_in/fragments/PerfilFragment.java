@@ -44,8 +44,6 @@ import fellipy.gustavo.joao_pedro.pedro.time_in.util.Config;
  */
 public class PerfilFragment extends Fragment {
 
-    private Handler handler = new Handler();
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";

@@ -150,7 +150,7 @@ public class EventosRepository {
         return false;
     }
 
-    public List<Evento> loadEvents(Integer limit, Integer offSet, String filtro){
+    public List<Evento> loadEvents(Integer limit, Integer offSet, String idadeFilto){
         List<Evento> eventosLista = new ArrayList<>();
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +"pegar_eventos.php", "GET", "UTF-8");
@@ -255,6 +255,7 @@ public class EventosRepository {
                 String foto = jsonObject.getString("foto");
                 String horario_inicio = jsonObject.getString("horario_inicio");
                 String horario_fim = jsonObject.getString("horario_fim");
+                String emailUsuarioCriador = jsonObject.getString("email");
 
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 Date d = new Date();
@@ -269,7 +270,7 @@ public class EventosRepository {
                 Evento e = new Evento(Integer.parseInt(id), nome, preco, d, horario_inicio,
                         horario_fim, foto, descricao, Integer.parseInt(max_pessoas),
                         Integer.parseInt(min_pessoas), intuito, usuario, idade_publico, endereco,
-                        classificacao);
+                        classificacao, emailUsuarioCriador);
 
                 return e;
             }

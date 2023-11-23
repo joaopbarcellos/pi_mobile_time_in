@@ -24,7 +24,6 @@ import java.util.List;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
-import fellipy.gustavo.joao_pedro.pedro.time_in.Usuario;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.MeusEventosFragment;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.PerfilFragment;
 import fellipy.gustavo.joao_pedro.pedro.time_in.fragments.TopEventosFragment;
@@ -45,8 +44,8 @@ public class HomeActivity extends AppCompatActivity {
 
         checkForPermissions(permissions);
 
-        TopEventosFragment topEventosFragment = TopEventosFragment.newInstance();
-        setFragment(topEventosFragment);
+        //TopEventosFragment topEventosFragment = TopEventosFragment.newInstance();
+        //setFragment(topEventosFragment);
         bottomNavigationView = findViewById(R.id.btNav);
         final HomeViewModel vm = new ViewModelProvider(this).get(HomeViewModel.class);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -85,6 +84,7 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
+        bottomNavigationView.setSelectedItemId(R.id.homeOp);
 
 
     }
@@ -149,5 +149,13 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+    public void startEventDetailsActivity(int id){
+        // Criando a intenção da PhotoActivity
+        Intent i = new Intent(HomeActivity.this, EventoActivity.class);
+        // Enviando a foto que foi selecioanda para a intent
+        i.putExtra("id", id);
+        // Iniciando a Intent
+        startActivity(i);
     }
 }

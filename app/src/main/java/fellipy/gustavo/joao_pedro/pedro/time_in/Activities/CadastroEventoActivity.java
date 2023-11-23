@@ -48,6 +48,7 @@ public class CadastroEventoActivity extends AppCompatActivity {
                 .baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        btnVerificarCEP = findViewById(R.id.btnVerificaCep);
         btnVerificarCEP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +91,7 @@ public class CadastroEventoActivity extends AppCompatActivity {
     private void consultarCEP(){
         String sCep = etCep.getText().toString().trim();
 
-        sCep = sCep.replaceAll("[,-]+", "");
+        sCep = sCep.replaceAll("[.-]+", "");
 
         RESTService restService = retrofitCEP.create(RESTService.class);
 

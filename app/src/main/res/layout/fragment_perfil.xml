@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -23,9 +23,11 @@
         <ImageView
             android:id="@+id/imPerfil"
             android:layout_width="0dp"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
@@ -35,10 +37,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:text="@string/hint_nome"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/imPerfil"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +52,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/hint_email"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/imPerfil"
             app:layout_constraintTop_toBottomOf="@+id/tvHintNome" />
 
@@ -62,7 +64,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvHintEmail"
             app:layout_constraintTop_toBottomOf="@+id/tvNomeUsuario" />
@@ -72,10 +74,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvHintNome"
             app:layout_constraintTop_toTopOf="parent" />
@@ -88,7 +90,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView11"
             app:layout_constraintTop_toBottomOf="@+id/tvEmailUsuario" />
@@ -100,15 +102,14 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="24dp"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView13"
-            app:layout_constraintTop_toBottomOf="@+id/imPerfil"
-            app:layout_constraintVertical_bias="0.409" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTelefoneUsuario" />
 
         <TextView
             android:id="@+id/textView11"
@@ -118,7 +119,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/txt_telefone"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/imPerfil"
             app:layout_constraintTop_toBottomOf="@+id/tvHintEmail" />
 
@@ -127,14 +128,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
             android:text="@string/hint_data"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imPerfil" />
+            app:layout_constraintStart_toEndOf="@+id/imPerfil"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button

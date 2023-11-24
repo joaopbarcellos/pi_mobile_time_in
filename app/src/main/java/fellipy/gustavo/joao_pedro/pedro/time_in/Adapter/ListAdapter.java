@@ -24,10 +24,10 @@ import androidx.recyclerview.widget.DiffUtil;
 
 public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
     HomeActivity homeActivity;
-    private Handler handler = new Handler();
 
-    public ListAdapter(@NonNull DiffUtil.ItemCallback<Evento> diffCallback){
+    public ListAdapter(@NonNull DiffUtil.ItemCallback<Evento> diffCallback, HomeActivity homeActivity){
         super(diffCallback);
+        this.homeActivity = homeActivity;
     }
 
     @NonNull

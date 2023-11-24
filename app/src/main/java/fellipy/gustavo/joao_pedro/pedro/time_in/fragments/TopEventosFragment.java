@@ -65,7 +65,7 @@ public class TopEventosFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         hViewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
-        ListAdapter listAdapter = new ListAdapter(new ImageDataComparator());
+        ListAdapter listAdapter = new ListAdapter(new ImageDataComparator(), (HomeActivity) getActivity());
         LiveData<PagingData<Evento>> liveData = hViewModel.getEventsLd();
 
         liveData.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {

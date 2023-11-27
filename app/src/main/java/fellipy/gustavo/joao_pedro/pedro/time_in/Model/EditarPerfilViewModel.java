@@ -19,6 +19,9 @@ public class EditarPerfilViewModel extends AndroidViewModel {
         super(application);
     }
 
+    public void setCurrentPhotoPath(String currentPhotoPath) {
+        this.currentPhotoPath = currentPhotoPath;
+    }
     public String getCurrentPhotoPath() {
         return currentPhotoPath;
     }
@@ -39,10 +42,11 @@ public class EditarPerfilViewModel extends AndroidViewModel {
         return userDetailLD;
     }
 
-    public boolean updateUserDetails(String id, String nome, String email, String data,
-                                     String telefone){
+    public LiveData<Boolean> updateUserDetails(String id, String nome, String email, String data,
+                                     String telefone, String imgLocation){
 
-        final Boolean[] verifica = {false};
+        MutableLiveData<Boolean> result = new MutableLiveData<>();
+
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         executorService.execute(new Runnable() {
@@ -50,9 +54,11 @@ public class EditarPerfilViewModel extends AndroidViewModel {
             public void run() {
                 EventosRepository eventosRepository = new EventosRepository(getApplication());
 
-                verifica[0] = eventosRepository.updateUserDetail(id, nome, email, data, telefone);
+                boolean b = eventosRepository.updateUserDetail(id, nome, email, data, telefone, imgLocation);
+
+                result.postValue(b);
             }
         });
-        return verifica[0];
+        return result;
     }
 }

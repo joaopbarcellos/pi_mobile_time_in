@@ -335,7 +335,7 @@ public class EventosRepository {
     }
 
     public boolean updateUserDetail(String id, String nome, String email, String data,
-                                 String telefone){
+                                 String telefone, String imgLocation){
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
                 "atualizar_dados_usuario.php", "GET", "UTF-8");
         httpRequest.addParam("id", id);
@@ -343,6 +343,7 @@ public class EventosRepository {
         httpRequest.addParam("email", email);
         httpRequest.addParam("data", data);
         httpRequest.addParam("telefone", telefone);
+        httpRequest.addParam("caminho_foto", imgLocation);
         String result = "";
 
         try{

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.EventoActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.util.Config;
 import fellipy.gustavo.joao_pedro.pedro.time_in.util.HttpRequest;
@@ -113,7 +114,7 @@ public class EventosRepository {
         httpRequest.addParam("horario_fim", list.get(4));
         httpRequest.addParam("min_pessoas", list.get(5));
         httpRequest.addParam("preco", list.get(6));
-        httpRequest.addParam("foto", list.get(7));
+        httpRequest.addFile("foto", new File(list.get(7)));
         httpRequest.addParam("max_pessoas", list.get(8));
         httpRequest.addParam("intuito", list.get(9));
         httpRequest.addParam("estado", list.get(10));
@@ -344,7 +345,7 @@ public class EventosRepository {
         httpRequest.addParam("email", email);
         httpRequest.addParam("data", data);
         httpRequest.addParam("telefone", telefone);
-        httpRequest.addFile("caminho_foto", new File(imgLocation));
+        httpRequest.addFile("img", new File(imgLocation));
         String result = "";
 
         try{
@@ -376,15 +377,65 @@ public class EventosRepository {
     }
 
 
-    public List<Evento> loadUserEventsInscrits(String idUsuario, Integer limit, Integer offSet){
+    public List<Evento> loadUserEventsInscrits(Integer limit, Integer offSet){
         List<Evento> eventosLista = new ArrayList<>();
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
-                "pegar_eventos.php", "GET", "UTF-8");
-        httpRequest.addParam("id_usuario", idUsuario);
+                "pegar_eventos_inscritos.php", "GET", "UTF-8");
+        httpRequest.addParam("email", Config.getLogin(context));
         httpRequest.addParam("limit", limit.toString());
         httpRequest.addParam("offset", offSet.toString());
-        // httpRequest.addParam("filtro", filtro.toString());
+
+        String result = "";
+        try{
+            InputStream is = httpRequest.execute();
+            result = Util.inputStream2String(is, "UTF-8");
+            httpRequest.finish();
+
+            Log.i("HTTP EVENTS RESULT", result);
+
+            JSONObject jsonObject = new JSONObject(result);
+
+            int sucess = jsonObject.getInt("sucesso");
+            if(sucess == 1){
+                JSONArray jsonArray = jsonObject.getJSONArray("eventos");
+
+                for(int i = 0; i < jsonArray.length(); i++){
+                    JSONObject jEvent = jsonArray.getJSONObject(i);
+                    String id = jEvent.getString("id");
+                    String nome = jEvent.getString("nome");
+                    String preco = jEvent.getString("preco");
+                    String foto = jEvent.getString("foto");
+                    String data = jEvent.getString("data");
+                    String horario_inicio = jEvent.getString("horario_inicio");
+                    String horario_fim = jEvent.getString("horario_fim");
+
+                    SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date = null;
+                    date = parser.parse(data);
+                    Evento e = new Evento(Integer.parseInt(id), nome, preco, date, horario_inicio,
+                            horario_fim, foto);
+                    eventosLista.add(e);
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        return eventosLista;
+    }
+    public List<Evento> loadUserEventsCreated(Integer limit, Integer offSet){
+        List<Evento> eventosLista = new ArrayList<>();
+
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
+                "pegar_eventos_criados.php", "GET", "UTF-8");
+        httpRequest.addParam("email", Config.getLogin(context));
+        httpRequest.addParam("limit", limit.toString());
+        httpRequest.addParam("offset", offSet.toString());
 
         String result = "";
         try{

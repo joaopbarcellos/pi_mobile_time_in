@@ -7,14 +7,14 @@
     <string name="hint_senha">Senha:</string>
     <string name="hint_confirmar_senha">Confirmar senha:</string>
     <string name="btn_cadastrar">CADASTRAR</string>
-    <string name="hint_nome_evento">Nome Evento:</string>
+    <string name="hint_nome_evento">Nome do evento:</string>
     <string name="hint_descricao_evento">Descrição:</string>
-    <string name="hint_preco_inscricao">Preço inscrição:</string>
+    <string name="hint_preco_inscricao">Preço da inscrição:</string>
     <string name="hint_real_cifrao">R$:</string>
     <string name="hint_publico_alvo">Público-Alvo:</string>
-    <string name="hint_data_evento">Data evento:</string>
-    <string name="hint_horario_inicial_evento">Horário Evento:</string>
-    <string name="hint_horario_final_evento">Horário Final:</string>
+    <string name="hint_data_evento">Data do evento:</string>
+    <string name="hint_horario_inicial_evento">Horário inicial:</string>
+    <string name="hint_horario_final_evento">Horário final:</string>
     <string name="hint_capacidade_maxima">Capacidade máxima:</string>
     <string name="hint_capacidade_minima">Capacidade mínima:</string>
     <string name="hint_senha_antiga">Senha antiga:</string>
@@ -83,6 +83,8 @@
     <string name="txt_esporte">Esporte:</string>
     <string name="txt_vagas_rest">Vagas restantes:</string>
     <string name="txt_criador">Criador:</string>
+    <string name="txt_intuito_do_evento">Intuito do evento:</string>
+    <string name="txt_idade_do_publico">Idade do público:</string>
 
     <string-array name="array_estados">
         <item>AC</item>
@@ -135,6 +137,55 @@
         <item>De 20 a 30</item>
         <item>De 30 a 40</item>
         <item>Acima de 40</item>
+    </string-array>
+
+    <string-array name="esportes">
+        <item>Atletismo</item>
+        <item>Automobilismo</item>
+        <item>Basquete</item>
+        <item>Beach Tennis</item>
+        <item>Bicicross</item>
+        <item>Boxe</item>
+        <item>Capoeira</item>
+        <item>Canoagem</item>
+        <item>Corrida</item>
+        <item>Ciclismo</item>
+        <item>Escalada Esportiva</item>
+        <item>Futebol</item>
+        <item>Futebol Americano</item>
+        <item>Futsal</item>
+        <item>Ginástica Artística</item>
+        <item>Handebol</item>
+        <item>Hipismo</item>
+        <item>Hóquei em Patins</item>
+        <item>Jiu-Jitsu</item>
+        <item>Judô</item>
+        <item>Kitesurf</item>
+        <item>Levantamento de Peso</item>
+        <item>Mergulho</item>
+        <item>MMA</item>
+        <item>Motocross</item>
+        <item>Mountain Bike</item>
+        <item>Natação</item>
+        <item>Natação Sincronizada</item>
+        <item>Pentatlo Moderno</item>
+        <item>Polo Aquático</item>
+        <item>Remo</item>
+        <item>Rugby</item>
+        <item>Rugby em Cadeira de Rodas</item>
+        <item>Skate</item>
+        <item>Surfe</item>
+        <item>Surfe de Remo</item>
+        <item>Taekwondo</item>
+        <item>Tênis</item>
+        <item>Tênis de Mesa</item>
+        <item>Tiro Esportivo</item>
+        <item>Triatlo</item>
+        <item>Vôlei</item>
+        <item>Vôlei de Praia</item>
+        <item>Vôlei Sentado</item>
+        <item>Xadrez</item>
+        <item>Outro</item>
     </string-array>
 
 </resources>

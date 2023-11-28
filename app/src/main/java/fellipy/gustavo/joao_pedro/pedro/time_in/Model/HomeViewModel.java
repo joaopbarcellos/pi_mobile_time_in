@@ -29,14 +29,16 @@ public class HomeViewModel extends AndroidViewModel {
     private ArrayList<Evento> eventosLista;
     private ArrayList<Evento> eventosCarrossel;
     int navigationOpSelected = R.id.homeOp;
-    LiveData<PagingData<Evento>> eventsLd;
+    LiveData<PagingData<Evento>> eventsLd, eventsInscLd, eventsCreLd;
+    // Lds pra cada um dos ngc dos MeusEventos
 
     public HomeViewModel(@NonNull Application application){
         super(application);
 
         EventosRepository eventosRepository = new EventosRepository(getApplication());
         CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
-        Pager<Integer, Evento> pager = new Pager(new PagingConfig(10), () -> new EventsPagingSource(eventosRepository));
+        Pager<Integer, Evento> pager = new Pager(new PagingConfig(10), () -> new
+                EventsPagingSource(eventosRepository));
         eventsLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
     }
 
@@ -77,4 +79,5 @@ public class HomeViewModel extends AndroidViewModel {
         });
         return userDetailLD;
     }
+
 }

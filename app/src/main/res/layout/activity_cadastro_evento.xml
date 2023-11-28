@@ -22,6 +22,20 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/txt_idadePublico2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/txt_esporte"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/spn_idade_publico"
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_idadePublico" />
+
+            <TextView
                 android:id="@+id/infoGeral"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -60,7 +74,7 @@
                 android:text="Evento é pago?"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_nome_evento" />
+                app:layout_constraintTop_toBottomOf="@+id/etDescricaoEvento" />
 
             <EditText
                 android:id="@+id/et_preco_evento"
@@ -191,6 +205,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="23dp"
+                android:backgroundTint="@color/verde_escuro"
                 android:text="@string/verifica_cep"
                 app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -269,23 +284,23 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etNumero" />
 
+
             <TextView
-                android:id="@+id/txt_eventoRecorrente"
+                android:id="@+id/txt_intuitoEvento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="Evento recorrente:"
+                android:text="Intuito do Evento:"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/spn_recorrente"
-                app:layout_constraintHorizontal_bias="0.666"
+                app:layout_constraintEnd_toStartOf="@+id/spn_intuito"
+                app:layout_constraintHorizontal_bias="0.888"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/infoFinais" />
 
-
             <Spinner
-                android:id="@+id/spn_recorrente"
+                android:id="@+id/spn_intuito"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -295,37 +310,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/infoFinais" />
 
             <TextView
-                android:id="@+id/txt_intuitoEvento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="8dp"
-                android:text="Intuito do Evento:"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/spn_intuito"
-                app:layout_constraintHorizontal_bias="0.888"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_eventoRecorrente" />
-
-            <Spinner
-                android:id="@+id/spn_intuito"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="24dp"
-                android:entries="@array/sim_nao"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spn_recorrente" />
-
-            <TextView
                 android:id="@+id/txt_idadePublico"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="9dp"
                 android:layout_marginEnd="8dp"
-                android:text="Idade do público:"
+                android:text="@string/txt_intuito_do_evento"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toStartOf="@+id/spn_idade_publico"
                 app:layout_constraintHorizontal_bias="0.842"
@@ -348,10 +339,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="@color/verde_escuro"
                 android:text="@string/btn_escolher_foto"
                 app:cornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_idadePublico" />
+                app:layout_constraintTop_toBottomOf="@+id/spnEsportes" />
 
             <Button
                 android:id="@+id/btnCadastrarEvento"
@@ -369,6 +361,29 @@
                 app:layout_constraintTop_toBottomOf="@+id/btnAdicionarFoto"
                 app:layout_constraintVertical_bias="1.0"
                 app:rippleColor="@color/verde_escuro" />
+
+            <EditText
+                android:id="@+id/etDescricaoEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:ems="10"
+                android:hint="@string/hint_descricao_evento"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_nome_evento" />
+
+            <Spinner
+                android:id="@+id/spnEsportes"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:entries="@array/esportes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spn_idade_publico" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

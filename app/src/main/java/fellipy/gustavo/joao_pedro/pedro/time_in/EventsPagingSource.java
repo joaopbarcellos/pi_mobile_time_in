@@ -21,6 +21,8 @@ public class EventsPagingSource extends ListenableFuturePagingSource<Integer, Ev
 
     public EventsPagingSource(EventosRepository eventosRepository){
         this.eventosRepository = eventosRepository;
+        // Perguntar pro Daniel sobre como identificar a página q esta chamando o EventsPagingSource
+        // Ou criar cópias pra cada um
     }
     @Override
     public Integer getRefreshKey(@NonNull PagingState<Integer, Evento> pagingState) {

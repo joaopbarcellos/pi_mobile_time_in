@@ -38,6 +38,15 @@ public class LoginActivity extends AppCompatActivity {
 
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
+        Button btnEntrarConvidado = findViewById(R.id.btnEntrarConvidado);
+        btnEntrarConvidado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(i);
+            }
+        });
+
         Button btnEntrar = findViewById(R.id.btnEntrar);
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override

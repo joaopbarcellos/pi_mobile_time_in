@@ -26,6 +26,8 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.ImageCache;
@@ -94,15 +96,26 @@ public class EditarPerfilActivity extends AppCompatActivity {
                     v.setEnabled(true);
                     return;
                 }
-                String data = tvDataNasc.getText().toString();
-                data = new SimpleDateFormat("yyyy-MM-dd").format(data);
+
+                final String data = tvDataNasc.getText().toString();
                 if(data.isEmpty()) {
                     Toast.makeText(EditarPerfilActivity.this,
-                            "O campo data do usuário não foi preenchido", Toast.LENGTH_LONG)
-                            .show();
+                                    "O campo data do usuário não foi preenchido",
+                                    Toast.LENGTH_LONG).show();
                     v.setEnabled(true);
                     return;
                 }
+                SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = null;
+                try {
+                    date = parser.parse(data);
+                } catch (ParseException e) {
+                    Toast.makeText(EditarPerfilActivity.this,
+                            "A data tem que ser dd/MM/yyyy", Toast.LENGTH_LONG).show();
+                }
+
+                String s = new SimpleDateFormat("yyyy-MM-dd").format(date);
+
                 String telefone = tvTelefone.getText().toString();
                 if(telefone.isEmpty()) {
                     Toast.makeText(EditarPerfilActivity.this,
@@ -113,11 +126,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 }
                 String currentPhotoPath = editarPerfilViewModel.getCurrentPhotoPath();
                 if(currentPhotoPath.isEmpty()) {
-                    Toast.makeText(EditarPerfilActivity.this,
-                            "O campo foto do usuário não foi preenchido", Toast.LENGTH_LONG)
-                            .show();
-                    v.setEnabled(true);
-                    return;
+                    // PERGUNTAR PRO DANIEL SOBRE PEGAR A FOTO DO IMGVIEW E ESSA BOMBA AKI
                 }
 
                 try {
@@ -130,7 +139,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
 
                 LiveData<Boolean> resultLd = editarPerfilViewModel.updateUserDetails(id[0],
-                        name, email, data, telefone, currentPhotoPath);
+                        name, email, s, telefone, currentPhotoPath);
 
                 resultLd.observe(EditarPerfilActivity.this, new Observer<Boolean>() {
                     @Override

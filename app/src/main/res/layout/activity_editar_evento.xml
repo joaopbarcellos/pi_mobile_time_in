@@ -75,28 +75,6 @@ tools:context=".Activities.EditarEventoActivity">
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="15dp" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Visibilidade das Informações"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
-
-            <Switch
-                android:id="@+id/switch2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nome dos inscritos"
-                android:textSize="16sp" />
-
-            <Space
-                android:layout_width="match_parent"
                 android:layout_height="30dp" />
 
             <LinearLayout

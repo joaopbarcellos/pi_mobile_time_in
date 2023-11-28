@@ -188,7 +188,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
             // Criamos e configuramos o INTENT que dispara a câmera
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             Uri fUri = FileProvider.getUriForFile(EditarPerfilActivity.this,
-                    "fellipy.gustavo.joao_pedro_pedro.time_in.fileprovider", f);
+                    "fellipy.gustavo.joao.pedro.time_in.fileprovider", f);
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, fUri);
 
             // Criamos e configuramos o INTENT que dispara a escolha de imagem via galeria

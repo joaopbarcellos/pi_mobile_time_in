@@ -43,7 +43,7 @@ public class EditarPerfilViewModel extends AndroidViewModel {
     }
 
     public LiveData<Boolean> updateUserDetails(String id, String nome, String email, String data,
-                                     String telefone, String imgLocation){
+                                     String telefone, String imgLocation, String codigo_intuito){
 
         MutableLiveData<Boolean> result = new MutableLiveData<>();
 
@@ -54,7 +54,8 @@ public class EditarPerfilViewModel extends AndroidViewModel {
             public void run() {
                 EventosRepository eventosRepository = new EventosRepository(getApplication());
 
-                boolean b = eventosRepository.updateUserDetail(id, nome, email, data, telefone, imgLocation);
+                boolean b = eventosRepository.updateUserDetail(id, nome, email, data, telefone,
+                        imgLocation, codigo_intuito);
 
                 result.postValue(b);
             }

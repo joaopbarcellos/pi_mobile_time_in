@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,14 +45,17 @@ public class EditarPerfilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_perfil);
+
         EditText tvNome = findViewById(R.id.etNomeEditarPerfil2);
         EditText tvEmail = findViewById(R.id.etEmailEditarPerfil2);
         EditText tvDataNasc = findViewById(R.id.etDataEditarPerfil2);
         EditText tvTelefone = findViewById(R.id.etEditarPerfilTelefone);
         ImageButton imgFoto = findViewById(R.id.imgbtnFotoPerfil2);
+        RadioGroup rgEditarIntuito = findViewById(R.id.rgEditarIntuito);
         final String[] id = {""};
         EditarPerfilViewModel editarPerfilViewModel = new
                 ViewModelProvider(EditarPerfilActivity.this).get(EditarPerfilViewModel.class);
+
         LiveData<Usuario> usuarioLiveData = editarPerfilViewModel.loadUserDetailsLv();
 
         usuarioLiveData.observe(EditarPerfilActivity.this, new Observer<Usuario>() {
@@ -62,12 +67,16 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 tvTelefone.setText(usuario.telefone);
                 tvDataNasc.setText(new SimpleDateFormat("dd/MM/yyyy")
                         .format(usuario.dataNasc));
-                ImageCache.loadImageUrlToImageView(EditarPerfilActivity.this, usuario.foto,
+                String photoPath = ImageCache.loadImageUrlToImageView(EditarPerfilActivity.this, usuario.foto,
                         imgFoto,200, 200);
+                editarPerfilViewModel.setCurrentPhotoPath(photoPath);
+                RadioButton radioButton = (RadioButton) rgEditarIntuito.getChildAt(
+                        Integer.parseInt(usuario.intuito));
+                radioButton.setChecked(true);
             }
         });
 
-        String currentPhotoPath = editarPerfilViewModel.getCurrentPhotoPath();
+
         imgFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,10 +133,13 @@ public class EditarPerfilActivity extends AppCompatActivity {
                     v.setEnabled(true);
                     return;
                 }
+                RadioGroup radioButtonGroup = findViewById(R.id.rgEditarIntuito);
+                int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
+                View radioButton = radioButtonGroup.findViewById(radioButtonID);
+                int idx = radioButtonGroup.indexOfChild(radioButton);
+
                 String currentPhotoPath = editarPerfilViewModel.getCurrentPhotoPath();
-                if(currentPhotoPath.isEmpty()) {
-                    // PERGUNTAR PRO DANIEL SOBRE PEGAR A FOTO DO IMGVIEW E ESSA BOMBA AKI
-                }
+
 
                 try {
                     int h = (int) getResources().getDimension(R.dimen.img_height);
@@ -139,7 +151,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
 
                 LiveData<Boolean> resultLd = editarPerfilViewModel.updateUserDetails(id[0],
-                        name, email, s, telefone, currentPhotoPath);
+                        name, email, s, telefone, currentPhotoPath, Integer.toString(idx));
 
                 resultLd.observe(EditarPerfilActivity.this, new Observer<Boolean>() {
                     @Override

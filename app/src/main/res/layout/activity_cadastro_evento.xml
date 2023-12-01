@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
@@ -338,7 +338,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:backgroundTint="@color/verde_escuro"
                 android:text="@string/btn_escolher_foto"
                 app:cornerRadius="10dp"
@@ -358,7 +358,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnAdicionarFoto"
+                app:layout_constraintTop_toBottomOf="@+id/imvFotoCriaEvento"
                 app:layout_constraintVertical_bias="1.0"
                 app:rippleColor="@color/verde_escuro" />
 
@@ -384,6 +384,18 @@
                 android:entries="@array/esportes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spn_idade_publico" />
+
+            <ImageView
+                android:id="@+id/imvFotoCriaEvento"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="18dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toEndOf="@+id/btnAdicionarFoto"
+                app:layout_constraintTop_toBottomOf="@+id/spnEsportes"
+                app:srcCompat="@drawable/__removebg_preview"
+                tools:srcCompat="@tools:sample/avatars" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

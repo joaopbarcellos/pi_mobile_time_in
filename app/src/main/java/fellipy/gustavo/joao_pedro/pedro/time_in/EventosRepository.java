@@ -315,6 +315,7 @@ public class EventosRepository {
                 String foto = jsonObject.getString("foto");
                 String id = jsonObject.getString("id");
                 String telefone = jsonObject.getString("telefone");
+                String intuito = jsonObject.getString("intuito");
 
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 Date d = new Date();
@@ -325,7 +326,7 @@ public class EventosRepository {
                     e.printStackTrace();
                 }
                 Usuario u = new Usuario(Integer.parseInt(id), nome, Config.getLogin(context),
-                        telefone, foto, d);
+                        telefone, intuito, foto, d);
                 return u;
             }
         } catch (JSONException e) {
@@ -337,13 +338,14 @@ public class EventosRepository {
     }
 
     public boolean updateUserDetail(String id, String nome, String email, String data,
-                                 String telefone, String imgLocation){
+                                 String telefone, String imgLocation, String codigo_intuito){
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
-                "atualizar_dados_usuario.php", "GET", "UTF-8");
+                "atualizar_dados_usuario.php", "POST", "UTF-8");
         httpRequest.addParam("id", id);
         httpRequest.addParam("nome", nome);
         httpRequest.addParam("email", email);
         httpRequest.addParam("data", data);
+        httpRequest.addParam("intuito", codigo_intuito);
         httpRequest.addParam("telefone", telefone);
         httpRequest.addFile("img", new File(imgLocation));
         String result = "";

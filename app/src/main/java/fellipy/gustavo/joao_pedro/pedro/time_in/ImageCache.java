@@ -39,14 +39,14 @@ public class ImageCache {
      * @param w largura que a imagem deve ter
      * @param h altura que a imagem deve ter
      */
-    public static void loadImageUrlToImageView(Context context, String imageUrl, ImageView imageView, int w, int h) {
+    public static String loadImageUrlToImageView(Context context, String imageUrl, ImageView imageView, int w, int h) {
 
         URL imgUrl = null;
         try {
             imgUrl = new URL(imageUrl);
         } catch (MalformedURLException e) {
             e.printStackTrace(System.out);
-            return;
+            return "";
         }
         String path = imgUrl.getPath();
         String imageName = path.replace('/', '-');
@@ -86,6 +86,7 @@ public class ImageCache {
                 }
             });
         }
+        return imageLocation;
     }
 
     /**
@@ -96,7 +97,7 @@ public class ImageCache {
      * @param w largura que a imagem deve ter
      * @param h altura que a imagem deve ter
      */
-    public static void loadImageBase64ToImageView(Context context, String id, ImageView imageView, int w, int h) {
+    public static String loadImageBase64ToImageView(Context context, String id, ImageView imageView, int w, int h) {
 
         String imageLocation = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES) + "/" + id;
         File f = new File(imageLocation);
@@ -136,6 +137,7 @@ public class ImageCache {
                 }
             });
         }
+        return imageLocation;
     }
 
 

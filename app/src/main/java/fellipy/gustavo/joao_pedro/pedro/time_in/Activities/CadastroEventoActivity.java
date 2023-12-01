@@ -238,7 +238,6 @@ public class CadastroEventoActivity extends AppCompatActivity {
                 }
 
                 String currentPhotoPath = cadastroEventoViewModel.getCurrentPhotoPath();
-
                 try {
                     int h = (int) getResources().getDimension(R.dimen.img_height);
                     Util.scaleImage(currentPhotoPath, -1, 2*h);
@@ -443,7 +442,7 @@ public class CadastroEventoActivity extends AppCompatActivity {
 
             // Se a foto foi efetivamente escolhida pelo usuário...
             if(resultCode == Activity.RESULT_OK) {
-                ImageView imvPhoto = findViewById(R.id.imgbtnFotoPerfil2);
+                ImageView imvPhoto = findViewById(R.id.imvFotoCriaEvento);
 
                 // se o usuário escolheu a câmera, então quando esse método é chamado, a foto tirada
                 // já está salva dentro do arquivo currentPhotoPath. Entretanto, se o usuário

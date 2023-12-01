@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,6 +29,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -106,16 +108,18 @@ public class CadastroEventoActivity extends AppCompatActivity {
         });
 
 
+        etPrecoInscricao.setVisibility(View.GONE);
+        etPrecoInscricao.setText("0");
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
+                    etPrecoInscricao.setEnabled(true);
+                    etPrecoInscricao.setVisibility(View.VISIBLE);
+                }else{
                     etPrecoInscricao.setEnabled(false);
                     etPrecoInscricao.setVisibility(View.GONE);
                     etPrecoInscricao.setText("0");
-                }else{
-                    etPrecoInscricao.setEnabled(true);
-                    etPrecoInscricao.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -148,6 +152,8 @@ public class CadastroEventoActivity extends AppCompatActivity {
                     v.setEnabled(true);
                     return;
                 }
+
+
                 String data = etData.getText().toString();
                 if(data.isEmpty()){
                     Toast.makeText(CadastroEventoActivity.this,
@@ -156,6 +162,18 @@ public class CadastroEventoActivity extends AppCompatActivity {
                     v.setEnabled(true);
                     return;
                 }
+
+                SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
+                Date date = null;
+                try {
+                    date = parser.parse(data);
+                } catch (ParseException e) {
+                    Toast.makeText(CadastroEventoActivity.this,
+                            "A data tem que ser dd/MM/yyyy", Toast.LENGTH_LONG).show();
+                }
+
+                String s = new SimpleDateFormat("yyyy-MM-dd").format(date);
+
                 String horarioInicio = etHorarioInicio.getText().toString();
                 if(horarioInicio.isEmpty()){
                     Toast.makeText(CadastroEventoActivity.this,
@@ -249,7 +267,7 @@ public class CadastroEventoActivity extends AppCompatActivity {
                 ArrayList<String> list = new ArrayList<>();
                 list.add(descricao);
                 list.add(name);
-                list.add(data);
+                list.add(s);
                 list.add(horarioInicio);
                 list.add(horarioFim);
                 list.add(capacidadeMinima);
@@ -394,9 +412,9 @@ public class CadastroEventoActivity extends AppCompatActivity {
         if(f != null) {
 
             // setamos o endereço do arquivo criado dentro do ViewModel
-            EditarPerfilViewModel editarPerfilViewModel = new ViewModelProvider(this)
-                    .get(EditarPerfilViewModel.class);
-            editarPerfilViewModel.setCurrentPhotoPath(f.getAbsolutePath());
+            CadastroEventoViewModel cadastroEventoViewModel = new ViewModelProvider(this)
+                    .get(CadastroEventoViewModel.class);
+            cadastroEventoViewModel.setCurrentPhotoPath(f.getAbsolutePath());
 
             // Criamos e configuramos o INTENT que dispara a câmera
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -436,9 +454,9 @@ public class CadastroEventoActivity extends AppCompatActivity {
         if(requestCode == RESULT_TAKE_PICTURE) {
 
             // Pegamos o endereço do arquivo vazio que foi criado para guardar a foto escolhida
-            EditarPerfilViewModel editarPerfilViewModel = new ViewModelProvider(this)
-                    .get(EditarPerfilViewModel.class);
-            String currentPhotoPath = editarPerfilViewModel.getCurrentPhotoPath();
+            CadastroEventoViewModel cadastroEventoViewModel = new ViewModelProvider(this)
+                    .get(CadastroEventoViewModel.class);
+            String currentPhotoPath = cadastroEventoViewModel.getCurrentPhotoPath();
 
             // Se a foto foi efetivamente escolhida pelo usuário...
             if(resultCode == Activity.RESULT_OK) {
@@ -470,7 +488,7 @@ public class CadastroEventoActivity extends AppCompatActivity {
                 // Se a imagem não foi escolhida, deletamos o arquivo que foi criado para guardá-la
                 File f = new File(currentPhotoPath);
                 f.delete();
-                editarPerfilViewModel.setCurrentPhotoPath("");
+                cadastroEventoViewModel.setCurrentPhotoPath("");
             }
         }
     }

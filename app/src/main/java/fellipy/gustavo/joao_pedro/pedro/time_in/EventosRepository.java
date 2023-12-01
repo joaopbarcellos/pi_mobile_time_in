@@ -120,7 +120,7 @@ public class EventosRepository {
         httpRequest.addParam("estado", list.get(10));
         httpRequest.addParam("cidade", list.get(11));
         httpRequest.addParam("bairro", list.get(12));
-        httpRequest.addParam("descricao_endereco", list.get(13));
+        httpRequest.addParam("endereco", list.get(13));
         httpRequest.addParam("numero", list.get(14));
         httpRequest.addParam("cep", list.get(15));
         httpRequest.addParam("idade_publico", list.get(16));
@@ -150,6 +150,7 @@ public class EventosRepository {
             if(success == 1) {
                 return true;
             }
+            // TA DANDO ERRO DE TIMEOUT PRECISO RESOLVER COM O HOMEM
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {

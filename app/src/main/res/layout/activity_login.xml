@@ -33,9 +33,9 @@
 
                 <ImageView
                     android:id="@+id/ivLogo"
-                    android:layout_width="200dp"
+                    android:layout_width="311dp"
                     android:layout_height="200dp"
-                    tools:srcCompat="@drawable/__removebg_preview__1_" />
+                    tools:srcCompat="@drawable/__removebg_preview" />
 
                 <Space
                     android:layout_width="wrap_content"

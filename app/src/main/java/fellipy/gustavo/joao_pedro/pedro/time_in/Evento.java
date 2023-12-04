@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Evento {
     public String nome, horario_inicio, horario_fim, imagem, descricao, intuito, usuario,
-            idade_publico, endereco, classificao, preco, email_usuario_criador;
+            idade_publico, endereco, classificao, preco;
     public int id, max_pessoas, min_pessoas;
     public Date data;
 
@@ -23,7 +23,7 @@ public class Evento {
 
     public Evento(int id, String n, String p, Date d, String hi, String hf, String img, String descricao,
                   int max_pessoas, int min_pessoas, String intuito, String usuario,
-                  String idade_publico, String endereco, String classificacao, String email){
+                  String idade_publico, String endereco, String classificacao){
         // Construtor para detalhes dos eventos
         this.id = id;
         this.nome = n;
@@ -40,6 +40,5 @@ public class Evento {
         this.classificao = classificacao;
         this.max_pessoas = max_pessoas;
         this.min_pessoas = min_pessoas;
-        this.email_usuario_criador = email;
     }
 }

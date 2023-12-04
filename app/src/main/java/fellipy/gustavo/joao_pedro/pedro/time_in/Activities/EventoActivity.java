@@ -24,7 +24,10 @@ public class EventoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evento);
 
+        TextView tvVagasRestantes = findViewById(R.id.tvVagasRestantes);
+
         Intent i = getIntent();
+
         int id = i.getIntExtra("id", 0);
         EventoViewModel eventoViewModel = new ViewModelProvider(EventoActivity.this)
                 .get(EventoViewModel.class);
@@ -39,13 +42,13 @@ public class EventoActivity extends AppCompatActivity {
                 TextView tvPublicoAlvo = findViewById(R.id.tvPublicoAlvo);
                 TextView tvEsporteEvento = findViewById(R.id.tvEsporteEvento);
                 TextView tvHorarioEvento = findViewById(R.id.tvHorario);
-                TextView tvVagasRestantes = findViewById(R.id.tvVagasRestantes);
                 TextView tvCriadorEvento = findViewById(R.id.tvCriadorEvento);
+                TextView tvIntuitoEvento = findViewById(R.id.tvIntuitoEvento);
 
                 ImageCache.loadImageUrlToImageView(EventoActivity.this, evento.imagem,
                         imvFotoEvento,200, 200);
 
-                // FALTA O INTUITO NA TELA FELLIPYYYYYY
+                tvIntuitoEvento.setText(evento.intuito);
                 tvDescEvento.setText(evento.descricao);
                 tvLocalizacaoEvento.setText(evento.endereco);
                 tvDataEvento.setText(new SimpleDateFormat("dd/MM/yyyy").format(evento.data));
@@ -54,10 +57,15 @@ public class EventoActivity extends AppCompatActivity {
                         format(evento.horario_fim));
                 tvPublicoAlvo.setText(evento.idade_publico);
                 tvEsporteEvento.setText(evento.classificao);
-
-                // CALCULA AI PAIZAO
-                tvVagasRestantes.setText(evento.max_pessoas);
                 tvCriadorEvento.setText(evento.usuario);
+            }
+        });
+
+        LiveData<Integer> vagasLiveData = eventoViewModel.pegarVagasRestantes(id);
+        vagasLiveData.observe(EventoActivity.this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                tvVagasRestantes.setText(Integer.toString(integer));
             }
         });
 

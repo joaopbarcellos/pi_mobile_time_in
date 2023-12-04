@@ -217,7 +217,7 @@ public class EventosRepository {
         //String password = Config.getPassword(context);
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
-                "pegar_detalhes_evento.php", "GET", "UTF-8");
+                "pegar_detalhes_evento.php", "POST", "UTF-8");
         httpRequest.addParam("id", id);
 
         //httpRequest.setBasicAuth(login, password);
@@ -258,7 +258,6 @@ public class EventosRepository {
                 String foto = jsonObject.getString("foto");
                 String horario_inicio = jsonObject.getString("horario_inicio");
                 String horario_fim = jsonObject.getString("horario_fim");
-                String emailUsuarioCriador = jsonObject.getString("email");
 
                 DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 Date d = new Date();
@@ -273,7 +272,7 @@ public class EventosRepository {
                 Evento e = new Evento(Integer.parseInt(id), nome, preco, d, horario_inicio,
                         horario_fim, foto, descricao, Integer.parseInt(max_pessoas),
                         Integer.parseInt(min_pessoas), intuito, usuario, idade_publico, endereco,
-                        classificacao, emailUsuarioCriador);
+                        classificacao);
 
                 return e;
             }
@@ -284,6 +283,41 @@ public class EventosRepository {
         }
         return null;
         // return loadEvents(1, 1, "1").get(Integer.parseInt(id) - 1);
+    }
+
+    public int loadRemaningSlots(String id){
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
+                "pegar_vagas_restantes.php", "POST", "UTF-8");
+        httpRequest.addParam("id", id);
+
+        String result = "";
+        try{
+            InputStream is = httpRequest.execute();
+
+            result = Util.inputStream2String(is, "UTF-8");
+            httpRequest.finish();
+
+            Log.i("HTTP DETAILS RESULT", result);
+
+            // A classe JSONObject recebe como parâmetro do construtor uma String no formato JSON e
+            // monta internamente uma estrutura de dados similar ao dicionário em python.
+            JSONObject jsonObject = new JSONObject(result);
+
+            // obtem o valor da chave sucesso para verificar se a ação ocorreu da forma esperada
+            // ou não.
+            int success = jsonObject.getInt("sucesso");
+
+            // Se sucesso igual a 1, os detalhes do produto são obtidos da String JSON e um objeto
+            // do tipo Product é criado para guardar esses dados
+            if(success == 1) {
+                return jsonObject.getInt("vagas");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public Usuario loadUserDetail(){

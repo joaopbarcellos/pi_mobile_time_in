@@ -85,6 +85,7 @@
     <string name="txt_criador">Criador:</string>
     <string name="txt_intuito_do_evento">Intuito do evento:</string>
     <string name="txt_idade_do_publico">Idade do público:</string>
+    <string name="txt_evento_intuito">Intuito:</string>
 
     <string-array name="array_estados">
         <item>AC</item>

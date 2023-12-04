@@ -36,4 +36,19 @@ public class EventoViewModel extends AndroidViewModel {
         });
         return eventDetailLD;
     }
+    public LiveData<Integer> pegarVagasRestantes(int id){
+        MutableLiveData<Integer> vagasRestantes = new MutableLiveData<>();
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                EventosRepository eventosRepository = new EventosRepository(getApplication());
+                int v = eventosRepository.loadRemaningSlots(Integer.toString(id));
+
+                vagasRestantes.postValue(v);
+            }
+        });
+        return vagasRestantes;
+    }
 }

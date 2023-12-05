@@ -89,7 +89,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvDescEvento" />
 
             <TextView
-                android:id="@+id/tvPublicoAlvo"
+                android:id="@+id/TextView534242"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -100,13 +100,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/ivLocalizacao" />
 
             <TextView
-                android:id="@+id/tvPreco"
+                android:id="@+id/tvPublicoAlvo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="16dp"
                 android:text="TextView"
-                app:layout_constraintStart_toEndOf="@+id/tvPublicoAlvo"
+                app:layout_constraintStart_toEndOf="@+id/TextView534242"
                 app:layout_constraintTop_toBottomOf="@+id/tvLocalizacao" />
 
             <ImageView
@@ -116,7 +116,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPublicoAlvo"
+                app:layout_constraintTop_toBottomOf="@+id/TextView534242"
                 app:srcCompat="@drawable/calendar_days_solid" />
 
             <TextView
@@ -127,7 +127,7 @@
                 android:layout_marginTop="24dp"
                 android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/ivCalendario"
-                app:layout_constraintTop_toBottomOf="@+id/tvPublicoAlvo" />
+                app:layout_constraintTop_toBottomOf="@+id/TextView534242" />
 
             <TextView
                 android:id="@+id/tvHorario"
@@ -165,19 +165,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnInscrever" />
 
-            <Button
-                android:id="@+id/btnVerInscritos"
-                android:layout_width="0dp"
-                android:layout_height="65dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/verde_escuro"
-                android:text="@string/btn_ver_incritos"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnEditarEventoActivity" />
-
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
@@ -186,7 +173,7 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/txt_esporte"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/tvPreco"
+                app:layout_constraintStart_toEndOf="@+id/tvPublicoAlvo"
                 app:layout_constraintTop_toBottomOf="@+id/tvLocalizacao" />
 
             <TextView

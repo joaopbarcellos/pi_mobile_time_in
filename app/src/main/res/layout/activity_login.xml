@@ -73,7 +73,8 @@
                     <EditText
                         android:id="@+id/etEmail"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:background="@drawable/style_campos_txt"
                         android:ems="10"
                         android:inputType="textPersonName" />
 
@@ -91,13 +92,14 @@
                     <EditText
                         android:id="@+id/etSenha"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:background="@drawable/style_campos_txt"
                         android:ems="10"
                         android:inputType="textPassword" />
 
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="40dp" />
+                        android:layout_height="20dp" />
 
                     <Button
                         android:id="@+id/btnEntrar"

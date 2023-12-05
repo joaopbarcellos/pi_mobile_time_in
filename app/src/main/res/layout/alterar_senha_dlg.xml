@@ -38,7 +38,8 @@
             <EditText
                 android:id="@+id/etSenhaAntiga"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:hint="@string/hint_senha"
                 android:inputType="text" />
@@ -50,7 +51,8 @@
             <EditText
                 android:id="@+id/etSenhaNova"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:hint="@string/hint_nova_senha"
                 android:inputType="text" />
@@ -62,14 +64,22 @@
             <EditText
                 android:id="@+id/etConfimarSenha"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:hint="@string/hint_confirmar_senha_nova"
                 android:inputType="text" />
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="20dp" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/verde_escuro"
+                android:text="@string/txt_alterar" />
 
         </LinearLayout>
 

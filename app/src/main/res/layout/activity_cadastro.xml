@@ -36,12 +36,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:orientation="horizontal">
 
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="0.5" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -56,66 +57,72 @@
                     <EditText
                         android:id="@+id/etNome"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/campo_evento"
                         android:ems="10"
                         android:hint="@string/hint_nome"
                         android:inputType="textPersonName" />
 
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="20dp" />
+                        android:layout_height="8dp" />
 
                     <EditText
                         android:id="@+id/etData"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/campo_evento"
                         android:ems="10"
                         android:hint="@string/hint_data" />
 
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="20dp" />
+                        android:layout_height="8dp" />
 
                     <EditText
                         android:id="@+id/etEmailCadastro"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/campo_evento"
                         android:ems="10"
                         android:hint="@string/hint_email"
                         android:inputType="textEmailAddress" />
 
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="20dp" />
+                        android:layout_height="8dp" />
 
                     <EditText
                         android:id="@+id/etSenhaCadastro"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/campo_evento"
                         android:ems="10"
                         android:hint="@string/hint_senha"
                         android:inputType="textPassword" />
 
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="20dp" />
+                        android:layout_height="8dp" />
 
                     <EditText
                         android:id="@+id/etConfirmarSenhaCadastro"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/campo_evento"
                         android:ems="10"
                         android:hint="@string/hint_confirmar_senha"
                         android:inputType="textPassword" />
 
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="18dp" />
+                        android:layout_height="8dp" />
 
                     <EditText
                         android:id="@+id/etTelefone"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/campo_evento"
                         android:ems="10"
                         android:hint="@string/txt_telefone"
                         android:inputType="textPersonName" />
@@ -127,7 +134,8 @@
                     <RadioGroup
                         android:id="@+id/rgIntuito"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/campo_evento">
 
                         <TextView
                             android:id="@+id/tvEscolhaIntuito"
@@ -141,12 +149,14 @@
                             android:id="@+id/rbFamilia"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@drawable/style_campos_txt"
                             android:text="@string/btn_familia" />
 
                         <RadioButton
                             android:id="@+id/rbProfissional"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:background="@drawable/style_campos_txt"
                             android:text="@string/btn_profissional" />
 
                         <RadioButton
@@ -170,7 +180,7 @@
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="0.5" />
 
             </LinearLayout>
 

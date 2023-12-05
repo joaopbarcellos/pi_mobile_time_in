@@ -9,10 +9,11 @@
     <EditText
         android:id="@+id/etDataEditarPerfil2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/campo_evento"
         android:ems="10"
         android:hint="@string/hint_data"
         android:inputType="date"
@@ -25,10 +26,11 @@
     <EditText
         android:id="@+id/etEditarPerfilTelefone"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/campo_evento"
         android:ems="10"
         android:hint="@string/txt_telefone"
         android:inputType="textPersonName"
@@ -39,42 +41,32 @@
     <EditText
         android:id="@+id/etEmailEditarPerfil2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/campo_evento"
         android:ems="10"
         android:hint="@string/hint_email"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgbtnFotoPerfil2"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNomeEditarPerfil2" />
 
     <EditText
         android:id="@+id/etNomeEditarPerfil2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/campo_evento"
         android:ems="10"
         android:hint="@string/hint_nome"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgbtnFotoPerfil2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/imgbtnFotoPerfil2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/white"
-        android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/addfoto" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnAlterarPerfil"
@@ -96,6 +88,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/campo_evento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEditarPerfilTelefone">
@@ -112,12 +105,14 @@
             android:id="@+id/rbEditarFamilia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/style_campos_txt"
             android:text="@string/btn_familia" />
 
         <RadioButton
             android:id="@+id/rbEditarProfissional"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/style_campos_txt"
             android:text="@string/btn_profissional" />
 
         <RadioButton

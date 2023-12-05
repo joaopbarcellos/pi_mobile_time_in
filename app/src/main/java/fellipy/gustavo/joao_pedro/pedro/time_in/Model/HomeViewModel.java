@@ -17,20 +17,19 @@ import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.CreatedEventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
+import fellipy.gustavo.joao_pedro.pedro.time_in.SubscribedEventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Usuario;
 import kotlinx.coroutines.CoroutineScope;
 
 public class HomeViewModel extends AndroidViewModel {
 
-    private ArrayList<Evento> eventosLista;
-    private ArrayList<Evento> eventosCarrossel;
     int navigationOpSelected = R.id.homeOp;
-    LiveData<PagingData<Evento>> eventsLd, eventsInscLd, eventsCreLd;
-    // Lds pra cada um dos ngc dos MeusEventos
+    LiveData<PagingData<Evento>> eventsLd, eventsSubsLd, eventsCreLd;
 
     public HomeViewModel(@NonNull Application application){
         super(application);
@@ -39,7 +38,15 @@ public class HomeViewModel extends AndroidViewModel {
         CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
         Pager<Integer, Evento> pager = new Pager(new PagingConfig(10), () -> new
                 EventsPagingSource(eventosRepository));
+        Pager<Integer, Evento> subsPager = new Pager(new PagingConfig(10), () -> new
+                SubscribedEventsPagingSource(eventosRepository));
+        Pager<Integer, Evento> creaPager = new Pager(new PagingConfig(10), () -> new
+                CreatedEventsPagingSource(eventosRepository));
+        eventsSubsLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(subsPager),
+                viewModelScope);
         eventsLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
+        eventsCreLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(creaPager),
+                viewModelScope);
     }
 
     public void setNavigationOpSelected(int navigationOpSelected){
@@ -62,6 +69,11 @@ public class HomeViewModel extends AndroidViewModel {
     }
 
     public LiveData<PagingData<Evento>> getEventsLd(){return eventsLd;}
+    public LiveData<PagingData<Evento>> getEventsSubsLd(){return eventsSubsLd;}
+
+    public LiveData<PagingData<Evento>> getEventsCreLd() {
+        return eventsCreLd;
+    }
 
     public LiveData<Usuario> loadUserDetailsLv(){
 
@@ -79,5 +91,6 @@ public class HomeViewModel extends AndroidViewModel {
         });
         return userDetailLD;
     }
+
 
 }

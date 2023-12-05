@@ -66,7 +66,6 @@ public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
         constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TA DANDO ERRADO PERGUNTA PRO DANIEL
                 homeActivity.startEventDetailsActivity(evento.id);
             }
         });

@@ -72,6 +72,7 @@ public class EventosRepository {
     public boolean login(String email, String senha){
         // Cria uma requisição HTTP a adiona o parâmetros que devem ser enviados ao servidor
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
+
                 "login.php", "POST", "UTF-8");
         httpRequest.setBasicAuth(email, senha);
 
@@ -217,7 +218,7 @@ public class EventosRepository {
         //String password = Config.getPassword(context);
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
-                "pegar_detalhes_evento.php", "POST", "UTF-8");
+                "pegar_detalhes_evento.php", "GET", "UTF-8");
         httpRequest.addParam("id", id);
 
         //httpRequest.setBasicAuth(login, password);
@@ -425,7 +426,7 @@ public class EventosRepository {
     }
 
 
-    public List<Evento> loadUserEventsInscrits(Integer limit, Integer offSet){
+    public List<Evento> loadUserSubscribedEvents(Integer limit, Integer offSet){
         List<Evento> eventosLista = new ArrayList<>();
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +

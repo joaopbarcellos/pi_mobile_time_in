@@ -44,11 +44,12 @@ public class EventoActivity extends AppCompatActivity {
                 TextView tvDescEvento = findViewById(R.id.tvDescEvento);
                 TextView tvLocalizacaoEvento = findViewById(R.id.tvLocalizacao);
                 TextView tvDataEvento = findViewById(R.id.tvData);
-                TextView tvPublicoAlvo = findViewById(R.id.tvPublicoAlvo);
+                TextView tvPublicoAlvo = findViewById(R.id.tvPublicoAlvoEvento);
                 TextView tvEsporteEvento = findViewById(R.id.tvEsporteEvento);
                 TextView tvHorarioEvento = findViewById(R.id.tvHorario);
                 TextView tvCriadorEvento = findViewById(R.id.tvCriadorEvento);
                 TextView tvIntuitoEvento = findViewById(R.id.tvIntuitoEvento);
+                TextView tvPrecoEvento = findViewById(R.id.tvPrecoEvento);
 
                 ImageCache.loadImageUrlToImageView(EventoActivity.this, evento.imagem,
                         imvFotoEvento,200, 200);
@@ -77,6 +78,7 @@ public class EventoActivity extends AppCompatActivity {
                 tvPublicoAlvo.setText(evento.idade_publico);
                 tvEsporteEvento.setText(evento.classificao);
                 tvCriadorEvento.setText(evento.usuario);
+                tvPrecoEvento.setText(evento.preco);
             }
         });
 

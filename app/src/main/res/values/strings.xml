@@ -8,7 +8,7 @@
     <string name="hint_confirmar_senha"> Confirmar senha:</string>
     <string name="btn_cadastrar">CADASTRAR</string>
     <string name="hint_nome_evento"> Nome do evento:</string>
-    <string name="hint_descricao_evento"> Descrição:</string>
+    <string name="hint_descricao_evento">  Descrição:</string>
     <string name="hint_preco_inscricao"> Preço da inscrição:</string>
     <string name="hint_real_cifrao">R$:</string>
     <string name="hint_publico_alvo">Público-Alvo:</string>

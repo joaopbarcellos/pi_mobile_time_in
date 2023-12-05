@@ -125,19 +125,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/alata"
                 android:text="TextView"
                 android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/ivCalendario"
-                app:layout_constraintTop_toBottomOf="@+id/tvPublicoAlvo" />
+                app:layout_constraintTop_toBottomOf="@+id/TextView534242" />
 
             <TextView
                 android:id="@+id/tvHorario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="6dp"
                 android:fontFamily="@font/alata"
                 android:text="TextView"
                 android:textSize="16sp"
@@ -154,8 +154,9 @@
                 android:backgroundTint="@color/verde_mar"
                 android:text="@string/btn_inscrever"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvIntuitoEvento" />
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <Button
                 android:id="@+id/btnEditarEventoActivity"
@@ -167,6 +168,7 @@
                 android:backgroundTint="@color/azul_escuro"
                 android:text="@string/btn_editar_evento"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnInscrever" />
 
@@ -270,8 +272,8 @@
                 android:id="@+id/tvIntuitoEvento"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="28dp"
                 android:background="@drawable/style_campos_txt"
                 android:fontFamily="@font/alata"
                 android:text="TextView"
@@ -283,8 +285,8 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="28dp"
                 android:fontFamily="@font/alata"
                 android:text="@string/txt_preco"
                 android:textSize="16sp"
@@ -297,13 +299,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="28dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/style_campos_txt"
                 android:fontFamily="@font/alata"
                 android:text="TextView"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
                 app:layout_constraintTop_toBottomOf="@+id/tvCriadorEvento" />
 

@@ -17,7 +17,7 @@ tools:context=".Activities.EditarEventoActivity">
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="0.1" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -29,9 +29,10 @@ tools:context=".Activities.EditarEventoActivity">
                 android:layout_height="15dp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
-                android:layout_width="330dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/etEditarNomeEvento"
+                android:layout_width="370dp"
+                android:layout_height="40dp"
+                android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:hint="@string/hint_nome_evento"
                 android:inputType="textPersonName" />
@@ -41,9 +42,10 @@ tools:context=".Activities.EditarEventoActivity">
                 android:layout_height="15dp" />
 
             <EditText
-                android:id="@+id/editTextNumber"
+                android:id="@+id/etEditarCapMaxima"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:hint="@string/hint_capacidade_maxima"
                 android:inputType="number" />
@@ -53,9 +55,10 @@ tools:context=".Activities.EditarEventoActivity">
                 android:layout_height="15dp" />
 
             <EditText
-                android:id="@+id/editTextNumber2"
+                android:id="@+id/etEditarCapMin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:hint="@string/hint_capacidade_minima"
                 android:inputType="number" />
@@ -65,9 +68,10 @@ tools:context=".Activities.EditarEventoActivity">
                 android:layout_height="15dp" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine"
+                android:id="@+id/etEditarDesc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="@string/hint_descricao_evento"
@@ -90,9 +94,9 @@ tools:context=".Activities.EditarEventoActivity">
                 <Button
                     android:id="@+id/btnEditarEvento"
                     android:layout_width="wrap_content"
-                    android:layout_height="70dp"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/verde_escuro"
+                    android:background="@drawable/botoes"
                     android:text="@string/btn_editar_evento" />
 
                 <Space
@@ -106,7 +110,7 @@ tools:context=".Activities.EditarEventoActivity">
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="0.1" />
 
     </LinearLayout>
 </ScrollView>

@@ -26,7 +26,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="22dp"
                 android:fontFamily="@font/alata"
                 android:text="@string/txt_esporte"
                 android:textSize="20sp"
@@ -222,8 +222,8 @@
 
             <Button
                 android:id="@+id/btnVerificaCep"
-                android:layout_width="118dp"
-                android:layout_height="45dp"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
@@ -349,7 +349,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/alata"
                 android:text="@string/txt_intuito_do_evento"
                 android:textSize="20sp"

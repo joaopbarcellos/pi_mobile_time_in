@@ -122,9 +122,9 @@ public class HttpRequest {
         httpConn.setDoInput(true);
 
         // Timeout for reading InputStream arbitrarily set to 3000ms.
-        httpConn.setReadTimeout(3000);
+        httpConn.setReadTimeout(timeout);
         // Timeout for connection.connect() arbitrarily set to 3000ms.
-        httpConn.setConnectTimeout(3000);
+        httpConn.setConnectTimeout(timeout);
         // GET or POST
         httpConn.setRequestMethod(method);
 

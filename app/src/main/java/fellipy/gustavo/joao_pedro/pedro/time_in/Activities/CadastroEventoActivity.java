@@ -280,6 +280,8 @@ public class CadastroEventoActivity extends AppCompatActivity {
                 list.add(bairro);
                 list.add(endereco);
                 list.add(numero);
+                cep = cep.replace(".", "");
+                cep = cep.replace("-", "");
                 list.add(cep);
                 list.add(spnIdadePublico.getSelectedItem().toString());
                 list.add(spnEsporte.getSelectedItem().toString());

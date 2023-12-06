@@ -126,6 +126,7 @@ public class EventosRepository {
         httpRequest.addParam("cep", list.get(15));
         httpRequest.addParam("idade_publico", list.get(16));
         httpRequest.addParam("classificacao", list.get(17));
+        httpRequest.addParam("email", login);
 
         httpRequest.setBasicAuth(login, password);
 
@@ -324,7 +325,7 @@ public class EventosRepository {
     public Usuario loadUserDetail(){
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
                 "pegar_detalhes_usuario.php", "GET", "UTF-8");
-        httpRequest.addParam("email", "'" + Config.getLogin(context) + "'");
+        httpRequest.addParam("email", Config.getLogin(context));
         String result = "";
         try{
             InputStream is = httpRequest.execute();
@@ -420,7 +421,7 @@ public class EventosRepository {
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
                 "pegar_eventos_inscritos.php", "GET", "UTF-8");
-        httpRequest.addParam("email", "'" + Config.getLogin(context) + "'");
+        httpRequest.addParam("email", Config.getLogin(context));
         httpRequest.addParam("limit", limit.toString());
         httpRequest.addParam("offset", offSet.toString());
 
@@ -471,7 +472,7 @@ public class EventosRepository {
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
                 "pegar_eventos_criados.php", "GET", "UTF-8");
-        httpRequest.addParam("email", "'" + Config.getLogin(context) + "'");
+        httpRequest.addParam("email", Config.getLogin(context));
         httpRequest.addParam("limit", limit.toString());
         httpRequest.addParam("offset", offSet.toString());
 
@@ -516,5 +517,40 @@ public class EventosRepository {
         }
 
         return eventosLista;
+    }
+
+    public boolean registerInEvent(String idEvento){
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
+                "inscrever_evento.php", "POST", "UTF-8");
+        httpRequest.addParam("email", Config.getLogin(context));
+        httpRequest.addParam("id_evento", idEvento);
+        String result = "";
+
+        try{
+            InputStream is = httpRequest.execute();
+
+            result = Util.inputStream2String(is, "UTF-8");
+            httpRequest.finish();
+
+            Log.i("HTTP DETAILS RESULT", result);
+
+            // A classe JSONObject recebe como parâmetro do construtor uma String no formato JSON e
+            // monta internamente uma estrutura de dados similar ao dicionário em python.
+            JSONObject jsonObject = new JSONObject(result);
+
+            // obtem o valor da chave sucesso para verificar se a ação ocorreu da forma esperada ou
+            // não.
+            int success = jsonObject.getInt("sucesso");
+
+            // Se sucesso igual a 1, os detalhes do produto são obtidos da String JSON e um objeto
+            // do tipo Product é criado para guardar esses dados
+            return success == 1;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

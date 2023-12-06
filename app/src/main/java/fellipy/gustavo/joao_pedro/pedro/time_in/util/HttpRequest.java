@@ -57,7 +57,7 @@ public class HttpRequest {
     String user = "";
     String password = "";
 
-    int timeout = 10000;
+    int timeout = 1500000000;
 
     private String boundary;
     private static final String LINE_FEED = "\r\n";

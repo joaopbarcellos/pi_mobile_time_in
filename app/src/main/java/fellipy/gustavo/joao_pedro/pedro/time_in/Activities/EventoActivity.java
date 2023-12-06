@@ -1,16 +1,22 @@
 package fellipy.gustavo.joao_pedro.pedro.time_in.Activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -23,6 +29,7 @@ import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 
 public class EventoActivity extends AppCompatActivity {
 
+    String idEvento;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +39,10 @@ public class EventoActivity extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        int id = i.getIntExtra("id", 0);
+        idEvento = Integer.toString(i.getIntExtra("id", 0));
         EventoViewModel eventoViewModel = new ViewModelProvider(EventoActivity.this)
                 .get(EventoViewModel.class);
-        LiveData<Evento> eventoLiveData = eventoViewModel.getEventDetail(id);
+        LiveData<Evento> eventoLiveData = eventoViewModel.getEventDetail(idEvento);
         eventoLiveData.observe(EventoActivity.this, new Observer<Evento>() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -54,6 +61,7 @@ public class EventoActivity extends AppCompatActivity {
                 ImageCache.loadImageUrlToImageView(EventoActivity.this, evento.imagem,
                         imvFotoEvento,200, 200);
 
+                setTitle(evento.nome);
                 tvIntuitoEvento.setText(evento.intuito);
                 tvDescEvento.setText(evento.descricao);
                 tvLocalizacaoEvento.setText(evento.endereco);
@@ -79,10 +87,57 @@ public class EventoActivity extends AppCompatActivity {
                 tvEsporteEvento.setText(evento.classificao);
                 tvCriadorEvento.setText(evento.usuario);
                 tvPrecoEvento.setText(evento.preco);
+                idEvento = Integer.toString(evento.id);
             }
         });
 
-        LiveData<Integer> vagasLiveData = eventoViewModel.pegarVagasRestantes(id);
+        Button btnInscrever = findViewById(R.id.btnInscrever);
+        btnInscrever.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(EventoActivity.this);
+                builder.setMessage("Deseja mesmo confirmar a inscrição?")
+                        .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                LiveData<Boolean> resultLd = eventoViewModel.inscreverEvento(idEvento);
+
+                                resultLd.observe(EventoActivity.this, new Observer<Boolean>() {
+                                    @Override
+                                    public void onChanged(Boolean aBoolean) {
+                                        if(aBoolean){
+                                            Toast.makeText(EventoActivity.this, "Inscrito com sucesso!",
+                                                    Toast.LENGTH_LONG).show();
+                                            Intent i = new Intent(EventoActivity.this,
+                                                    HomeActivity.class);
+                                            // Comentar sobre o resultado da Activity do produto e comparar com o
+                                            // nosso
+                                            startActivity(i);
+                                            finish();
+                                        }else{
+                                            v.setEnabled(true);
+                                            Toast.makeText(EventoActivity.this, "Ocorreu um " +
+                                                            "erro ao se inscrever no evento",
+                                                    Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                });
+                            }
+                        })
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //
+                            }
+                        });
+                // Create the AlertDialog object and return it
+                Dialog dlgConfirmar = builder.create();
+                dlgConfirmar.show();
+
+            }
+        });
+
+        LiveData<Integer> vagasLiveData = eventoViewModel.pegarVagasRestantes(Integer.
+                parseInt(idEvento));
         vagasLiveData.observe(EventoActivity.this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer integer) {

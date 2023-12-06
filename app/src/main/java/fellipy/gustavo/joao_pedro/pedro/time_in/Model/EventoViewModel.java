@@ -21,7 +21,7 @@ public class EventoViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public LiveData<Evento> getEventDetail(int id) {
+    public LiveData<Evento> getEventDetail(String id) {
         MutableLiveData<Evento> eventDetailLD = new MutableLiveData<>();
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
@@ -29,7 +29,7 @@ public class EventoViewModel extends AndroidViewModel {
             @Override
             public void run() {
                 EventosRepository eventosRepository = new EventosRepository(getApplication());
-                Evento e = eventosRepository.loadEventDetail(Integer.toString(id));
+                Evento e = eventosRepository.loadEventDetail(id);
 
                 eventDetailLD.postValue(e);
             }
@@ -50,5 +50,22 @@ public class EventoViewModel extends AndroidViewModel {
             }
         });
         return vagasRestantes;
+    }
+
+    public LiveData<Boolean> inscreverEvento(String id){
+        MutableLiveData<Boolean> result = new MutableLiveData<>();
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                EventosRepository eventosRepository = new EventosRepository(getApplication());
+
+                boolean b = eventosRepository.registerInEvent(id);
+
+                result.postValue(b);
+            }
+        });
+        return result;
     }
 }

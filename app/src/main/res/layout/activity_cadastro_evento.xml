@@ -62,11 +62,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etDescricaoEvento" />
 
+
             <EditText
                 android:id="@+id/et_data_evento"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/campo_evento"
@@ -75,61 +76,69 @@
                 android:hint="@string/hint_data_evento"
                 android:inputType="date"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/et_horario_evento"
-                app:layout_constraintTop_toBottomOf="@+id/et_preco_evento" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cb_evento_pago" />
 
             <EditText
                 android:id="@+id/et_horario_evento"
                 android:layout_width="180dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:fontFamily="@font/alata"
                 android:hint="@string/hint_horario_inicial_evento"
                 android:inputType="time"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cb_evento_pago" />
+                app:layout_constraintTop_toBottomOf="@+id/et_data_evento" />
 
             <EditText
                 android:id="@+id/et_horario_final"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:fontFamily="@font/alata"
                 android:hint="@string/hint_horario_final_evento"
                 android:inputType="time"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="245dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/et_horario_evento"
+                app:layout_constraintTop_toBottomOf="@+id/et_data_evento" />
 
             <EditText
                 android:id="@+id/et_capacidade_maxima"
-                android:layout_width="180dp"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:fontFamily="@font/alata"
                 android:hint="@string/hint_capacidade_maxima"
                 android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/et_capacidade_minima"
-                tools:layout_editor_absoluteY="253dp" />
-
+                app:layout_constraintTop_toBottomOf="@+id/et_horario_final" />
 
             <EditText
                 android:id="@+id/et_capacidade_minima"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_width="180dp"
+                android:layout_height="39dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:fontFamily="@font/alata"
                 android:hint="@string/hint_capacidade_minima"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="301dp" />
+                app:layout_constraintTop_toBottomOf="@+id/et_horario_evento" />
 
             <EditText
                 android:id="@+id/etNumero"
@@ -250,23 +259,25 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="9dp"
                 android:fontFamily="@font/alata"
                 android:text="Intuito do Evento:"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="768dp" />
+                app:layout_constraintTop_toBottomOf="@+id/infoFinais" />
 
             <Spinner
                 android:id="@+id/spn_intuito"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="9dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/campo_evento"
                 android:entries="@array/intuito_event"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/txt_intuitoEvento"
-                tools:layout_editor_absoluteY="768dp" />
+                app:layout_constraintTop_toBottomOf="@+id/infoFinais" />
 
             <TextView
                 android:id="@+id/txt_idadePublico"
@@ -303,7 +314,7 @@
                 android:text="@string/btn_escolher_foto"
                 app:cornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spnEsportes" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_idadePublico2" />
 
             <Button
                 android:id="@+id/btnCadastrarEvento"

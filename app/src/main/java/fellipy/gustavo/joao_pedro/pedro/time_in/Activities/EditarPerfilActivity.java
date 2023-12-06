@@ -22,13 +22,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.Date;
 
@@ -49,8 +47,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
         EditText tvNome = findViewById(R.id.etNomeEditarPerfil2);
         EditText tvEmail = findViewById(R.id.etEmailEditarPerfil2);
         EditText tvDataNasc = findViewById(R.id.etDataEditarPerfil2);
-        EditText tvTelefone = findViewById(R.id.etEditarPerfilTelefone);
-        ImageButton imgFoto = findViewById(R.id.imgbtnFotoPerfil2);
+        EditText tvTelefone = findViewById(R.id.etTelefoneEditarPerfil);
+        ImageView imgFoto = findViewById(R.id.imgEditarPerfil);
         RadioGroup rgEditarIntuito = findViewById(R.id.rgEditarIntuito);
         final String[] id = {""};
         EditarPerfilViewModel editarPerfilViewModel = new
@@ -240,7 +238,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
 
             // Se a foto foi efetivamente escolhida pelo usuário...
             if(resultCode == Activity.RESULT_OK) {
-                ImageView imvPhoto = findViewById(R.id.imgbtnFotoPerfil2);
+                ImageView imvPhoto = findViewById(R.id.imgEditarPerfil);
 
                 // se o usuário escolheu a câmera, então quando esse método é chamado, a foto tirada
                 // já está salva dentro do arquivo currentPhotoPath. Entretanto, se o usuário

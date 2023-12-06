@@ -26,27 +26,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="14dp"
                 android:fontFamily="@font/alata"
                 android:text="@string/txt_esporte"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_idadePublico" />
-
-            <TextView
-                android:id="@+id/infoGeral"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/alata"
-                android:gravity="center"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/topico_info_geral" />
 
             <EditText
                 android:id="@+id/et_nome_evento"
@@ -67,32 +52,15 @@
 
             <CheckBox
                 android:id="@+id/cb_evento_pago"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/campo_evento"
-                android:fontFamily="@font/alata"
-                android:text="Evento é pago?"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etDescricaoEvento" />
-
-            <EditText
-                android:id="@+id/et_preco_evento"
                 android:layout_width="180dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/campo_evento"
-                android:ems="10"
                 android:fontFamily="@font/alata"
-                android:hint="@string/hint_preco_inscricao"
-                android:inputType="numberDecimal"
-                app:layout_constraintEnd_toStartOf="@+id/et_data_evento"
+                android:text="Evento é pago?"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cb_evento_pago" />
+                app:layout_constraintTop_toBottomOf="@+id/etDescricaoEvento" />
 
             <EditText
                 android:id="@+id/et_data_evento"
@@ -107,8 +75,8 @@
                 android:hint="@string/hint_data_evento"
                 android:inputType="date"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/et_preco_evento"
-                app:layout_constraintTop_toBottomOf="@+id/cb_evento_pago" />
+                app:layout_constraintStart_toEndOf="@+id/et_horario_evento"
+                app:layout_constraintTop_toBottomOf="@+id/et_preco_evento" />
 
             <EditText
                 android:id="@+id/et_horario_evento"
@@ -116,62 +84,52 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:fontFamily="@font/alata"
                 android:hint="@string/hint_horario_inicial_evento"
                 android:inputType="time"
-                app:layout_constraintEnd_toStartOf="@+id/et_horario_final"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_preco_evento" />
+                app:layout_constraintTop_toBottomOf="@+id/cb_evento_pago" />
 
             <EditText
                 android:id="@+id/et_horario_final"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:fontFamily="@font/alata"
                 android:hint="@string/hint_horario_final_evento"
                 android:inputType="time"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/et_horario_evento"
-                app:layout_constraintTop_toBottomOf="@+id/et_data_evento" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="245dp" />
 
             <EditText
                 android:id="@+id/et_capacidade_maxima"
                 android:layout_width="180dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:fontFamily="@font/alata"
                 android:hint="@string/hint_capacidade_maxima"
                 android:inputType="textPersonName"
-                app:layout_constraintEnd_toStartOf="@+id/et_capacidade_minima"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_horario_evento" />
+                app:layout_constraintStart_toEndOf="@+id/et_capacidade_minima"
+                tools:layout_editor_absoluteY="253dp" />
 
 
             <EditText
                 android:id="@+id/et_capacidade_minima"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:fontFamily="@font/alata"
                 android:hint="@string/hint_capacidade_minima"
                 android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/et_capacidade_maxima"
-                app:layout_constraintTop_toBottomOf="@+id/et_horario_final" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="301dp" />
 
             <EditText
                 android:id="@+id/etNumero"
@@ -190,28 +148,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etCidade" />
 
-            <TextView
-                android:id="@+id/infoEndereco"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/alata"
-                android:gravity="center"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_capacidade_minima"
-                tools:text="@string/topico_endereco" />
-
             <EditText
                 android:id="@+id/etCep"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="18dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
                 android:fontFamily="@font/alata"
@@ -225,7 +167,7 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="13dp"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/verde_escuro"
                 android:fontFamily="@font/alata"
@@ -302,47 +244,29 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etEndereco" />
 
-            <TextView
-                android:id="@+id/infoFinais"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/alata"
-                android:gravity="center"
-                android:text="@string/topico_info_final"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etNumero" />
-
 
             <TextView
                 android:id="@+id/txt_intuitoEvento"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/alata"
                 android:text="Intuito do Evento:"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/infoFinais" />
+                tools:layout_editor_absoluteY="768dp" />
 
             <Spinner
                 android:id="@+id/spn_intuito"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/campo_evento"
                 android:entries="@array/intuito_event"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/txt_intuitoEvento"
-                app:layout_constraintTop_toBottomOf="@+id/infoFinais" />
+                tools:layout_editor_absoluteY="768dp" />
 
             <TextView
                 android:id="@+id/txt_idadePublico"
@@ -439,6 +363,65 @@
                 app:layout_constraintTop_toBottomOf="@+id/spnEsportes"
                 app:srcCompat="@drawable/__removebg_preview"
                 tools:srcCompat="@tools:sample/avatars" />
+
+            <EditText
+                android:id="@+id/et_preco_evento"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/campo_evento"
+                android:ems="10"
+                android:fontFamily="@font/alata"
+                android:hint="@string/hint_preco_inscricao"
+                android:inputType="numberDecimal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cb_evento_pago"
+                app:layout_constraintTop_toBottomOf="@+id/etDescricaoEvento" />
+
+            <TextView
+                android:id="@+id/infoGeral"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/alata"
+                android:gravity="center"
+                android:text="@string/topico_info_geral"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/infoEndereco"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/alata"
+                android:gravity="center"
+                android:text="@string/topico_endereco"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_capacidade_minima" />
+
+            <TextView
+                android:id="@+id/infoFinais"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/topico_info_final"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etNumero" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

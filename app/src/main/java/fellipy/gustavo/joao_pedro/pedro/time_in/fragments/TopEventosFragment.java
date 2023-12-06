@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.paging.PagingData;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +22,7 @@ import android.widget.ImageButton;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.CadastroEventoActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Adapter.CarrosselAdapter;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Adapter.ListAdapter;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
 import fellipy.gustavo.joao_pedro.pedro.time_in.ImageDataComparator;
@@ -65,18 +67,27 @@ public class TopEventosFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         hViewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
-        ListAdapter listAdapter = new ListAdapter(new ImageDataComparator(), (HomeActivity) getActivity());
+        CarrosselAdapter carrosselAdapter = new CarrosselAdapter(new ImageDataComparator(),
+                (HomeActivity) getActivity());
+        ListAdapter listAdapter = new ListAdapter(new ImageDataComparator(),
+                (HomeActivity) getActivity());
         LiveData<PagingData<Evento>> liveData = hViewModel.getEventsLd();
 
         liveData.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
             @Override
             public void onChanged(PagingData<Evento> eventoPagingData) {
+                carrosselAdapter.submitData(getViewLifecycleOwner().getLifecycle(), eventoPagingData);
                 listAdapter.submitData(getViewLifecycleOwner().getLifecycle(), eventoPagingData);
             }
         });
         RecyclerView rvEvento = (RecyclerView) view.findViewById(R.id.rvEventos);
         rvEvento.setAdapter(listAdapter);
         rvEvento.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        RecyclerView rvCarrossel = (RecyclerView) view.findViewById(R.id.rvTopEventos);
+        rvCarrossel.setAdapter(carrosselAdapter);
+        rvCarrossel.setLayoutManager(new LinearLayoutManager(getContext(),
+                RecyclerView.HORIZONTAL, false));
 
         btnCriarEventosTopEventos = view.findViewById(R.id.btnCriarEventoTopEventos);
         btnCriarEventosTopEventos.setOnClickListener(new View.OnClickListener() {

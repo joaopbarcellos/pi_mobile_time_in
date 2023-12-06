@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">time_in</string>
+    <string name="app_name">Time In</string>
     <string name="titulo_cadastro">Cadastro</string>
     <string name="hint_nome"> Nome:</string>
     <string name="hint_data"> Data de nascimento:</string>

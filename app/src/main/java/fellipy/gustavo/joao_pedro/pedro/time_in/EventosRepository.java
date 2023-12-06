@@ -353,18 +353,7 @@ public class EventosRepository {
                 String telefone = jsonObject.getString("telefone");
                 String intuito = jsonObject.getString("intuito");
 
-
-20
-
-
-
-
-
-
-
-
-
-                2021DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                 Date d = new Date();
                 try {
                     // Use o método parse para converter a string em um objeto Date
@@ -431,7 +420,7 @@ public class EventosRepository {
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
                 "pegar_eventos_inscritos.php", "GET", "UTF-8");
-        httpRequest.addParam("email", Config.getLogin(context));
+        httpRequest.addParam("email", "'" + Config.getLogin(context) + "'");
         httpRequest.addParam("limit", limit.toString());
         httpRequest.addParam("offset", offSet.toString());
 
@@ -482,7 +471,7 @@ public class EventosRepository {
 
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
                 "pegar_eventos_criados.php", "GET", "UTF-8");
-        httpRequest.addParam("email", Config.getLogin(context));
+        httpRequest.addParam("email", "'" + Config.getLogin(context) + "'");
         httpRequest.addParam("limit", limit.toString());
         httpRequest.addParam("offset", offSet.toString());
 

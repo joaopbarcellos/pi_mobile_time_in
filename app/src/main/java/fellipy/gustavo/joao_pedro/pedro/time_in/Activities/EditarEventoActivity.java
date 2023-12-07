@@ -26,7 +26,7 @@ public class EditarEventoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editar_evento);
         Intent i = getIntent();
 
-        idEvento = Integer.toString(i.getIntExtra("id_evento", 0));
+        idEvento = i.getStringExtra("id_evento");
 
         EditText etEditarNomeEvento = findViewById(R.id.etEditarNomeEvento);
         EditText etEditarCapMaxima = findViewById(R.id.etEditarCapMaxima);

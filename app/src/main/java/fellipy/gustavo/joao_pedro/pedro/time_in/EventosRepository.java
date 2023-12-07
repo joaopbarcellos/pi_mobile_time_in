@@ -711,7 +711,7 @@ public class EventosRepository {
     }
     public boolean updateUserPass(String senha_antiga, String senha_nova){
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
-                "atualizar_senha.php", "POST", "UTF-8");
+                "atualizar_senha.php", "GET", "UTF-8");
         httpRequest.addParam("senha_antiga", senha_antiga);
         httpRequest.addParam("senha_nova", senha_nova);
         httpRequest.addParam("email", Config.getLogin(context));

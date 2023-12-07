@@ -272,8 +272,8 @@ public class CadastroEventoActivity extends AppCompatActivity {
                 list.add(descricao);
                 list.add(name);
                 list.add(s);
-                horarioInicio = horarioInicio.replace(".", "");
-                horarioFim = horarioFim.replace(".", "");
+                horarioInicio = horarioInicio.replace(".", ":");
+                horarioFim = horarioFim.replace(".", ":");
                 list.add(horarioInicio);
                 list.add(horarioFim);
                 list.add(capacidadeMinima);

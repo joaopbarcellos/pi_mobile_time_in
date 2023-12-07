@@ -75,7 +75,7 @@
     <string name="txt_nao_possui_conta">Não possui uma conta?</string>
     <string name="topico_info_geral">Informações Gerais</string>
     <string name="topico_endereco">Localização</string>
-    <string name="txt_endereco">⠀Endereço:</string>
+    <string name="txt_endereco">Endereço:</string>
     <string name="topico_info_final">Informações Finais</string>
     <string name="txt_cep">CEP:</string>
     <string name="verifica_cep">Verificar CEP</string>

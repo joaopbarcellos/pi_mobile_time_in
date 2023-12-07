@@ -41,6 +41,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
+                android:paddingLeft="7dp"
                 android:hint="@string/hint_senha"
                 android:inputType="text" />
 
@@ -54,6 +55,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
+                android:paddingLeft="7dp"
                 android:hint="@string/hint_nova_senha"
                 android:inputType="text" />
 
@@ -67,6 +69,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
+                android:paddingLeft="7dp"
                 android:hint="@string/hint_confirmar_senha_nova"
                 android:inputType="text" />
 

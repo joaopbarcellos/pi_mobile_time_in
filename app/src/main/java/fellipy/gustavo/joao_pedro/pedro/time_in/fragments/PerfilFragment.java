@@ -144,14 +144,15 @@ public class PerfilFragment extends Fragment {
 
                 // Inflate and set the layout for the dialog
                 // Pass null as the parent view because its going in the dialog layout
-                builder.setView(inflater.inflate(R.layout.alterar_senha_dlg, null))
+                View dlgView = inflater.inflate(R.layout.alterar_senha_dlg, null);
+                builder.setView(dlgView)
                         // Add action buttons
                         .setPositiveButton("ALterar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                EditText etSenhaAntiga = view.findViewById(R.id.etSenhaAntiga);
-                                EditText etConfirmarSenha = view.findViewById(R.id.etConfimarSenha);
-                                EditText etSenhaNova = view.findViewById(R.id.etSenhaNova);
+                                EditText etSenhaAntiga = dlgView.findViewById(R.id.etSenhaAntiga);
+                                EditText etConfirmarSenha = dlgView.findViewById(R.id.etConfimarSenha);
+                                EditText etSenhaNova = dlgView.findViewById(R.id.etSenhaNova);
 
                                 String senhaNova = etSenhaNova.getText().toString();
                                 String senhaAntiga = etSenhaAntiga.getText().toString();

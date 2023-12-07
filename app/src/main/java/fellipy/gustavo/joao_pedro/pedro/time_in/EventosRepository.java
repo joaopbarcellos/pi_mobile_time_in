@@ -55,9 +55,7 @@ public class EventosRepository {
             JSONObject jsonObject = new JSONObject(result);
             int success = jsonObject.getInt("sucesso");
 
-            if(success == 1) {
-                return true;
-            }
+            return success == 1;
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {

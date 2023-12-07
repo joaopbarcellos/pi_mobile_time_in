@@ -60,6 +60,7 @@
                         android:layout_height="40dp"
                         android:background="@drawable/campo_evento"
                         android:ems="10"
+                        android:paddingLeft="7dp"
                         android:hint="@string/hint_nome"
                         android:inputType="textPersonName" />
 
@@ -73,6 +74,7 @@
                         android:layout_height="40dp"
                         android:background="@drawable/campo_evento"
                         android:ems="10"
+                        android:paddingLeft="7dp"
                         android:hint="@string/hint_data" />
 
                     <Space
@@ -85,6 +87,7 @@
                         android:layout_height="40dp"
                         android:background="@drawable/campo_evento"
                         android:ems="10"
+                        android:paddingLeft="7dp"
                         android:hint="@string/hint_email"
                         android:inputType="textEmailAddress" />
 
@@ -98,6 +101,7 @@
                         android:layout_height="40dp"
                         android:background="@drawable/campo_evento"
                         android:ems="10"
+                        android:paddingLeft="7dp"
                         android:hint="@string/hint_senha"
                         android:inputType="textPassword" />
 
@@ -111,6 +115,7 @@
                         android:layout_height="40dp"
                         android:background="@drawable/campo_evento"
                         android:ems="10"
+                        android:paddingLeft="7dp"
                         android:hint="@string/hint_confirmar_senha"
                         android:inputType="textPassword" />
 
@@ -124,6 +129,7 @@
                         android:layout_height="40dp"
                         android:background="@drawable/campo_evento"
                         android:ems="10"
+                        android:paddingLeft="7dp"
                         android:hint="@string/txt_telefone"
                         android:inputType="textPersonName" />
 

@@ -53,7 +53,6 @@ public class CadastroActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     Toast.makeText(CadastroActivity.this, "A data tem que ser dd/MM/yyyy", Toast.LENGTH_LONG).show();
                 }
-
                 EditText etEmailCadastro = findViewById(R.id.etEmailCadastro);
                 final String email = etEmailCadastro.getText().toString();
 

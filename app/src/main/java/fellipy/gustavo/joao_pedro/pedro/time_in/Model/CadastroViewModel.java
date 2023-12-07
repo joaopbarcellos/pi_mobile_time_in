@@ -38,7 +38,7 @@ public class CadastroViewModel extends AndroidViewModel {
 
                 boolean b = eventosRepository.cadastro(nome, s, email, senha, telefone, codigo_intuito);
 
-                result.setValue(true);
+                result.setValue(b);
             }
         });
 

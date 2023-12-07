@@ -645,7 +645,7 @@ public class EventosRepository {
     }
     public boolean unRegisterInEvent(String idEvento){
         HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
-                "desinscrever_evento.php", "POST", "UTF-8");
+                "desinscrever_evento.php", "GET", "UTF-8");
         httpRequest.addParam("email", Config.getLogin(context));
         httpRequest.addParam("id_evento", idEvento);
         String result = "";

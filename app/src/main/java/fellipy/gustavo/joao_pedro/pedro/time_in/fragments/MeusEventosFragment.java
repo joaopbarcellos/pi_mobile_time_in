@@ -1,5 +1,6 @@
 package fellipy.gustavo.joao_pedro.pedro.time_in.fragments;
 
+import android.content.res.ColorStateList;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 
@@ -91,13 +92,20 @@ public class MeusEventosFragment extends Fragment {
 
         if(tbtInscritos.isChecked()){
             rvMyEvents.setAdapter(listAdapterSubsEvents);
+            tbtCriados.setBackgroundTintList(ColorStateList.valueOf(getResources()
+                    .getColor(R.color.azul)));
+            tbtInscritos.setBackgroundTintList(ColorStateList.valueOf(getResources()
+                    .getColor(R.color.azul_escuro)));
         }
 
         tbtInscritos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 tbtCriados.setChecked(false);
-                tbtInscritos.setChecked(true);
+                tbtCriados.setBackgroundTintList(ColorStateList.valueOf(getResources()
+                        .getColor(R.color.azul)));
+                tbtInscritos.setBackgroundTintList(ColorStateList.valueOf(getResources()
+                        .getColor(R.color.azul_escuro)));
                 rvMyEvents.setAdapter(listAdapterSubsEvents);
             }
         });
@@ -106,7 +114,10 @@ public class MeusEventosFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 tbtInscritos.setChecked(false);
-                tbtCriados.setChecked(true);
+                tbtInscritos.setBackgroundTintList(ColorStateList.valueOf(getResources()
+                        .getColor(R.color.azul)));
+                tbtCriados.setBackgroundTintList(ColorStateList.valueOf(getResources()
+                        .getColor(R.color.azul_escuro)));
                 rvMyEvents.setAdapter(listAdapterCreEvents);
             }
         });

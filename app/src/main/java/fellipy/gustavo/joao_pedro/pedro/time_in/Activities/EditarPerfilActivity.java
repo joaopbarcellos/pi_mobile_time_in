@@ -34,6 +34,7 @@ import fellipy.gustavo.joao_pedro.pedro.time_in.ImageCache;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.EditarPerfilViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Usuario;
+import fellipy.gustavo.joao_pedro.pedro.time_in.util.Mascara;
 import fellipy.gustavo.joao_pedro.pedro.time_in.util.Util;
 
 public class EditarPerfilActivity extends AppCompatActivity {
@@ -50,6 +51,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
         EditText tvTelefone = findViewById(R.id.etTelefoneEditarPerfil);
         ImageView imgFoto = findViewById(R.id.imgEditarPerfil);
         RadioGroup rgEditarIntuito = findViewById(R.id.rgEditarIntuito);
+        tvDataNasc.addTextChangedListener(Mascara.insert(Mascara.MASCARA_DATA, tvDataNasc));
+        tvTelefone.addTextChangedListener(Mascara.insert(Mascara.MASCARA_TELEFONE, tvTelefone));
         final String[] id = {""};
         EditarPerfilViewModel editarPerfilViewModel = new
                 ViewModelProvider(EditarPerfilActivity.this).get(EditarPerfilViewModel.class);

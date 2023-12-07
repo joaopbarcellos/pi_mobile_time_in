@@ -101,11 +101,11 @@ public class EventoActivity extends AppCompatActivity {
         relacionamentoUsuarioEvento.observe(EventoActivity.this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                if(s == "criador"){
+                if(s.equals("criador")){
                     btnInscrever.setVisibility(View.INVISIBLE);
                     btnEditarEvento.setVisibility(View.VISIBLE);
                     btnDesinscrever.setVisibility(View.INVISIBLE);
-                } else if (s == "inscrito") {
+                } else if (s.equals("inscrito")) {
                     btnInscrever.setVisibility(View.INVISIBLE);
                     btnEditarEvento.setVisibility(View.INVISIBLE);
                     btnDesinscrever.setVisibility(View.VISIBLE);

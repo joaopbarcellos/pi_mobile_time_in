@@ -29,10 +29,12 @@ public class CadastroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
-
+        EditText etData = findViewById(R.id.etData);
+        etData.addTextChangedListener(Mascara.insert(Mascara.MASCARA_DATA, etData));
 
         cadastroViewModel = new ViewModelProvider(this).get(CadastroViewModel.class);
-
+        EditText etTelefone = findViewById(R.id.etTelefone);
+        etTelefone.addTextChangedListener(Mascara.insert(Mascara.MASCARA_TELEFONE, etTelefone));
         Button btnCadastrar = findViewById(R.id.btnCadastrar);
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
@@ -42,8 +44,7 @@ public class CadastroActivity extends AppCompatActivity {
                 EditText etNome = findViewById(R.id.etNome);
                 final String nome = etNome.getText().toString();
 
-                EditText etData = findViewById(R.id.etData);
-                etData.addTextChangedListener(Mascara.insert(Mascara.MASCARA_DATA, etData));
+
                 final String data = etData.getText().toString();
                 SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = null;
@@ -56,7 +57,7 @@ public class CadastroActivity extends AppCompatActivity {
                 EditText etEmailCadastro = findViewById(R.id.etEmailCadastro);
                 final String email = etEmailCadastro.getText().toString();
 
-                EditText etTelefone = findViewById(R.id.etTelefone);
+
                 final String telefone = etTelefone.getText().toString();
 
                 EditText etSenhaCadastro = findViewById(R.id.etSenhaCadastro);

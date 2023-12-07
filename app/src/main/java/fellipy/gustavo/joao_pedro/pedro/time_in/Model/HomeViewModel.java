@@ -92,5 +92,21 @@ public class HomeViewModel extends AndroidViewModel {
         return userDetailLD;
     }
 
+    public LiveData<Boolean> updateUserPass(String senha_antiga, String senha_nova){
+        MutableLiveData<Boolean> result = new MutableLiveData<>();
 
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                EventosRepository eventosRepository = new EventosRepository(getApplication());
+
+                boolean b = eventosRepository.updateUserPass(senha_antiga, senha_nova);
+
+                result.postValue(b);
+            }
+        });
+        return result;
+    }
 }

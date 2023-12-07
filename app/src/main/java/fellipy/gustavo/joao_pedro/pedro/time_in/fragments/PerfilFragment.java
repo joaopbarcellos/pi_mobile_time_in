@@ -2,6 +2,7 @@ package fellipy.gustavo.joao_pedro.pedro.time_in.fragments;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.icu.text.SimpleDateFormat;
@@ -20,8 +21,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,9 +32,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.CadastroActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.CadastroEventoActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.EditarPerfilActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.LoginActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
 import fellipy.gustavo.joao_pedro.pedro.time_in.ImageCache;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.EventoViewModel;
@@ -144,7 +149,38 @@ public class PerfilFragment extends Fragment {
                         .setPositiveButton("ALterar", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
+                                EditText etSenhaAntiga = view.findViewById(R.id.etSenhaAntiga);
+                                EditText etConfirmarSenha = view.findViewById(R.id.etConfimarSenha);
+                                EditText etSenhaNova = view.findViewById(R.id.etSenhaNova);
 
+                                String senhaNova = etSenhaNova.getText().toString();
+                                String senhaAntiga = etSenhaAntiga.getText().toString();
+                                String senhaConfirmar = etConfirmarSenha.getText().toString();
+                                if(senhaNova.equals(senhaConfirmar)){
+                                    LiveData<Boolean> atualizarSenha = homeViewModel.
+                                            updateUserPass(senhaAntiga, senhaNova);
+
+                                    atualizarSenha.observe(getViewLifecycleOwner(),
+                                            new Observer<Boolean>() {
+                                        @Override
+                                        public void onChanged(Boolean aBoolean) {
+                                            if(aBoolean){
+                                                Toast.makeText(getActivity(),
+                                                        "Senha atualizada com sucesso",
+                                                        Toast.LENGTH_LONG).show();
+                                            }else{
+                                                Toast.makeText(getActivity(),
+                                                        "Não foi possível atualizar a senha.",
+                                                        Toast.LENGTH_LONG).show();
+                                            }
+
+                                        }
+                                    });
+                                }else{
+                                    Toast.makeText(getActivity(),
+                                            "Não foi possível atualizar a senha.",
+                                            Toast.LENGTH_LONG).show();
+                                }
                             }
                         })
                         .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

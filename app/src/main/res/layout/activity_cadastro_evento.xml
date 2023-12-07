@@ -124,6 +124,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/campo_evento"
                 android:ems="10"
+                android:paddingLeft="10dp"
                 android:fontFamily="@font/alata"
                 android:hint="@string/hint_capacidade_maxima"
                 android:inputType="textPersonName"

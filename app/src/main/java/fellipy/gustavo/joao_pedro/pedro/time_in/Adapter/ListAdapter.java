@@ -59,7 +59,8 @@ public class ListAdapter extends PagingDataAdapter<Evento, MyViewHolder>{
         tvPrecoItemEvento.setText(evento.preco);
 
         ImageView imgImagemEvento = holder.itemView.findViewById(R.id.imgImagemEvento);
-        ImageCache.loadImageUrlToImageView(holder.itemView.getContext(), evento.imagem, imgImagemEvento, 100, 100);
+        ImageCache.loadImageUrlToImageView(holder.itemView.getContext(), evento.imagem,
+                imgImagemEvento, 100, 100);
 
         ConstraintLayout constraintLayout = holder.itemView.findViewById(R.id.clItemEvento);
 

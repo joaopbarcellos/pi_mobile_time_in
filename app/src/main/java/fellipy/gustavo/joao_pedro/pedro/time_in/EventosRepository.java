@@ -709,5 +709,78 @@ public class EventosRepository {
         }
         return "";
     }
+    public boolean updateUserPass(String senha_antiga, String senha_nova){
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
+                "atualizar_senha.php", "POST", "UTF-8");
+        httpRequest.addParam("senha_antiga", senha_antiga);
+        httpRequest.addParam("senha_nova", senha_nova);
+        httpRequest.addParam("email", Config.getLogin(context));
+        String result = "";
 
+        try{
+            InputStream is = httpRequest.execute();
+
+            result = Util.inputStream2String(is, "UTF-8");
+            httpRequest.finish();
+
+            Log.i("HTTP DETAILS RESULT", result);
+
+            // A classe JSONObject recebe como parâmetro do construtor uma String no formato JSON e
+            // monta internamente uma estrutura de dados similar ao dicionário em python.
+            JSONObject jsonObject = new JSONObject(result);
+
+            // obtem o valor da chave sucesso para verificar se a ação ocorreu da forma esperada ou
+            // não.
+            int success = jsonObject.getInt("sucesso");
+
+            // Se sucesso igual a 1, os detalhes do produto são obtidos da String JSON e um objeto
+            // do tipo Product é criado para guardar esses dados
+            return success == 1;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean updateEventsDetails(String id, String nome, String cap_max, String cap_min,
+                                       String descricao){
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
+                "atualizar_dados_evento.php", "POST", "UTF-8");
+        httpRequest.addParam("id", id);
+        httpRequest.addParam("nome", nome);
+        httpRequest.addParam("capacidade_max", cap_max);
+        httpRequest.addParam("capacidade_min", cap_min);
+        httpRequest.addParam("descricao", descricao);
+        String result = "";
+
+        try{
+            InputStream is = httpRequest.execute();
+
+            result = Util.inputStream2String(is, "UTF-8");
+            httpRequest.finish();
+
+            Log.i("HTTP DETAILS RESULT", result);
+
+            // A classe JSONObject recebe como parâmetro do construtor uma String no formato JSON e
+            // monta internamente uma estrutura de dados similar ao dicionário em python.
+            JSONObject jsonObject = new JSONObject(result);
+
+            // obtem o valor da chave sucesso para verificar se a ação ocorreu da forma esperada ou
+            // não.
+            int success = jsonObject.getInt("sucesso");
+
+            // Se sucesso igual a 1, os detalhes do produto são obtidos da String JSON e um objeto
+            // do tipo Product é criado para guardar esses dados
+            return success == 1;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

@@ -29,6 +29,9 @@
             android:name=".Activities.EditarPerfilActivity"
             android:exported="false" />
         <activity
+            android:name=".Activities.EditarEventoActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.HomeActivity"
             android:exported="true" >
             <intent-filter>

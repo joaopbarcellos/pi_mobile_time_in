@@ -86,6 +86,10 @@ public class CadastroEventoActivity extends AppCompatActivity {
         etEndereco = findViewById(R.id.etEndereco);
         spnEstado = findViewById(R.id.spnEstados);
 
+        etHorarioInicio.addTextChangedListener(Mascara.insert(Mascara.MASCARA_HORARIO,
+                etHorarioInicio));
+        etHorarioFim.addTextChangedListener(Mascara.insert(Mascara.MASCARA_HORARIO, etHorarioFim));
+        etData.addTextChangedListener(Mascara.insert(Mascara.MASCARA_DATA, etData));
         etCep.addTextChangedListener(Mascara.insert(Mascara.MASCARA_CEP, etCep));
 
         retrofitCEP = new Retrofit.Builder()
@@ -268,6 +272,8 @@ public class CadastroEventoActivity extends AppCompatActivity {
                 list.add(descricao);
                 list.add(name);
                 list.add(s);
+                horarioInicio = horarioInicio.replace(":", "");
+                horarioFim = horarioFim.replace(":", "");
                 list.add(horarioInicio);
                 list.add(horarioFim);
                 list.add(capacidadeMinima);

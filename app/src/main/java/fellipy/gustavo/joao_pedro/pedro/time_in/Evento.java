@@ -10,6 +10,12 @@ public class Evento {
     public int id, max_pessoas, min_pessoas;
     public Date data;
 
+
+    public Evento(int id, String n, String img){
+        this.id = id;
+        this.nome = n;
+        this.imagem = img;
+    }
     public Evento(int id, String n, String p, Date d, String hi, String hf, String img){
         // Construtor para resumo dos eventos
         this.id = id;

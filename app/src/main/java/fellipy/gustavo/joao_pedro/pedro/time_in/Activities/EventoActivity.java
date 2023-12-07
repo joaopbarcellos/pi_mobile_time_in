@@ -26,6 +26,7 @@ import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
 import fellipy.gustavo.joao_pedro.pedro.time_in.ImageCache;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.EventoViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
+import fellipy.gustavo.joao_pedro.pedro.time_in.util.Config;
 
 public class EventoActivity extends AppCompatActivity {
 
@@ -91,11 +92,38 @@ public class EventoActivity extends AppCompatActivity {
             }
         });
 
+        LiveData<String> relacionamentoUsuarioEvento = eventoViewModel.
+                relacionamentoUsuarioEvento(idEvento);
+
         Button btnInscrever = findViewById(R.id.btnInscrever);
+        Button btnEditarEvento = findViewById(R.id.btnEditarEventoActivity);
+        Button btnDesinscrever = findViewById(R.id.btnDesinscreverEvento);
+        relacionamentoUsuarioEvento.observe(EventoActivity.this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if(s == "criador"){
+                    btnInscrever.setVisibility(View.INVISIBLE);
+                    btnEditarEvento.setVisibility(View.VISIBLE);
+                    btnDesinscrever.setVisibility(View.INVISIBLE);
+                } else if (s == "inscrito") {
+                    btnInscrever.setVisibility(View.INVISIBLE);
+                    btnEditarEvento.setVisibility(View.INVISIBLE);
+                    btnDesinscrever.setVisibility(View.VISIBLE);
+                }else{
+                    btnInscrever.setVisibility(View.VISIBLE);
+                    btnEditarEvento.setVisibility(View.INVISIBLE);
+                    btnDesinscrever.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
         btnInscrever.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(Config.getLogin(EventoActivity.this).isEmpty()){
+                    Intent i = new Intent(EventoActivity.this, LoginActivity.class);
+                    startActivity(i);
+                    finish();
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(EventoActivity.this);
                 builder.setMessage("Deseja mesmo confirmar a inscrição?")
                         .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
@@ -136,6 +164,58 @@ public class EventoActivity extends AppCompatActivity {
             }
         });
 
+        btnDesinscrever.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(EventoActivity.this);
+                builder.setMessage("Deseja mesmo cancelar sua inscrição?")
+                        .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                LiveData<Boolean> resultLd = eventoViewModel.desInscreverEvento(idEvento);
+
+                                resultLd.observe(EventoActivity.this, new Observer<Boolean>() {
+                                    @Override
+                                    public void onChanged(Boolean aBoolean) {
+                                        if(aBoolean){
+                                            Toast.makeText(EventoActivity.this, "Sua " +
+                                                            "inscrição foi cancelada com sucesso!",
+                                                    Toast.LENGTH_LONG).show();
+                                            Intent i = new Intent(EventoActivity.this,
+                                                    HomeActivity.class);
+                                            // Comentar sobre o resultado da Activity do produto e comparar com o
+                                            // nosso
+                                            startActivity(i);
+                                            finish();
+                                        }else{
+                                            view.setEnabled(true);
+                                            Toast.makeText(EventoActivity.this, "Ocorreu um " +
+                                                            "erro ao se desinscrever do evento",
+                                                    Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                });
+                            }
+                        })
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //
+                            }
+                        });
+                // Create the AlertDialog object and return it
+                Dialog dlgConfirmar = builder.create();
+                dlgConfirmar.show();
+
+            }
+        });
+
+        btnEditarEvento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(EventoActivity.this, EditarEventoActivity.class);
+                i.putExtra("id_evento", idEvento);
+                startActivity(i);
+            }
+        });
         LiveData<Integer> vagasLiveData = eventoViewModel.pegarVagasRestantes(Integer.
                 parseInt(idEvento));
         vagasLiveData.observe(EventoActivity.this, new Observer<Integer>() {

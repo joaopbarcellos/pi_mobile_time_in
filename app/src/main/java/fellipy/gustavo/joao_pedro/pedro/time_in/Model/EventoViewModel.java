@@ -68,4 +68,36 @@ public class EventoViewModel extends AndroidViewModel {
         });
         return result;
     }
+
+    public LiveData<Boolean> desInscreverEvento(String id){
+        MutableLiveData<Boolean> result = new MutableLiveData<>();
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                EventosRepository eventosRepository = new EventosRepository(getApplication());
+
+                boolean b = eventosRepository.unRegisterInEvent(id);
+
+                result.postValue(b);
+            }
+        });
+        return result;
+    }
+
+    public LiveData<String> relacionamentoUsuarioEvento(String id){
+        MutableLiveData<String> result = new MutableLiveData<>();
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                EventosRepository eventosRepository = new EventosRepository(getApplication());
+                String b = eventosRepository.relationUserEvent(id);
+                result.postValue(b);
+            }
+        });
+        return result;
+    }
 }

@@ -97,6 +97,7 @@ public class MeusEventosFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 tbtCriados.setChecked(false);
+                tbtInscritos.setChecked(true);
                 rvMyEvents.setAdapter(listAdapterSubsEvents);
             }
         });
@@ -105,6 +106,7 @@ public class MeusEventosFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 tbtInscritos.setChecked(false);
+                tbtCriados.setChecked(true);
                 rvMyEvents.setAdapter(listAdapterCreEvents);
             }
         });

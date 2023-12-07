@@ -29,11 +29,11 @@
     <string name="txt_filtrar">Filtrar</string>
     <string name="txt_ordenar">Ordernar por</string>
     <string name="txt_preco">Preço:</string>
-    <string name="txt_telefone"> Telefone:</string>
-    <string name="txt_estado"> Estado:</string>
-    <string name="txt_cidade"> Cidade:</string>
-    <string name="txt_bairro"> Bairro:</string>
-    <string name="txt_logradouro"></string>
+    <string name="txt_telefone">Telefone:</string>
+    <string name="txt_estado">Estado:</string>
+    <string name="txt_cidade">Cidade:</string>
+    <string name="txt_bairro">Bairro:</string>
+    <string name="txt_desinscrever">Desinscrever</string>
     <string name="txt_em_cifrao">Em R$:</string>
     <string name="txt_idade">Idade</string>
     <string name="txt_intuito">Intuito</string>

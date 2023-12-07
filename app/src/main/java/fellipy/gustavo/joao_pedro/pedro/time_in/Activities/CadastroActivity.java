@@ -19,6 +19,7 @@ import java.util.Date;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.CadastroViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
+import fellipy.gustavo.joao_pedro.pedro.time_in.util.Mascara;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -42,6 +43,7 @@ public class CadastroActivity extends AppCompatActivity {
                 final String nome = etNome.getText().toString();
 
                 EditText etData = findViewById(R.id.etData);
+                etData.addTextChangedListener(Mascara.insert(Mascara.MASCARA_DATA, etData));
                 final String data = etData.getText().toString();
                 SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = null;

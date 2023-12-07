@@ -1,5 +1,7 @@
 package fellipy.gustavo.joao_pedro.pedro.time_in.fragments;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.icu.text.SimpleDateFormat;
@@ -7,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -125,6 +128,34 @@ public class PerfilFragment extends Fragment {
             }
         });
 
+        Button btnAlterarSenha = view.findViewById(R.id.btnAlterarSenha);
+
+        btnAlterarSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                // Get the layout inflater
+                LayoutInflater inflater = requireActivity().getLayoutInflater();
+
+                // Inflate and set the layout for the dialog
+                // Pass null as the parent view because its going in the dialog layout
+                builder.setView(inflater.inflate(R.layout.alterar_senha_dlg, null))
+                        // Add action buttons
+                        .setPositiveButton("ALterar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        })
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //LoginDialogFragment.this.getDialog().cancel();
+                            }
+                        });
+                Dialog dlgConfirmar = builder.create();
+                dlgConfirmar.show();
+            }
+        });
 
     }
 }

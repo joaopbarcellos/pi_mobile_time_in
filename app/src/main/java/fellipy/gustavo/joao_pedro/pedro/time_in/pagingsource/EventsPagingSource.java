@@ -1,8 +1,8 @@
-package fellipy.gustavo.joao_pedro.pedro.time_in;
+package fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.paging.ListenableFuturePagingSource;
-import androidx.paging.PagingSource;
 import androidx.paging.PagingState;
 
 import com.google.common.util.concurrent.ListenableFuture;
@@ -13,11 +13,16 @@ import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 
-public class CreatedEventsPagingSource extends ListenableFuturePagingSource<Integer, Evento> {
+import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
+import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
+
+public class EventsPagingSource extends ListenableFuturePagingSource<Integer, Evento> {
+    @Nullable
+
     Integer initialLoadSize = 0;
     EventosRepository eventosRepository;
 
-    public CreatedEventsPagingSource(EventosRepository eventosRepository){
+    public EventsPagingSource(EventosRepository eventosRepository){
         this.eventosRepository = eventosRepository;
     }
     @Override
@@ -27,7 +32,7 @@ public class CreatedEventsPagingSource extends ListenableFuturePagingSource<Inte
 
     @NonNull
     @Override
-    public ListenableFuture<PagingSource.LoadResult<Integer, Evento>> loadFuture(@NonNull PagingSource.LoadParams<Integer> loadParams) {
+    public ListenableFuture<LoadResult<Integer, Evento>> loadFuture(@NonNull LoadParams<Integer> loadParams) {
         Integer nextPageNumber = loadParams.getKey();
         if (nextPageNumber == null) {
             nextPageNumber = 1;
@@ -48,21 +53,21 @@ public class CreatedEventsPagingSource extends ListenableFuturePagingSource<Inte
         Integer finalNextPageNumber = nextPageNumber;
 
         // executa a nova linha de execução.
-        ListenableFuture<PagingSource.LoadResult<Integer, Evento>> lf = service.submit(new Callable<PagingSource.LoadResult<Integer, Evento>>() {
+        ListenableFuture<LoadResult<Integer, Evento>> lf = service.submit(new Callable<LoadResult<Integer, Evento>>() {
             /**
              * Tudo que estiver dentro dessa função será executado na nova linha de execução.
              */
             @Override
-            public PagingSource.LoadResult<Integer, Evento> call() {
+            public LoadResult<Integer, Evento> call() {
                 List<Evento> eventsList = null;
                 // envia uma requisição para o servidor web pedindo por uma nova página de dados (bloco de produtos)
-                eventsList = eventosRepository.loadUserEventsCreated(loadParams.getLoadSize(), finalOffSet);
+                eventsList = eventosRepository.loadInitialEvents(loadParams.getLoadSize(), finalOffSet);
                 Integer nextKey = null;
                 if(eventsList.size() >= loadParams.getLoadSize()) {
                     nextKey = finalNextPageNumber + 1;
                 }
                 // monta uma página do padrão da biblioteca Paging 3.
-                return new PagingSource.LoadResult.Page<Integer, Evento>(eventsList,
+                return new LoadResult.Page<Integer, Evento>(eventsList,
                         null,
                         nextKey);
             }

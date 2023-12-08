@@ -12,30 +12,34 @@ import androidx.paging.PagingConfig;
 import androidx.paging.PagingData;
 import androidx.paging.PagingLiveData;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import fellipy.gustavo.joao_pedro.pedro.time_in.CreatedEventsPagingSource;
+import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.CreatedEventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
-import fellipy.gustavo.joao_pedro.pedro.time_in.EventsPagingSource;
+import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.EventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
-import fellipy.gustavo.joao_pedro.pedro.time_in.SubscribedEventsPagingSource;
+import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.SeachedEventsPagingSource;
+import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.SubscribedEventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Usuario;
+import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.TopEventsPagingSource;
 import kotlinx.coroutines.CoroutineScope;
 
 public class HomeViewModel extends AndroidViewModel {
 
     int navigationOpSelected = R.id.homeOp;
-    LiveData<PagingData<Evento>> eventsLd, eventsSubsLd, eventsCreLd;
+    LiveData<PagingData<Evento>> eventsLd, eventsSubsLd, eventsCreLd, eventsTopLd;
 
+    EventosRepository eventosRepository = new EventosRepository(getApplication());
     public HomeViewModel(@NonNull Application application){
         super(application);
 
-        EventosRepository eventosRepository = new EventosRepository(getApplication());
         CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
+
+        Pager<Integer, Evento> topPager = new Pager(new PagingConfig(10), () -> new
+                TopEventsPagingSource(eventosRepository));
+
         Pager<Integer, Evento> pager = new Pager(new PagingConfig(10), () -> new
                 EventsPagingSource(eventosRepository));
         Pager<Integer, Evento> subsPager = new Pager(new PagingConfig(10), () -> new
@@ -47,25 +51,12 @@ public class HomeViewModel extends AndroidViewModel {
         eventsLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
         eventsCreLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(creaPager),
                 viewModelScope);
+        eventsTopLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(topPager),
+                viewModelScope);
     }
 
     public void setNavigationOpSelected(int navigationOpSelected){
         this.navigationOpSelected = navigationOpSelected;
-    }
-    public LiveData<Evento> getEventDetailsLD(String eid){
-        MutableLiveData<Evento> eventDetailLD = new MutableLiveData<>();
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                EventosRepository eventosRepository = new EventosRepository(getApplication());
-                Evento e = eventosRepository.loadEventDetail(eid);
-
-                eventDetailLD.postValue(e);
-            }
-        });
-        return eventDetailLD;
     }
 
     public LiveData<PagingData<Evento>> getEventsLd(){return eventsLd;}
@@ -74,6 +65,8 @@ public class HomeViewModel extends AndroidViewModel {
     public LiveData<PagingData<Evento>> getEventsCreLd() {
         return eventsCreLd;
     }
+
+    public LiveData<PagingData<Evento>> getTopEventsLd(){return  eventsTopLd;}
 
     public LiveData<Usuario> loadUserDetailsLv(){
 
@@ -108,5 +101,15 @@ public class HomeViewModel extends AndroidViewModel {
             }
         });
         return result;
+    }
+
+    public LiveData<PagingData<Evento>> loadSearchedEvents(String pesquisa){
+        CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
+        Pager<Integer, Evento> searPager = new Pager(new PagingConfig(10), () -> new
+                SeachedEventsPagingSource(eventosRepository, pesquisa));
+        LiveData<PagingData<Evento>> eventsSearLd = PagingLiveData.cachedIn
+                (PagingLiveData.getLiveData(searPager),
+                viewModelScope);
+        return eventsSearLd;
     }
 }

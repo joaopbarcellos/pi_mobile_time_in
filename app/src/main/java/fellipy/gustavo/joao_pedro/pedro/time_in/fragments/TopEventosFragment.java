@@ -18,7 +18,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.CadastroEventoActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
@@ -76,8 +78,17 @@ public class TopEventosFragment extends Fragment {
         liveData.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
             @Override
             public void onChanged(PagingData<Evento> eventoPagingData) {
-                carrosselAdapter.submitData(getViewLifecycleOwner().getLifecycle(), eventoPagingData);
                 listAdapter.submitData(getViewLifecycleOwner().getLifecycle(), eventoPagingData);
+            }
+        });
+
+        LiveData<PagingData<Evento>> topLiveData = hViewModel.getTopEventsLd();
+
+        topLiveData.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
+            @Override
+            public void onChanged(PagingData<Evento> eventoPagingData) {
+                carrosselAdapter.submitData(getViewLifecycleOwner().getLifecycle(),
+                        eventoPagingData);
             }
         });
         RecyclerView rvEvento = (RecyclerView) view.findViewById(R.id.rvEventos);
@@ -95,6 +106,25 @@ public class TopEventosFragment extends Fragment {
             public void onClick(View view) {
                 HomeActivity homeActivity = (HomeActivity) getActivity();
                 homeActivity.navegarTelas(CadastroEventoActivity.class);
+            }
+        });
+
+        SearchView etPesquisar = view.findViewById(R.id.etPesquisar);
+        etPesquisar.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String pesquisa = etPesquisar.getQuery().toString();
+                ListAdapter listAdapter = new ListAdapter(new ImageDataComparator(),
+                        (HomeActivity) getActivity());
+                LiveData<PagingData<Evento>> liveData = hViewModel.loadSearchedEvents(pesquisa);
+                liveData.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
+                    @Override
+                    public void onChanged(PagingData<Evento> eventoPagingData) {
+                        listAdapter.submitData(getViewLifecycleOwner().getLifecycle(),
+                                eventoPagingData);
+                    }
+                });
+                rvEvento.setAdapter(listAdapter);
             }
         });
 

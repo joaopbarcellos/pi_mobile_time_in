@@ -1,4 +1,4 @@
-package fellipy.gustavo.joao_pedro.pedro.time_in;
+package fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource;
 
 import androidx.annotation.NonNull;
 import androidx.paging.ListenableFuturePagingSource;
@@ -13,12 +13,14 @@ import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 
-public class SubscribedEventsPagingSource extends ListenableFuturePagingSource<Integer, Evento> {
+import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
+import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
 
+public class CreatedEventsPagingSource extends ListenableFuturePagingSource<Integer, Evento> {
     Integer initialLoadSize = 0;
     EventosRepository eventosRepository;
 
-    public SubscribedEventsPagingSource(EventosRepository eventosRepository){
+    public CreatedEventsPagingSource(EventosRepository eventosRepository){
         this.eventosRepository = eventosRepository;
     }
     @Override
@@ -57,7 +59,7 @@ public class SubscribedEventsPagingSource extends ListenableFuturePagingSource<I
             public PagingSource.LoadResult<Integer, Evento> call() {
                 List<Evento> eventsList = null;
                 // envia uma requisição para o servidor web pedindo por uma nova página de dados (bloco de produtos)
-                eventsList = eventosRepository.loadUserSubscribedEvents(loadParams.getLoadSize(), finalOffSet);
+                eventsList = eventosRepository.loadUserEventsCreated(loadParams.getLoadSize(), finalOffSet);
                 Integer nextKey = null;
                 if(eventsList.size() >= loadParams.getLoadSize()) {
                     nextKey = finalNextPageNumber + 1;

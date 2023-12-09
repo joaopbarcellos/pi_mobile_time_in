@@ -1,7 +1,6 @@
 package fellipy.gustavo.joao_pedro.pedro.time_in.fragments;
 
 import android.content.res.ColorStateList;
-import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,20 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.EditarPerfilActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Adapter.ListAdapter;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
-import fellipy.gustavo.joao_pedro.pedro.time_in.ImageCache;
-import fellipy.gustavo.joao_pedro.pedro.time_in.ImageDataComparator;
+import fellipy.gustavo.joao_pedro.pedro.time_in.EventoDataComparator;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
-import fellipy.gustavo.joao_pedro.pedro.time_in.Usuario;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,9 +54,9 @@ public class MeusEventosFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ListAdapter listAdapterSubsEvents = new ListAdapter(new ImageDataComparator(),
+        ListAdapter listAdapterSubsEvents = new ListAdapter(new EventoDataComparator(),
                 (HomeActivity) getActivity());
-        ListAdapter listAdapterCreEvents = new ListAdapter(new ImageDataComparator(),
+        ListAdapter listAdapterCreEvents = new ListAdapter(new EventoDataComparator(),
                 (HomeActivity) getActivity());
         HomeViewModel homeViewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
         LiveData<PagingData<Evento>> subsEventsLiveData = homeViewModel.getEventsSubsLd();

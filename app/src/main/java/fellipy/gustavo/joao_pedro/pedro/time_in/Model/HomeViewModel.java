@@ -12,15 +12,20 @@ import androidx.paging.PagingConfig;
 import androidx.paging.PagingData;
 import androidx.paging.PagingLiveData;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import fellipy.gustavo.joao_pedro.pedro.time_in.Esporte;
 import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.CreatedEventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
 import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.EventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.SeachedEventsPagingSource;
+import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.SportsEventsPagingSource;
+import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.SportsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.SubscribedEventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Usuario;
 import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.TopEventsPagingSource;
@@ -29,7 +34,8 @@ import kotlinx.coroutines.CoroutineScope;
 public class HomeViewModel extends AndroidViewModel {
 
     int navigationOpSelected = R.id.homeOp;
-    LiveData<PagingData<Evento>> eventsLd, eventsSubsLd, eventsCreLd, eventsTopLd;
+    LiveData<PagingData<Evento>> eventsLd, eventsSubsLd, eventsCreLd, eventsTopLd, eventsSportsLd;
+    LiveData<PagingData<Esporte>> sportsLd;
 
     EventosRepository eventosRepository = new EventosRepository(getApplication());
     public HomeViewModel(@NonNull Application application){
@@ -46,12 +52,18 @@ public class HomeViewModel extends AndroidViewModel {
                 SubscribedEventsPagingSource(eventosRepository));
         Pager<Integer, Evento> creaPager = new Pager(new PagingConfig(10), () -> new
                 CreatedEventsPagingSource(eventosRepository));
+
+        Pager<Integer, Esporte> esportePager = new Pager(new PagingConfig(10), () -> new
+                SportsPagingSource(eventosRepository));
+
         eventsSubsLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(subsPager),
                 viewModelScope);
         eventsLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
         eventsCreLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(creaPager),
                 viewModelScope);
         eventsTopLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(topPager),
+                viewModelScope);
+        sportsLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(esportePager),
                 viewModelScope);
     }
 
@@ -66,8 +78,21 @@ public class HomeViewModel extends AndroidViewModel {
         return eventsCreLd;
     }
 
-    public LiveData<PagingData<Evento>> getTopEventsLd(){return  eventsTopLd;}
+    public LiveData<PagingData<Evento>> getTopEventsLd(){return eventsTopLd;}
 
+    public LiveData<PagingData<Esporte>> getSportsLd(){
+        return sportsLd;
+    }
+
+    public LiveData<PagingData<Evento>> getSportsEventsLd(String idEsporte){
+        CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
+        Pager<Integer, Evento> sportEventPager = new Pager(new PagingConfig(10), () -> new
+                SportsEventsPagingSource(eventosRepository, idEsporte));
+
+        eventsSportsLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(sportEventPager),
+                viewModelScope);
+        return eventsSportsLd;
+    }
     public LiveData<Usuario> loadUserDetailsLv(){
 
         MutableLiveData<Usuario> userDetailLD = new MutableLiveData<>();
@@ -112,4 +137,6 @@ public class HomeViewModel extends AndroidViewModel {
                 viewModelScope);
         return eventsSearLd;
     }
+
+
 }

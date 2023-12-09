@@ -1,6 +1,5 @@
 package fellipy.gustavo.joao_pedro.pedro.time_in.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +9,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.paging.PagingData;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,16 +16,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.CadastroEventoActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Adapter.CarrosselAdapter;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Adapter.FiltrosAdapter;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Adapter.ListAdapter;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Esporte;
+import fellipy.gustavo.joao_pedro.pedro.time_in.EsporteDataComparator;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
-import fellipy.gustavo.joao_pedro.pedro.time_in.ImageDataComparator;
+import fellipy.gustavo.joao_pedro.pedro.time_in.ImageCache;
+import fellipy.gustavo.joao_pedro.pedro.time_in.EventoDataComparator;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
 
@@ -40,8 +41,9 @@ public class TopEventosFragment extends Fragment {
 
 
     Button btnCriarEventosTopEventos;
-
     private HomeViewModel hViewModel;
+
+    View thisView;
 
 
     public TopEventosFragment() {
@@ -68,12 +70,18 @@ public class TopEventosFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        thisView = view;
         hViewModel = new ViewModelProvider(getActivity()).get(HomeViewModel.class);
-        CarrosselAdapter carrosselAdapter = new CarrosselAdapter(new ImageDataComparator(),
+
+        FiltrosAdapter filtrosAdapter = new FiltrosAdapter(new EsporteDataComparator(),
+                this);
+
+        CarrosselAdapter carrosselAdapter = new CarrosselAdapter(new EventoDataComparator(),
                 (HomeActivity) getActivity());
-        ListAdapter listAdapter = new ListAdapter(new ImageDataComparator(),
+        ListAdapter listAdapter = new ListAdapter(new EventoDataComparator(),
                 (HomeActivity) getActivity());
         LiveData<PagingData<Evento>> liveData = hViewModel.getEventsLd();
+        LiveData<PagingData<Esporte>> sportsLd = hViewModel.getSportsLd();
 
         liveData.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
             @Override
@@ -82,7 +90,21 @@ public class TopEventosFragment extends Fragment {
             }
         });
 
+        sportsLd.observe(getViewLifecycleOwner(), new Observer<PagingData<Esporte>>() {
+            @Override
+            public void onChanged(PagingData<Esporte> esportePagingData) {
+                filtrosAdapter.submitData(getViewLifecycleOwner().getLifecycle(), esportePagingData);
+            }
+        });
+
+        RecyclerView rvFiltrosEsportes = (RecyclerView) view.findViewById(R.id.rvFiltrosEsportes);
+        rvFiltrosEsportes.setAdapter(filtrosAdapter);
+        rvFiltrosEsportes.setLayoutManager(new LinearLayoutManager(getContext(),
+                RecyclerView.HORIZONTAL, false));
+
         LiveData<PagingData<Evento>> topLiveData = hViewModel.getTopEventsLd();
+
+
 
         topLiveData.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
             @Override
@@ -110,13 +132,12 @@ public class TopEventosFragment extends Fragment {
         });
 
         SearchView etPesquisar = view.findViewById(R.id.etPesquisar);
-        etPesquisar.setOnSearchClickListener(new View.OnClickListener() {
+        etPesquisar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onClick(View view) {
-                String pesquisa = etPesquisar.getQuery().toString();
-                ListAdapter listAdapter = new ListAdapter(new ImageDataComparator(),
+            public boolean onQueryTextSubmit(String s) {
+                ListAdapter listAdapter = new ListAdapter(new EventoDataComparator(),
                         (HomeActivity) getActivity());
-                LiveData<PagingData<Evento>> liveData = hViewModel.loadSearchedEvents(pesquisa);
+                LiveData<PagingData<Evento>> liveData = hViewModel.loadSearchedEvents(s);
                 liveData.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
                     @Override
                     public void onChanged(PagingData<Evento> eventoPagingData) {
@@ -124,11 +145,34 @@ public class TopEventosFragment extends Fragment {
                                 eventoPagingData);
                     }
                 });
+
                 rvEvento.setAdapter(listAdapter);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
             }
         });
 
+        etPesquisar.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                LiveData<PagingData<Evento>> liveData = hViewModel.getEventsLd();
+
+                liveData.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
+                    @Override
+                    public void onChanged(PagingData<Evento> eventoPagingData) {
+                        listAdapter.submitData(getViewLifecycleOwner().getLifecycle(), eventoPagingData);
+                    }
+                });
+                return true;
+            }
+        });
         ImageButton imgFiltro = view.findViewById(R.id.imgbtnFiltrar);
+        ImageCache.loadImageUrlToImageView(getActivity(), "https://i.imgur.com/yeXGDmy.png",
+                imgFiltro, 60, 60);
         imgFiltro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,6 +180,23 @@ public class TopEventosFragment extends Fragment {
             }
         });
 
+    }
+
+    public void setIdEsporte(String id){
+        LiveData<PagingData<Evento>> sportsEventsLd = hViewModel.getSportsEventsLd(id);
+
+        ListAdapter listAdapter = new ListAdapter(new EventoDataComparator(),
+                (HomeActivity) getActivity());
+        sportsEventsLd.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
+            @Override
+            public void onChanged(PagingData<Evento> eventoPagingData) {
+                listAdapter.submitData(getViewLifecycleOwner().getLifecycle(), eventoPagingData);
+            }
+        });
+
+        RecyclerView rvEvento = (RecyclerView) thisView.findViewById(R.id.rvEventos);
+        rvEvento.setAdapter(listAdapter);
+        rvEvento.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
 }

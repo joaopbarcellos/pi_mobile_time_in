@@ -3,7 +3,7 @@ package fellipy.gustavo.joao_pedro.pedro.time_in;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 
-public class ImageDataComparator extends DiffUtil.ItemCallback<Evento> {
+public class EventoDataComparator extends DiffUtil.ItemCallback<Evento> {
 
     @Override
     public boolean areItemsTheSame(@NonNull Evento oldItem, @NonNull Evento newItem) {

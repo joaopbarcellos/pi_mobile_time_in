@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView3" />
+        app:layout_constraintTop_toBottomOf="@+id/rvFiltrosEsportes" />
 
     <ImageButton
         android:id="@+id/imgbtnFiltrar"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginBottom="32dp"
-        android:background="@color/white"
+        android:background="@color/azul_escuro"
         android:src="@drawable/filter_solid__1_"
         app:layout_constraintBottom_toTopOf="@+id/rvEventos"
         app:layout_constraintStart_toStartOf="parent" />
@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView3"
+        android:id="@+id/rvFiltrosEsportes"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"

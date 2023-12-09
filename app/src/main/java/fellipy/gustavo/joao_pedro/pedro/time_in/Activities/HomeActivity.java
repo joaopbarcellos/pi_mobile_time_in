@@ -158,4 +158,5 @@ public class HomeActivity extends AppCompatActivity {
         // Iniciando a Intent
         startActivity(i);
     }
+
 }

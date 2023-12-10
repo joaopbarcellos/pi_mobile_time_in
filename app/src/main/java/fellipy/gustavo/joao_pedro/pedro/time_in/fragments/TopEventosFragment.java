@@ -171,7 +171,7 @@ public class TopEventosFragment extends Fragment {
             }
         });
         ImageButton imgFiltro = view.findViewById(R.id.imgbtnFiltrar);
-        ImageCache.loadImageUrlToImageView(getActivity(), "https://i.imgur.com/yeXGDmy.png",
+        ImageCache.loadImageUrlToImageView(getActivity(), "https://i.imgur.com/pbITKlG.png",
                 imgFiltro, 60, 60);
         imgFiltro.setOnClickListener(new View.OnClickListener() {
             @Override

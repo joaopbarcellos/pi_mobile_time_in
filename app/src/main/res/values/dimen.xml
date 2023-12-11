@@ -5,4 +5,5 @@
     <dimen name="itemEventoCarrosselWidth">120dp</dimen>
     <dimen name="itemEventoCarrosselHeight">110dp</dimen>
     <dimen name="img_height">300dp</dimen>
+    <dimen name="img_height_img">150dp</dimen>
 </resources>

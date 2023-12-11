@@ -189,4 +189,34 @@
         <item>Outro</item>
     </string-array>
 
+    <string-array name="preco_filtro">
+        <item>R$0,00 - R$10,00</item>
+        <item>R$10,00 - R$20,00</item>
+        <item>R$20,00 - R$30,00</item>
+        <item>R$30,00 - R$50,00</item>
+        <item>R$50,00 - R$100,00</item>
+        <item>R$100,00 - R$200,00</item>
+        <item>R$200,00 - R$500,00</item>
+        <item>R$500,00 - R$1000,00</item>
+        <item>R$1000,00 - R$5000,00</item>
+    </string-array>
+
+    <string-array name="idade_filtro">
+        <item>1 - 5 anos</item>
+        <item>5 - 10 anos</item>
+        <item>10 - 18 anos</item>
+        <item>18+</item>
+        <item>30 - 45 anos</item>
+        <item>Liberado para todas as idades</item>
+    </string-array>
+
+    <string-array name="localizacao_filtro">
+        <item>1 km - 5 km</item>
+        <item>6 km - 10 km</item>
+        <item>11 km - 20 km</item>
+        <item>21 km - 50 km</item>
+        <item>51 km - 100 km</item>
+        <item>101 km - 200 km</item>
+    </string-array>
+
 </resources>

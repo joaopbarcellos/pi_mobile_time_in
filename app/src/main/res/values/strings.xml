@@ -27,7 +27,7 @@
     <string name="txt_alterar_senha">Alterar Senha</string>
     <string name="txt_alterar">Alterar</string>
     <string name="txt_filtrar">Filtrar</string>
-    <string name="txt_ordenar">Ordernar por</string>
+    <string name="txt_ordenar">Ordenar por preço</string>
     <string name="txt_preco">Preço:</string>
     <string name="txt_telefone">Telefone:</string>
     <string name="txt_estado">Estado:</string>
@@ -86,6 +86,7 @@
     <string name="txt_intuito_do_evento">Intuito do evento:</string>
     <string name="txt_idade_do_publico">Idade do público:</string>
     <string name="txt_evento_intuito">Intuito:</string>
+    <string name="txt_deslogar">Encerrar sessão</string>
 
     <string-array name="array_estados">
         <item>AC</item>
@@ -190,6 +191,7 @@
     </string-array>
 
     <string-array name="preco_filtro">
+        <item>Nenhum</item>
         <item>R$0,00 - R$10,00</item>
         <item>R$10,00 - R$20,00</item>
         <item>R$20,00 - R$30,00</item>
@@ -202,21 +204,28 @@
     </string-array>
 
     <string-array name="idade_filtro">
-        <item>1 - 5 anos</item>
-        <item>5 - 10 anos</item>
-        <item>10 - 18 anos</item>
-        <item>18+</item>
-        <item>30 - 45 anos</item>
-        <item>Liberado para todas as idades</item>
+        <item>Nenhum</item>
+        <item>De 3 a 7</item>
+        <item>De 8 a 13</item>
+        <item>De 14 a 16</item>
+        <item>De 17 a 20</item>
+        <item>Acima de 18</item>
+        <item>De 20 a 30</item>
+        <item>De 30 a 40</item>
+        <item>Acima de 40</item>
     </string-array>
 
-    <string-array name="localizacao_filtro">
-        <item>1 km - 5 km</item>
-        <item>6 km - 10 km</item>
-        <item>11 km - 20 km</item>
-        <item>21 km - 50 km</item>
-        <item>51 km - 100 km</item>
-        <item>101 km - 200 km</item>
+    <string-array name="intuito_filtro">
+        <item>Nenhum</item>
+        <item>Família</item>
+        <item>Profissional</item>
+        <item>Amador</item>
+    </string-array>
+
+    <string-array name="preco2_filtro">
+        <item>Nenhum</item>
+        <item>Do menor para o maior</item>
+        <item>Do maior para o menor</item>
     </string-array>
 
 </resources>

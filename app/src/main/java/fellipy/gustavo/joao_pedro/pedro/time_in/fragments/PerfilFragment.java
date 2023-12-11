@@ -133,6 +133,17 @@ public class PerfilFragment extends Fragment {
             }
         });
 
+        Button btnEncerrarSessao = view.findViewById(R.id.btnDeslogar);
+        btnEncerrarSessao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Config.setLogin(getActivity(), "");
+                Config.setPassword(getActivity(), "");
+                Intent i = new Intent(getActivity(), HomeActivity.class);
+                startActivity(i);
+            }
+        });
+
         Button btnAlterarSenha = view.findViewById(R.id.btnAlterarSenha);
 
         btnAlterarSenha.setOnClickListener(new View.OnClickListener() {

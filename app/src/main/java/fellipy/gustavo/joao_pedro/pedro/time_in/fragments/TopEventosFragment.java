@@ -1,9 +1,12 @@
 package fellipy.gustavo.joao_pedro.pedro.time_in.fragments;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -16,11 +19,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.CadastroEventoActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.HomeActivity;
+import fellipy.gustavo.joao_pedro.pedro.time_in.Activities.LoginActivity;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Adapter.CarrosselAdapter;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Adapter.FiltrosAdapter;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Adapter.ListAdapter;
@@ -31,6 +41,7 @@ import fellipy.gustavo.joao_pedro.pedro.time_in.ImageCache;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventoDataComparator;
 import fellipy.gustavo.joao_pedro.pedro.time_in.Model.HomeViewModel;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
+import fellipy.gustavo.joao_pedro.pedro.time_in.util.Config;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -80,9 +91,9 @@ public class TopEventosFragment extends Fragment {
                 (HomeActivity) getActivity());
         ListAdapter listAdapter = new ListAdapter(new EventoDataComparator(),
                 (HomeActivity) getActivity());
-        LiveData<PagingData<Evento>> liveData = hViewModel.getEventsLd();
         LiveData<PagingData<Esporte>> sportsLd = hViewModel.getSportsLd();
 
+        LiveData<PagingData<Evento>> liveData = hViewModel.getEventsLd();
         liveData.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
             @Override
             public void onChanged(PagingData<Evento> eventoPagingData) {
@@ -126,8 +137,13 @@ public class TopEventosFragment extends Fragment {
         btnCriarEventosTopEventos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomeActivity homeActivity = (HomeActivity) getActivity();
-                homeActivity.navegarTelas(CadastroEventoActivity.class);
+                if(!Config.getLogin(getActivity()).isEmpty()) {
+                    HomeActivity homeActivity = (HomeActivity) getActivity();
+                    homeActivity.navegarTelas(CadastroEventoActivity.class);
+                }else{
+                    HomeActivity homeActivity = (HomeActivity) getActivity();
+                    homeActivity.navegarTelas(LoginActivity.class);
+                }
             }
         });
 
@@ -176,7 +192,50 @@ public class TopEventosFragment extends Fragment {
         imgFiltro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // DIALOG FILTROS
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                // Get the layout inflater
+                LayoutInflater inflater = requireActivity().getLayoutInflater();
+
+                // Inflate and set the layout for the dialog
+                // Pass null as the parent view because its going in the dialog layout
+                View dlgView = inflater.inflate(R.layout.filtros_dlg, null);
+                builder.setView(dlgView)
+                        .setPositiveButton("ALterar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                Spinner spnOrdernarPreco = dlgView.findViewById(R.id.spnOrdernarPreco);
+                                Spinner spnPreco = dlgView.findViewById(R.id.spnPrecoFiltro);
+                                Spinner spnIntuito = dlgView.findViewById(R.id.spnIntuitoFiltro);
+                                Spinner spnIdade = dlgView.findViewById(R.id.spnIdadeFiltro);
+
+
+                                List<String> filtros = new ArrayList<>();
+                                filtros.add(Integer.toString(spnPreco.getSelectedItemPosition() - 1));
+                                filtros.add(spnIdade.getSelectedItem().toString());
+                                filtros.add(spnIntuito.getSelectedItem().toString());
+                                filtros.add(spnOrdernarPreco.getSelectedItem().toString());
+
+                                ListAdapter listAdapter = new ListAdapter(new EventoDataComparator(),
+                                        (HomeActivity) getActivity());
+                                LiveData<PagingData<Evento>> ldEventosFiltrados = hViewModel.getFilterEventsLd(filtros);
+                                ldEventosFiltrados.observe(getViewLifecycleOwner(), new Observer<PagingData<Evento>>() {
+                                    @Override
+                                    public void onChanged(PagingData<Evento> eventoPagingData) {
+                                        listAdapter.submitData(getViewLifecycleOwner().getLifecycle(), eventoPagingData);
+                                    }
+                                });
+                                rvEvento.setAdapter(listAdapter);
+                                rvEvento.setLayoutManager(new LinearLayoutManager(getContext()));
+                            }
+
+
+                        })
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                            }
+                        });
+                Dialog dlgConfirmar = builder.create();
+                dlgConfirmar.show();
             }
         });
 

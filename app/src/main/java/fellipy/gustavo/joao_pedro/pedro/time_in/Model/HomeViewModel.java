@@ -23,6 +23,7 @@ import fellipy.gustavo.joao_pedro.pedro.time_in.Evento;
 import fellipy.gustavo.joao_pedro.pedro.time_in.EventosRepository;
 import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.EventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.R;
+import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.FilteredEventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.SeachedEventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.SportsEventsPagingSource;
 import fellipy.gustavo.joao_pedro.pedro.time_in.pagingsource.SportsPagingSource;
@@ -34,7 +35,8 @@ import kotlinx.coroutines.CoroutineScope;
 public class HomeViewModel extends AndroidViewModel {
 
     int navigationOpSelected = R.id.homeOp;
-    LiveData<PagingData<Evento>> eventsLd, eventsSubsLd, eventsCreLd, eventsTopLd, eventsSportsLd;
+    LiveData<PagingData<Evento>> eventsLd, eventsSubsLd, eventsCreLd, eventsTopLd, eventsSportsLd,
+            eventsFilterLd;
     LiveData<PagingData<Esporte>> sportsLd;
 
     EventosRepository eventosRepository = new EventosRepository(getApplication());
@@ -92,6 +94,15 @@ public class HomeViewModel extends AndroidViewModel {
         eventsSportsLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(sportEventPager),
                 viewModelScope);
         return eventsSportsLd;
+    }
+    public LiveData<PagingData<Evento>> getFilterEventsLd(List<String> filtros){
+        CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
+        Pager<Integer, Evento> filterEventPager = new Pager(new PagingConfig(10), () -> new
+                FilteredEventsPagingSource(eventosRepository, filtros));
+
+        eventsFilterLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(filterEventPager),
+                viewModelScope);
+        return eventsFilterLd;
     }
     public LiveData<Usuario> loadUserDetailsLv(){
 

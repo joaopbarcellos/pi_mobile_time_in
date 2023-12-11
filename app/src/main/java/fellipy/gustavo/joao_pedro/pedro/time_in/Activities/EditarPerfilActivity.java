@@ -51,8 +51,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
         EditText tvTelefone = findViewById(R.id.etTelefoneEditarPerfil);
         ImageView imgFoto = findViewById(R.id.imgEditarPerfil);
         RadioGroup rgEditarIntuito = findViewById(R.id.rgEditarIntuito);
-        tvDataNasc.addTextChangedListener(Mascara.insert(Mascara.MASCARA_DATA, tvDataNasc));
-        tvTelefone.addTextChangedListener(Mascara.insert(Mascara.MASCARA_TELEFONE, tvTelefone));
         final String[] id = {""};
         EditarPerfilViewModel editarPerfilViewModel = new
                 ViewModelProvider(EditarPerfilActivity.this).get(EditarPerfilViewModel.class);
@@ -65,9 +63,12 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 id[0] = Integer.toString(usuario.id);
                 tvNome.setText(usuario.nome);
                 tvEmail.setText(usuario.email);
+                String telefone = usuario.telefone.replaceAll("()-", "");
+                telefone = telefone.replace(" ", "");
                 tvTelefone.setText(usuario.telefone);
-                tvDataNasc.setText(new SimpleDateFormat("dd/MM/yyyy")
-                        .format(usuario.dataNasc));
+                String data = new SimpleDateFormat("dd/MM/yyyy")
+                        .format(usuario.dataNasc).replace("/", "");
+                tvDataNasc.setText(data);
                 String photoPath = ImageCache.loadImageUrlToImageView(EditarPerfilActivity.this, usuario.foto,
                         imgFoto,200, 200);
                 editarPerfilViewModel.setCurrentPhotoPath(photoPath);
@@ -77,6 +78,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
             }
         });
 
+        tvDataNasc.addTextChangedListener(Mascara.insert(Mascara.MASCARA_DATA, tvDataNasc));
+        tvTelefone.addTextChangedListener(Mascara.insert(Mascara.MASCARA_TELEFONE, tvTelefone));
 
         imgFoto.setOnClickListener(new View.OnClickListener() {
             @Override

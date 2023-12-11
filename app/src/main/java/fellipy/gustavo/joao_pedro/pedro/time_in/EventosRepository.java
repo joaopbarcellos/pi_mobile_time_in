@@ -890,4 +890,61 @@ public class EventosRepository {
 
         return eventosLista;
     }
+
+    public List<Evento> loadFilteredEvents(String preco_filtro, String idade,
+                                           String intuito, String ordernarPreco, Integer limit,
+                                           Integer offSet){
+        List<Evento> eventosLista = new ArrayList<>();
+
+        HttpRequest httpRequest = new HttpRequest(Config.EVENTS_APP_URL +
+                "filtro.php", "GET", "UTF-8");
+        httpRequest.addParam("ordenar_preco", ordernarPreco);
+        httpRequest.addParam("preco", preco_filtro);
+        httpRequest.addParam("intuito", intuito);
+        httpRequest.addParam("idade", idade);
+        httpRequest.addParam("limit", limit.toString());
+        httpRequest.addParam("offset", offSet.toString());
+
+        String result = "";
+        try{
+            InputStream is = httpRequest.execute();
+            result = Util.inputStream2String(is, "UTF-8");
+            httpRequest.finish();
+
+            Log.i("HTTP EVENTS RESULT", result);
+
+            JSONObject jsonObject = new JSONObject(result);
+
+            int sucess = jsonObject.getInt("sucesso");
+            if(sucess == 1){
+                JSONArray jsonArray = jsonObject.getJSONArray("eventos");
+
+                for(int i = 0; i < jsonArray.length(); i++){
+                    JSONObject jEvent = jsonArray.getJSONObject(i);
+                    String id = jEvent.getString("id");
+                    String nome = jEvent.getString("nome");
+                    String preco = jEvent.getString("preco");
+                    String foto = jEvent.getString("foto");
+                    String data = jEvent.getString("data");
+                    String horario_inicio = jEvent.getString("horario_inicio");
+                    String horario_fim = jEvent.getString("horario_fim");
+
+                    SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+                    Date date = null;
+                    date = parser.parse(data);
+                    Evento e = new Evento(Integer.parseInt(id), nome, preco, date, horario_inicio,
+                            horario_fim, foto);
+                    eventosLista.add(e);
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        return eventosLista;
+    }
 }
